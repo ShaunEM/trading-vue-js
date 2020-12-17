@@ -9,15 +9,18 @@ export default function(T) {
     // Define a TS type (part of the candle)
     let Ti = ['high', 'low', 'close', 'vol'].indexOf(T)
 
-    return function(x) {
+    return function(x, t) {
 
         let tf = this.__tf__
         let id = this.__id__
+        t = t || se.t
         let val = x !== undefined ? x : se[T][0]
-        if (!this.__t0__ || se.t >= this.__t0__ + tf) {
+        // TODO: closing at a specific time
+        // (timezone, end of the month...)
+        if (!this.__t0__ || t >= this.__t0__ + tf) {
 
-            this.unshift(val)
-            this.__t0__ = se.t - se.t % tf
+            this.unshift(Ti !== 3 ? val : 0)
+            this.__t0__ = t - t % tf
             // TODO: new candle signal
         }
 

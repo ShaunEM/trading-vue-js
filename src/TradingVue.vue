@@ -2,27 +2,31 @@
 <template>
     <!-- Main component  -->
     <div class="trading-vue" v-bind:id="id"
+        @mousedown="mousedown" @mouseleave="mouseleave"
          :style="{
-            color: this.colorText, font: this.font,
+            color: this.chart_props.colors.text,
+            font: this.font_comp,
             width: this.width+'px',
             height: this.height+'px'}">
         <toolbar v-if="toolbar"
-            v-on:custom-event="custom_event"
-            v-bind="chart_props" 
+            ref="toolbar"
+            @custom-event="custom_event"
+            v-bind="chart_props"
             v-bind:config="chart_config">
         </toolbar>
-        <widgets v-if="ctrllist.length" :map="ws"
-            :width="width" :height="height" :tv="this"
-            :dc="data">
+        <widgets v-if="controllers.length"
+            ref="widgets"
+            :map="ws" :width="width" :height="height"
+            :tv="this" :dc="data">
         </widgets>
         <chart :key="reset"
             ref="chart"
             v-bind="chart_props"
             v-bind:tv_id="id"
             v-bind:config="chart_config"
-            v-on:custom-event="custom_event"
-            v-on:range-changed="range_changed"
-            v-on:legend-button-click="legend_button">
+            @custom-event="custom_event"
+            @range-changed="range_changed"
+            @legend-button-click="legend_button">
         </chart>
     </div>
 </template>
@@ -125,6 +129,9 @@ export default {
             type: String,
             default: '#8282827d'
         },
+        colors: {
+            type: Object
+        },
         font: {
             type: String,
             default: Const.ChartConfig.FONT
@@ -159,6 +166,17 @@ export default {
         extensions: {
             type: Array,
             default: function () { return [] }
+        },
+        xSettings: {
+            type: Object,
+            default: function () { return {} }
+        },
+        skin: {
+            type: String // Skin Name
+        },
+        timezone: {
+            type: Number,
+            default: 0
         }
     },
     computed: {
@@ -172,17 +190,17 @@ export default {
                 data: this.decubed,
                 width: this.$props.width - offset,
                 height: this.$props.height,
-                font: this.$props.font,
+                font: this.font_comp,
                 buttons: this.$props.legendButtons,
                 toolbar: this.$props.toolbar,
                 ib: this.$props.indexBased || this.index_based || false,
-                colors: {}
+                colors: Object.assign({}, this.$props.colors ||
+                    this.colorpack),
+                skin: this.skin_proto,
+                timezone: this.$props.timezone
             }
-            for (var k in this.$props) {
-                if (k.indexOf('color') === 0) {
-                    chart_props.colors[k] = this.$props[k]
-                }
-            }
+
+            this.parse_colors(chart_props.colors)
             return chart_props
         },
         chart_config() {
@@ -214,24 +232,33 @@ export default {
         mod_ovs() {
             let arr = []
             for (var x of this.$props.extensions) {
-                arr.push(...x.overlays)
+                arr.push(...Object.values(x.overlays))
             }
             return arr
+        },
+        font_comp() {
+            return this.skin_proto && this.skin_proto.font ?
+                this.skin_proto.font : this.font
         }
     },
     data() {
         return { reset: 0 }
     },
-    beforeDestroy() {
+    beforeUnmount() {
         this.custom_event({ event: 'before-destroy' })
+        this.ctrl_destroy()
     },
     methods: {
+        // TODO: reset extensions?
         resetChart(resetRange = true) {
             this.reset++
             let range = this.getRange()
             if (!resetRange && range[0] && range[1]) {
                 this.$nextTick(() => this.setRange(...range))
             }
+            this.$nextTick(() => this.custom_event({
+                event: 'chart-reset', args: []
+            }))
         },
         goto(t) {
             // TODO: limit goto & setRange (out of data error)
@@ -296,20 +323,43 @@ export default {
                 r = r.map(x => ti_map.i2t(x))
             }
             this.$emit('range-changed', r)
+            this.custom_event(
+                {event: 'range-changed', args: [r]}
+            )
+            if (this.onrange) this.onrange(r)
         },
         set_loader(dc) {
-            const self = this
-            this.$refs.chart.$off('range-changed')
-            if (dc) this.$refs.chart.$on('range-changed', r => {
-                let tf = this.$refs.chart.interval
-                if (self.chart_props.ib) {
-                    const ti_map = this.$refs.chart.ti_map
-                    r = r.map(x => ti_map.i2t(x))
-                    tf = this.$refs.chart.interval_ms
-                }
+            this.onrange = r => {
+                let pf = this.chart_props.ib ? '_ms' : ''
+                let tf = this.$refs.chart['interval' + pf]
                 dc.range_changed(r, tf)
-            })
+            }
+        },
+        parse_colors(colors) {
+            for (var k in this.$props) {
+                if (k.indexOf('color') === 0 && k !== 'colors') {
+                    let k2 = k.replace('color', '')
+                    k2 = k2[0].toLowerCase() + k2.slice(1)
+                    if (colors[k2]) continue
+                    colors[k2] = this.$props[k]
+                }
+            }
+        },
+        mousedown() {
+            this.$refs.chart.activated = true
+        },
+        mouseleave() {
+            this.$refs.chart.activated = false
         }
     }
 }
 </script>
+<style>
+/* Anit-boostrap tactix */
+.trading-vue *, ::after, ::before {
+    box-sizing: content-box;
+}
+.trading-vue img {
+    vertical-align: initial;
+}
+</style>

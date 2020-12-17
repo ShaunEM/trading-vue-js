@@ -33,10 +33,12 @@ const $SCALES = [0.05, 0.1, 0.2, 0.25, 0.5, 0.8, 1, 2, 5]
 
 const ChartConfig = {
     SBMIN: 60,       // Minimal sidebar px
+    SBMAX: Infinity, // Max sidebar, px
     TOOLBAR: 57,     // Toolbar width px
     TB_ICON: 25,     // Toolbar icon size px
     TB_ITEM_M: 6,    // Toolbar item margin px
     TB_ICON_BRI: 1,  // Toolbar icon brightness
+    TB_ICON_HOLD: 420, // ms, wait to expand
     TB_BORDER: 1,    // Toolbar border px
     TB_B_STYLE: 'dotted', // Toolbar border style
     TOOL_COLL: 7,    // Tool collision threshold
@@ -53,6 +55,9 @@ const ChartConfig = {
     VOLSCALE: 0.15,  // %/100 of height
     UX_OPACITY: 0.9, // Ux background opacity
     ZOOM_MODE: 'tv', // 'tv' or 'tl'
+    L_BTN_SIZE: 21,  // Legend Button size, px
+    L_BTN_MARGIN: '-6px 0 -6px 0', // css margin
+    SCROLL_WHEEL: 'prevent', // 'pass', 'click'
 }
 
 ChartConfig.FONT =

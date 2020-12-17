@@ -4,6 +4,8 @@
 import Sidebar from './js/sidebar.js'
 import Canvas from '../mixins/canvas.js'
 
+import { h } from 'vue'
+
 export default {
     name: 'Sidebar',
     props: [
@@ -18,7 +20,7 @@ export default {
         this.setup()
         this.redraw()
     },
-    render(h) {
+    render() {
         const id = this.$props.grid_id
         const layout = this.$props.layout.grids[id]
         return this.create_canvas(h, `sidebar-${id}`, {
@@ -32,7 +34,7 @@ export default {
                 height: layout.height,
             },
             style: {
-                backgroundColor: this.$props.colors.colorBack
+                backgroundColor: this.$props.colors.back
             },
         })
     },
@@ -48,6 +50,9 @@ export default {
         rerender() {
             this.$nextTick(() => this.redraw())
         }
+    },
+    beforeUnmount () {
+        if(this.renderer) this.renderer.destroy()
     }
 }
 

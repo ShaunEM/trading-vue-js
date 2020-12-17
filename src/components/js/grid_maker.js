@@ -5,7 +5,7 @@ import math from '../../stuff/math.js'
 import layout_fn from './layout_fn.js'
 import log_scale from './log_scale.js'
 
-const { TIMESCALES, $SCALES, WEEK, MONTH, YEAR } = Const
+const { TIMESCALES, $SCALES, WEEK, MONTH, YEAR, HOUR, DAY } = Const
 const MAX_INT = Number.MAX_SAFE_INTEGER
 
 
@@ -15,7 +15,7 @@ function GridMaker(id, params, master_grid = null) {
 
     let {
         sub, interval, range, ctx, $p, layers_meta, height, y_t, ti_map,
-        grid
+        grid, timezone
     } = params
 
     var self = { ti_map }
@@ -26,7 +26,8 @@ function GridMaker(id, params, master_grid = null) {
     if (lm && Object.keys(lm).length) {
         // Gets last y_range fn()
         let yrs = Object.values(lm).filter(x => x.y_range)
-        if (yrs.length) y_range_fn = yrs[yrs.length - 1].y_range
+        // The first y_range() determines the range
+        if (yrs.length) y_range_fn = yrs[0].y_range
     }
 
     // Calc vertical ($/₿) range
@@ -50,7 +51,7 @@ function GridMaker(id, params, master_grid = null) {
                     if (v < lo) lo = v
                 }
             }
-            if (y_range_fn) { [hi, lo] = y_range_fn(hi, lo) }
+            if (y_range_fn) { var [hi, lo, exp] = y_range_fn(hi, lo) }
         }
 
         // Fixed y-range in non-auto mode
@@ -59,8 +60,9 @@ function GridMaker(id, params, master_grid = null) {
             self.$_lo = y_t.range[1]
         } else {
             if (!ls) {
-                self.$_hi = hi + (hi - lo) * $p.config.EXPAND
-                self.$_lo = lo - (hi - lo) * $p.config.EXPAND
+                exp = exp === false ? 0 : 1
+                self.$_hi = hi + (hi - lo) * $p.config.EXPAND * exp
+                self.$_lo = lo - (hi - lo) * $p.config.EXPAND * exp
             } else {
                 self.$_hi = hi
                 self.$_lo = lo
@@ -105,6 +107,7 @@ function GridMaker(id, params, master_grid = null) {
         let str = '0'.repeat(Math.max(...lens)) + '    '
         self.sb = ctx.measureText(str).width
         self.sb = Math.max(Math.floor(self.sb), $p.config.SBMIN)
+        self.sb = Math.min(self.sb, $p.config.SBMAX)
 
     }
 
@@ -284,7 +287,7 @@ function GridMaker(id, params, master_grid = null) {
                 }
             }
 
-            // TODO: fix grid extention for bigger timeframes
+            // TODO: fix grid extension for bigger timeframes
             if (interval < WEEK && r > 0) {
                 extend_left(dt, r)
                 extend_right(dt, r)
@@ -305,6 +308,12 @@ function GridMaker(id, params, master_grid = null) {
         let prev_t = ti_map.ib ? ti_map.i2t(prev[0]) : prev[0]
         let p_t = ti_map.ib ? ti_map.i2t(p[0]) : p[0]
 
+        if (ti_map.tf < DAY) {
+            prev_t += timezone * HOUR
+            p_t += timezone * HOUR
+        }
+        let d = timezone * HOUR
+
         // TODO: take this block =========> (see below)
         if ((prev[0] || interval === YEAR) &&
             Utils.get_year(p_t) !== Utils.get_year(prev_t)) {
@@ -313,6 +322,11 @@ function GridMaker(id, params, master_grid = null) {
         else if (prev[0] &&
             Utils.get_month(p_t) !== Utils.get_month(prev_t)) {
             self.xs.push([x, p, MONTH])
+        }
+        // TODO: should be added if this day !== prev day
+        // And the same for 'botbar.js', TODO(*)
+        else if (Utils.day_start(p_t) === p_t) {
+            self.xs.push([x, p, DAY])
         }
         else if (p[0] % self.t_step === 0) {
             self.xs.push([x, p, interval])
@@ -373,6 +387,8 @@ function GridMaker(id, params, master_grid = null) {
         // a problem here ?
         self.$_mult = dollar_mult()
         self.ys = []
+
+        if (!sub.length) return
 
         let v = Math.abs(sub[sub.length - 1][1] || 1)
         let y1 = search_start_pos(v)

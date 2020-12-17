@@ -49,12 +49,14 @@ export default {
         modify(ux, obj = {}) {
             for (var k in obj) {
                 if (k in ux) {
-                    this.$set(ux, k, obj[k])
+                    ux[k] = obj[k]
                 }
             }
         },
-        remove_all_ux() {
-            this.uxs = []
+        // Remove all UXs for a given overlay id
+        remove_all_ux(id) {
+            this.uxs = this.uxs.filter(
+                x => x.overlay.id !== id)
         }
     },
     data() { return { uxs: [] } }

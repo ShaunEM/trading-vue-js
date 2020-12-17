@@ -31,12 +31,12 @@ export default {
                     return
                 }
                 this.ch.visible = true
-                this.ch.update(cursor.x, cursor.y)
+                //this.ch.update(cursor.x, cursor.y)
 
             },
             deep: true
         }
     },
-    render(h) { return h() }
+    render() { return [] }
 }
 </script>

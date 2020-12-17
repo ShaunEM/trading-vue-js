@@ -9,7 +9,7 @@ import se from './script_engine.js'
 import * as u from './script_utils.js'
 import TS from './script_ts.js'
 
-const FDEFS1 = /(function |)([$A-Z_][0-9A-Z_$\.]*)[\s]*?\((.*\s*)\)/gmi
+const FDEFS1 = /(function |)([$A-Z_][0-9A-Z_$\.]*)[\s]*?\((.*?\s*)\)/mi
 const FDEFS2 = /(function |)([$A-Z_][0-9A-Z_$\.]*)[\s]*?\((.*\s*)\)/gmis
 const DEF_LIMIT = 5
 
@@ -23,6 +23,7 @@ export default class ScriptEnv {
         this.output = TS('output', [])
         this.data = []
         this.tss = {}
+        this.syms = {}
         this.shared = data
         this.output.box_maker = this.make_box(s.src)
         this.onchart = {}
@@ -41,12 +42,6 @@ export default class ScriptEnv {
     step(unshift = true) {
         if (unshift) this.unshift()
         let v = this.output.update()
-
-        if (this.skip) {
-            this.skip = false
-            return
-        }
-
         this.copy(v, unshift)
         this.limit()
     }
@@ -73,16 +68,20 @@ export default class ScriptEnv {
 
     // Copy the recent value to the direct buff
     copy(v, unshift = true) {
-        if (v !== undefined) {
+        let off = this.output.__offset__
+        if (v != undefined) {
             this.output[0] = v.__id__ ? v[0] : v
+            off = off || v.__offset__
         }
         let val = this.output[0]
+        let t = se.t
+        if (off) t += off * se.tf
         if (val == null || !val.length) {
             // Number / object
-            var point = [se.t, val]
+            var point = [t, val]
         } else {
             // Array
-            point = [se.t, ...val]
+            point = [t, ...val]
         }
         if (unshift) {
             this.data.push(point)
@@ -103,20 +102,35 @@ export default class ScriptEnv {
         }
 
         let props = ``
-
-        for (var k in src.props) {
-            let val = JSON.stringify(src.props[k].val)
-            props += `var ${k} = ${val}\n`
+        for (var k in src.props || {}) {
+            if (src.props[k].val !== undefined) {
+                var val = src.props[k].val
+            } else if (this.src.sett[k] !== undefined) {
+                val = this.src.sett[k]
+            } else {
+                val = src.props[k].def
+            }
+            props += `var ${k} = ${JSON.stringify(val)}\n`
         }
         // TODO: add argument values to _id
-        // TODO: prefix all function by ns, e.g std_nz()
 
         let tss = ``
-
         for (var k in this.shared) {
-            if (this.shared[k].__id__) {
+            if (this.shared[k] && this.shared[k].__id__) {
                 tss += `const ${k} = shared.${k}\n`
             }
+        }
+
+        // Datasets
+        let dss = ``
+        for (var k in src.data || {}) {
+            let id = se.match_ds(this.id, src.data[k].type)
+            if (!this.shared.dss[id]) {
+                let T = src.data[k].type
+                console.warn(`Dataset '${T}' is undefined`)
+                continue
+            }
+            dss += `const ${k} = shared.dss['${id}'].data\n`
         }
 
         try {
@@ -134,13 +148,19 @@ export default class ScriptEnv {
 
                 // Direct data ts
                 const data = self.data
-                const ohlcv = shared.ohlcv
+                const ohlcv = shared.dss.ohlcv.data
+                ${dss}
 
                 // Script's properties (init)
                 ${props}
 
-                this.init = () => {
-                    ${src.init_src}
+                // Globals
+                const settings = self.src.sett
+                const tf = shared.tf
+                const range = shared.range
+
+                this.init = (_id = 'root') => {
+                    ${this.prep(src.init_src)}
                 }
 
                 this.update = (_id = 'root') => {
@@ -149,8 +169,8 @@ export default class ScriptEnv {
                     ${this.prep(src.upd_src)}
                 }
 
-                this.post = () => {
-                    ${src.post_src}
+                this.post = (_id = 'root') => {
+                    ${this.prep(src.post_src)}
                 }
             `)
         } catch(e) {
@@ -303,5 +323,12 @@ export default class ScriptEnv {
 
     regex_clone(rex) {
         return new RegExp(rex.source, rex.flags)
+    }
+
+    send_modify(upd) {
+        se.send('modify-overlay', {
+            uuid: this.id,
+            fields: upd
+        })
     }
 }

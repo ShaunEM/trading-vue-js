@@ -3,21 +3,22 @@
     <div class="trading-vue-chart" :style="styles">
         <keyboard ref="keyboard"></keyboard>
         <grid-section v-for="(grid, i) in this._layout.grids"
-            :key="grid.id"
+            :key="grid.id" ref="sec"
             v-bind:common="section_props(i)"
             v-bind:grid_id="i"
-            v-on:register-kb-listener="register_kb"
-            v-on:remove-kb-listener="remove_kb"
-            v-on:range-changed="range_changed"
-            v-on:cursor-changed="cursor_changed"
-            v-on:cursor-locked="cursor_locked"
-            v-on:sidebar-transform="set_ytransform"
-            v-on:layer-meta-props="layer_meta_props"
-            v-on:custom-event="emit_custom_event"
-            v-on:legend-button-click="legend_button_click"
+            @register-kb-listener="register_kb"
+            @remove-kb-listener="remove_kb"
+            @range-changed="range_changed"
+            @cursor-changed="cursor_changed"
+            @cursor-locked="cursor_locked"
+            @sidebar-transform="set_ytransform"
+            @layer-meta-props="layer_meta_props"
+            @custom-event="emit_custom_event"
+            @legend-button-click="legend_button_click"
             >
         </grid-section>
-        <botbar v-bind="botbar_props" :shaders="shaders">
+        <botbar v-bind="botbar_props"
+            :shaders="shaders" :timezone="timezone">
         </botbar>
     </div>
 </template>
@@ -41,7 +42,8 @@ export default {
     name: 'Chart',
     props: [
         'title_txt', 'data', 'width', 'height', 'font', 'colors',
-        'overlays', 'tv_id', 'config', 'buttons', 'toolbar', 'ib'
+        'overlays', 'tv_id', 'config', 'buttons', 'toolbar', 'ib',
+        'skin', 'timezone'
     ],
     mixins: [Shaders, DataTrack],
     components: {
@@ -64,11 +66,7 @@ export default {
         this.updater = new CursorUpdater(this)
 
         this.update_last_candle()
-
-        if (this.$props.ib && !this.chart.tf) {
-            console.warn(Const.IB_TF_WARN)
-        }
-
+        this.init_shaders(this.skin)
     },
     methods: {
         range_changed(r) {
@@ -91,21 +89,27 @@ export default {
         },
         cursor_changed(e) {
             this.updater.sync(e)
+            if (this._hook_xchanged) this.ce('?x-changed', e)
         },
         cursor_locked(state) {
             if (this.cursor.scroll_lock && state) return
             this.cursor.locked = state
+            if (this._hook_xlocked) this.ce('?x-locked', state)
         },
         calc_interval() {
             if (this.ohlcv.length < 2) return
-            let tf = Utils.parse_tf(this.chart.tf)
+            let tf = Utils.parse_tf(this.forced_tf)
             this.interval_ms = tf || Utils.detect_interval(this.ohlcv)
             this.interval = this.$props.ib ? 1 : this.interval_ms
+            Utils.warn(
+                () => this.$props.ib && !this.chart.tf,
+                Const.IB_TF_WARN, Const.SECOND
+            )
         },
         set_ytransform(s) {
             let obj = this.y_transforms[s.grid_id] || {}
             Object.assign(obj, s)
-            this.$set(this.y_transforms, s.grid_id, obj)
+            this.y_transforms[s.grid_id] = obj
             this.update_layout()
             Utils.overwrite(this.range, this.range)
         },
@@ -161,24 +165,31 @@ export default {
                 tv_id: this.$props.tv_id,
                 config: this.$props.config,
                 buttons: this.$props.buttons,
-                meta: this.meta
+                meta: this.meta,
+                skin: this.$props.skin
             }
         },
         overlay_subset(source) {
-            return source.map(d => ({
-                type: d.type,
-                name: d.name,
-                data: this.ti_map.parse(Utils.fast_filter(
-                    d.data,
-                    this.ti_map.i2t_mode(this.range[0] - this.interval,
-                        d.indexSrc),
+            return source.map(d => {
+                let res = Utils.fast_filter(
+                    d.data, this.ti_map.i2t_mode(
+                        this.range[0] - this.interval,
+                        d.indexSrc
+                    ),
                     this.ti_map.i2t_mode(this.range[1], d.indexSrc)
-                )[0] || [], d.indexSrc || 'map'),
-                settings: d.settings || this.settings_ov,
-                grid: d.grid || {},
-                tf: Utils.parse_tf(d.tf),
-                loading: d.loading
-            }))
+                )
+                return {
+                    type: d.type,
+                    name: Utils.format_name(d),
+                    data: this.ti_map.parse(res[0] || [], d.indexSrc || 'map'),
+                    settings: d.settings || this.settings_ov,
+                    grid: d.grid || {},
+                    tf: Utils.parse_tf(d.tf),
+                    i0: res[1],
+                    loading: d.loading
+                }
+
+            })
         },
         section_props(i) {
             return i === 0 ?
@@ -191,10 +202,9 @@ export default {
         layer_meta_props(d) {
             // TODO: check reactivity when layout is changed
             if (!(d.grid_id in this.layers_meta)) {
-                this.$set(this.layers_meta, d.grid_id, {})
+                this.layers_meta[d.grid_id] = {}
             }
-            this.$set(this.layers_meta[d.grid_id],
-                d.layer_id, d)
+            this.layers_meta[d.grid_id][d.layer_id] = d
 
             // Rerender
             this.update_layout()
@@ -215,6 +225,7 @@ export default {
             if (clac_tf) this.calc_interval()
             const lay = new Layout(this)
             Utils.copy_layout(this._layout, lay)
+            if (this._hook_update) this.ce('?chart-update', lay)
         },
         legend_button_click(event) {
             this.$emit('legend-button-click', event)
@@ -231,6 +242,14 @@ export default {
             // TODO: add last values for all overlays
             this.last_candle = this.ohlcv ?
                 this.ohlcv[this.ohlcv.length - 1] : undefined
+        },
+        // Hook events for extensions
+        ce(event, ...args) {
+            this.emit_custom_event({ event, args })
+        },
+        // Set hooks list (called from an extension)
+        hooks(...list) {
+            list.forEach(x => this[`_hook_${x}`] = true)
         }
     },
     computed: {
@@ -242,6 +261,7 @@ export default {
                 type: this.chart.type || 'Candles',
                 main: true,
                 data: this.sub,
+                i0: this.sub_start,
                 settings: this.chart.settings || this.settings_ohlcv,
                 grid: this.chart.grid || {}
             })
@@ -288,8 +308,12 @@ export default {
         meta() {
             return {
                 last: this.last_candle,
-                sub_start: this.sub_start
+                sub_start: this.sub_start,
+                activated: this.activated
             }
+        },
+        forced_tf() {
+            return this.chart.tf
         }
     },
     data() {
@@ -327,15 +351,19 @@ export default {
 
             // Meta data
             last_candle: [],
-            sub_start: undefined
+            sub_start: undefined,
+            activated: false
+
         }
     },
     watch: {
         width() {
             this.update_layout()
+            if (this._hook_resize) this.ce('?chart-resize')
         },
         height() {
             this.update_layout()
+            if (this._hook_resize) this.ce('?chart-resize')
         },
         ib(nw) {
             if (!nw) {
@@ -353,25 +381,33 @@ export default {
             Utils.overwrite(this.sub, sub)
             this.update_layout()
         },
+        timezone() {
+            this.update_layout()
+        },
         colors() {
             Utils.overwrite(this.range, this.range)
+        },
+        forced_tf(n, p) {
+            this.update_layout(true)
+            this.ce('exec-all-scripts')
         },
         data: {
             handler: function(n, p) {
                 if (!this.sub.length) this.init_range()
                 const sub = this.subset()
-                // Fix Infinite loop warn, when the subset is empty
+                // Fixes Infinite loop warn, when the subset is empty
                 // TODO: Consider removing 'sub' from data entirely
                 if (this.sub.length || sub.length) {
                     Utils.overwrite(this.sub, sub)
                 }
-                this.update_layout()
+                let nw = this.data_changed()
+                this.update_layout(nw)
                 Utils.overwrite(this.range, this.range)
                 this.cursor.scroll_lock = !!n.scrollLock
                 if (n.scrollLock && this.cursor.locked) {
                     this.cursor.locked = false
                 }
-                this.data_changed()
+                if (this._hook_data) this.ce('?chart-data', nw)
                 this.update_last_candle()
                 // TODO: update legend values for overalys
                 this.rerender++

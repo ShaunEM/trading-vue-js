@@ -1,8 +1,9 @@
 
-// DataCube private methods
+// DataCube "private" methods
 
 import Utils from '../stuff/utils.js'
 import DCEvents from './dc_events.js'
+import Dataset from './dataset.js'
 
 export default class DCCore extends DCEvents {
 
@@ -22,6 +23,10 @@ export default class DCCore extends DCEvents {
             this.tv.$watch(() => this.get('.')
                 .map(x => x.settings.$uuid),
                 (n, p) => this.on_ids_changed(n, p))
+
+            // Watch for all 'datasets' changes
+            this.tv.$watch(() => this.get('datasets'),
+                Dataset.watcher.bind(this))
         }
     }
 
@@ -29,26 +34,36 @@ export default class DCCore extends DCEvents {
     init_data($root) {
 
         if (!('chart' in this.data)) {
-            this.tv.$set(this.data, 'chart', {
+            this.data.chart = {
                 type: 'Candles',
                 data: this.data.ohlcv || []
-            })
+            }
         }
 
         if (!('onchart' in this.data)) {
-            this.tv.$set(this.data, 'onchart', [])
+            this.data.onchart = []
         }
 
         if (!('offchart' in this.data)) {
-            this.tv.$set(this.data, 'offchart', [])
+            this.data.offchart = []
         }
 
         if (!this.data.chart.settings) {
-            this.tv.$set(this.data.chart,'settings', {})
+            this.data.chart.settings = {}
         }
 
         // Remove ohlcv cuz we have Data v1.1^
         delete this.data.ohlcv
+
+        if (!('datasets' in this.data)) {
+            this.data.datasets = []
+        }
+
+        // Init dataset proxies
+        for (var ds of this.data.datasets) {
+            if (!this.dss) this.dss = {}
+            this.dss[ds.id] = new Dataset(this, ds)
+        }
 
     }
 
@@ -153,7 +168,7 @@ export default class DCCore extends DCEvents {
         let candle = data['candle']
         let tf = this.tv.$refs.chart.interval_ms
         let t_next = last[0] + tf
-        let now = Utils.now()
+        let now = data.t || Utils.now()
         let t = now >= t_next ? (now - now % tf) : last[0]
 
         // Update the entire candle
@@ -176,14 +191,16 @@ export default class DCCore extends DCEvents {
         let volume = data['volume'] || 0
         let tf = this.tv.$refs.chart.interval_ms
         let t_next = last[0] + tf
-        let now = Utils.now()
+        let now = data.t || Utils.now()
+
         let t = now >= t_next ? (now - now % tf) : last[0]
 
         if (t >= t_next && tick !== undefined) {
             // And new zero-height candle
-            this.agg.push('ohlcv', [
-                t, tick, tick, tick, tick, volume
-            ], tf)
+            let nc = [t, tick, tick, tick, tick, volume]
+            this.agg.push('ohlcv', nc, tf)
+            ohlcv.push(nc)
+            this.scroll_to(t)
 
         } else if (tick !== undefined) {
             // Update an existing one
@@ -202,7 +219,11 @@ export default class DCCore extends DCEvents {
     update_overlays(data, t, tf) {
         for (var k in data) {
             if (k === 'price' || k === 'volume' ||
-                k === 'candle') {
+                k === 'candle' || k === 't') {
+                continue
+            }
+            if (k.includes('datasets.')) {
+                this.agg.push(k, data[k], tf)
                 continue
             }
             if (!Array.isArray(data[k])) {
@@ -230,6 +251,14 @@ export default class DCCore extends DCEvents {
             case 'offchart':
                 result = this.query_search(query, tuple)
                 break
+            case 'datasets':
+                result = this.query_search(query, tuple)
+                for (var r of result) {
+                    if (r.i === 'data') {
+                        r.v = this.dss[r.p.id].data()
+                    }
+                }
+                break
             default:
                 /* Should get('.') return also the chart? */
                 /*let ch = this.chart_as_query([
@@ -249,8 +278,8 @@ export default class DCCore extends DCEvents {
                 result = [/*ch[0],*/ ...on, ...off]
                 break
         }
-
-        return result.filter(x => !x.v.locked || chuck)
+        return result.filter(
+            x => !(x.v || {}).locked || chuck)
     }
 
     chart_as_piv(tuple) {
@@ -273,14 +302,13 @@ export default class DCCore extends DCEvents {
         let path = tuple[1] || ''
         let field = tuple[2]
 
-        let arr = this.data[side].filter(
-            x => x.id && x.name && x.settings && (
-                 x.id === query ||
-                 x.id.includes(path) ||
-                 x.name === query ||
-                 x.name.includes(path) ||
-                 query.includes(x.settings.$uuid)
-            ))
+        let arr = this.data[side].filter(x => (
+            x.id === query ||
+            (x.id && x.id.includes(path)) ||
+            x.name === query ||
+            (x.name && x.name.includes(path)) ||
+            query.includes((x.settings || {}).$uuid)
+        ))
 
         if (field) {
             return arr.map(x => ({
@@ -304,7 +332,7 @@ export default class DCCore extends DCEvents {
         // TODO: Is there a simpler approach?
         Object.assign(new_obj, obj.v)
         Object.assign(new_obj, data)
-        this.tv.$set(obj.p, obj.i, new_obj)
+        obj.p[obj.i] = new_obj
 
     }
 
@@ -330,7 +358,7 @@ export default class DCCore extends DCEvents {
 
             // Dst === Overlap === Src
             if (!obj.v.length && !data.length) {
-                this.tv.$set(obj.p, obj.i, od)
+                obj.p[obj.i] = od
                 return obj.v
             }
 
@@ -340,15 +368,12 @@ export default class DCCore extends DCEvents {
             // If dst is totally contained in src
             if (!obj.v.length) { obj.v = data.splice(d2[0]) }
 
-            this.tv.$set(
-                obj.p, obj.i, this.combine(obj.v, od, data)
-            )
+            obj.p[obj.i] = this.combine(obj.v, od, data)
 
         } else {
 
-            this.tv.$set(
-                obj.p, obj.i, this.combine(obj.v, [], data)
-            )
+
+            obj.p[obj.i] = this.combine(obj.v, [], data)
 
         }
 
@@ -445,17 +470,16 @@ export default class DCCore extends DCEvents {
                 this.scroll_to(upd_t)
             }
         } else if (upd_t === last_t) {
-            if (main) {
-                this.tv.$set(data, data.length - 1, point)
-            } else {
-                data[data.length - 1] = point
-            }
+            data[data.length - 1] = point
         }
 
     }
 
     scroll_to(t) {
-        // TODO: implement
+        if (this.tv.$refs.chart.cursor.locked) return
+        let tl = this.tv.$refs.chart.last_candle[0]
+        let d = this.tv.getRange()[1] - tl
+        if (d > 0) this.tv.goto(t + d)
     }
 
 }

@@ -5,7 +5,7 @@
          class="trading-vue-ohlcv"
         :style = "{ 'max-width': common.width + 'px' }">
         <span class="t-vue-title"
-             :style="{ color: common.colors.colorTitle }">
+             :style="{ color: common.colors.title }">
               {{common.title_txt}}
         </span>
         O<span class="t-vue-lspan" >{{ohlcv[0]}}</span>
@@ -18,12 +18,13 @@
         <span class="t-vue-iname">{{ind.name}}</span>
         <button-group
             v-bind:buttons="common.buttons"
+            v-bind:config="common.config"
             v-bind:ov_id="ind.id"
             v-bind:grid_id="grid_id"
             v-bind:index="ind.index"
             v-bind:tv_id="common.tv_id"
             v-bind:display="ind.v"
-            v-on:legend-button-click="button_click">
+            @legend-button-click="button_click">
         </button-group>
         <span class="t-vue-ivalues" v-if="ind.v">
             <span class="t-vue-lspan t-vue-ivalue"
@@ -58,6 +59,13 @@ export default {
                 return Array(6).fill('n/a')
             }
             const prec = this.layout.prec
+
+            // TODO: main the main legend more customizable
+            let id = this.main_type + '_0'
+            let meta = this.$props.meta_props[id] || {}
+            if (meta.legend) {
+                return (meta.legend() || []).map(x => x.value)
+            }
 
             return [
                 this.$props.values.ohlcv[1].toFixed(prec),
@@ -110,6 +118,10 @@ export default {
         off_data() {
             return this.$props.common.offchart
         },
+        main_type() {
+            let f = this.common.data.find(x => x.main)
+            return f ? f.type : undefined
+        }
     },
     methods: {
         format(id, values) {
@@ -149,6 +161,8 @@ export default {
     font-size: 1.25em;
     margin-left: 10px;
     pointer-events: none;
+    text-align: left;
+    user-select: none;
 }
 .trading-vue-ohlcv {
     pointer-events: none;

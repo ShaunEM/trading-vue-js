@@ -1,4 +1,6 @@
 
+# *VUE 3 JOURNEY JUST STARTED*
+
 <div align="center">
   <img width="318" heigth="256" src="https://raw.githubusercontent.com/tvjsx/trading-vue-js/master/assets/README-c8a97eb7.png?raw=true" alt="trading-vue logo">
 </div>
@@ -36,10 +38,11 @@ If you create trading software - this lib is probably for you. If you like to ma
 * Fully responsive
 * Customizable colors and fonts
 * Quite fast (works even with 3 mil candles)
+* Scripts (make your own indicators)
 
 ## Demo & Docs
 
-### [Demo](https://tvjsx.github.io/trading-vue-demo/) | [Getting Started](https://github.com/tvjsx/trading-vue-js/tree/master/docs/guide#getting-started) | [API Book](https://github.com/tvjsx/trading-vue-js/tree/master/docs/api#api-book) | [Built-in Overlays](https://github.com/tvjsx/trading-vue-js/tree/master/docs/overlays#built-in-overlays) | [Examples](https://github.com/tvjsx/trading-vue-js/tree/master/test/tests) | [101 Project](https://github.com/tvjsx/trading-vue-101) | [llll Gitter](https://gitter.im/Trading-Vue-js) | [FAQ](https://github.com/tvjsx/trading-vue-js/tree/master/docs/faq) | [FREE Overlay Pack](https://github.com/tvjsx/tvjs-overlays)
+### [Demo](https://tvjsx.github.io/trading-vue-demo/) | [Getting Started](https://github.com/tvjsx/trading-vue-js/tree/master/docs/guide) | [API Book](https://github.com/tvjsx/trading-vue-js/tree/master/docs/api#api-book) | [Built-in Overlays](https://github.com/tvjsx/trading-vue-js/tree/master/docs/overlays#built-in-overlays) | [Examples](https://github.com/tvjsx/trading-vue-js/tree/master/test/tests) | [101 Project](https://github.com/tvjsx/trading-vue-101) | [llll Gitter](https://gitter.im/Trading-Vue-js) | [FAQ](https://github.com/tvjsx/trading-vue-js/tree/master/docs/faq) | [FREE Overlay Pack](https://github.com/tvjsx/tvjs-overlays) | [Free XP Pack](https://github.com/tvjsx/tvjs-xp) | [Playground](https://tvjs.io/play)
 
 *To run the examples, download the repo & `npm run test`*
 
@@ -206,7 +209,7 @@ That's why the title doesn't lie: you can draw ANYTHING.
 ## Grin
 
 <div align="center">
-  <img src="https://github.com/tvjsx/trading-vue-js/blob/master/assets/README-0027a833.png?raw=true" alt="trading-vue logo">
+  <img src="https://github.com/tvjsx/trading-vue-js/blob/master/assets/GRIN.gif?raw=true" alt="trading-vue logo">
 </div>
 
 #### [ Code | click your 🐁 ](https://gist.github.com/C451/6d8ea8d603e3faadd801b4b3f2e7a57d)
@@ -218,9 +221,9 @@ That's why the title doesn't lie: you can draw ANYTHING.
 * ~~Tests~~
 * Solve known issues (marked as 'TODO: IMPORTANT')
 * Performance improvements
-* Data-manipulation helpers
-* Add more built-in overlays
-* Add toolbar (drawing tools)
+* ~~Data-manipulation helpers~~
+* ~~Add more built-in overlays~~
+* ~~Add toolbar (drawing tools)~~
 * Custom loayout / layout persistence
 * Fix and improve mobile version
 * **Version 1.0.0 here**

@@ -5,6 +5,7 @@ import se from './script_engine.js'
 import linreg from '../stuff/linreg.js'
 import * as u from './script_utils.js'
 import Sampler from './sampler.js'
+import { Sym, ARR, TSS, NUM } from './symbol.js'
 
 const BUF_INC = 5
 
@@ -12,6 +13,7 @@ export default class ScriptStd {
 
     constructor(env) {
         this.env = env
+        this.se = se
 
         this.SWMA = [1/6, 2/6, 2/6, 1/6]
         this.STDEV_EPS = 1e-10
@@ -36,8 +38,10 @@ export default class ScriptStd {
                 case '_i':
                 case '_v':
                 case '_add_i':
+                case 'chart':
                 case 'onchart':
                 case 'offchart':
+                case 'sym':
                     continue
 
             }
@@ -116,27 +120,6 @@ export default class ScriptStd {
             ts.__fn__(x)
         }
         return ts
-    }
-
-    // Wait for a value !== undefined
-    nw(x) {
-        /*if (x == undefined || x !== x) {
-            // Skip a dependend indicators + don't
-            // add the current value to the final output
-            // TODO: only when ts starts?
-            se.skip = true
-        }
-        return x*/
-    }
-
-    // Skip undefined values
-    ns(x) {
-        if (x == undefined || x !== x) {
-            // Skip a dependend indicators + don't
-            // add the current value to the final output
-            se.skip = true
-        }
-        return x
     }
 
     // Replace if NaN
@@ -456,6 +439,12 @@ export default class ScriptStd {
         // TODO: this
     }
 
+    /* TODO: think
+    skipnan(x, _id) {
+        let id = this._tsid(_id, `skipnan()`)
+        return this.ts(true, id, src.__tf__)
+    }*/
+
     floor(x) {
         Math.floor(x)
     }
@@ -487,11 +476,11 @@ export default class ScriptStd {
     }
 
     hour(time) {
-        return new Date(time || t).getUTCHours()
+        return new Date(time || se.t).getUTCHours()
     }
 
     iff(cond, x, y) {
-        return cond ? x : z
+        return cond ? x : y
     }
 
     // Keltner Channels
@@ -569,6 +558,11 @@ export default class ScriptStd {
         return Math.max(...args)
     }
 
+    // Send update to some overlay / main chart
+    modify(id, fields) {
+        se.send('modify-overlay', { uuid:id, fields })
+    }
+
     // max_bars_back
     buffsize(src, len) {
         // TODO: this
@@ -598,7 +592,7 @@ export default class ScriptStd {
         return Math.min(...args)
     }
 
-    minute() {
+    minute(time) {
         return new Date(time || se.t).getUTCMinutes()
     }
 
@@ -612,11 +606,23 @@ export default class ScriptStd {
         return new Date(time || se.t).getUTCMonth()
     }
 
+    // Display data point as the main chart
+    chart() {
+        // TODO: this
+    }
+
     // Display data point on the main chart
+    // TODO: optionally enable scripts for $synth ovs
+    // TODO: add indexBased option
     onchart(x, name, sett = {}, _id) {
+        let off = 0
         name = name || u.get_fn_id('Onchart', _id)
-        if (x && x.__id__) x = x[0]
+        if (x && x.__id__) {
+            off = x.__offset__ || 0
+            x = x[0]
+        }
         if (Array.isArray(x) && x[0] && x[0].__id__) {
+            off = x[0].__offset__ || 0
             x = x.map(x => x[0])
         }
         if (!this.env.onchart[name]) {
@@ -625,24 +631,32 @@ export default class ScriptStd {
             sett.$synth = true
             sett.skipNaN = true
             let post = Array.isArray(x) ? 's': ''
-            this.env.onchart[name] = Object.assign({
+            this.env.onchart[name] = {
                 name: name,
                 type: type || 'Spline' + post,
                 data: [],
-                settings: sett
-            }, sett)
+                settings: sett,
+                scripts: false,
+                grid: sett.grid || {}
+            }
         }
+        off *= se.tf
         let v = Array.isArray(x) ?
-            [se.t, ...x] : [se.t, x]
-        this.env.onchart[name].data.push(v)
+            [se.t + off, ...x] : [se.t + off, x]
+        u.update(this.env.onchart[name].data, v)
     }
 
     // Create a new offchart overlay and put
     // the point there
     offchart(x, name, sett = {}, _id) {
         name = name || u.get_fn_id('Offchart', _id)
-        if (x && x.__id__) x = x[0]
+        let off = 0
+        if (x && x.__id__) {
+            off = x.__offset__ || 0
+            x = x[0]
+        }
         if (Array.isArray(x) && x[0] && x[0].__id__) {
+            off = x[0].__offset__ || 0
             x = x.map(x => x[0])
         }
         if (!this.env.offchart[name]) {
@@ -651,20 +665,42 @@ export default class ScriptStd {
             sett.$synth = true
             sett.skipNaN = true
             let post = Array.isArray(x) ? 's': ''
-            this.env.offchart[name] = Object.assign({
+            this.env.offchart[name] = {
                 name: name,
                 type: type || 'Spline' + post,
                 data: [],
-                settings: sett
-            }, sett)
+                settings: sett,
+                scripts: false,
+                grid: sett.grid || {}
+            }
         }
+        off *= se.tf
         let v = Array.isArray(x) ?
-            [se.t, ...x] : [se.t, x]
-        this.env.offchart[name].data.push(v)
+            [se.t + off, ...x] : [se.t + off, x]
+        u.update(this.env.offchart[name].data, v)
     }
 
-    offset() {
-        // TODO: this
+    // Returns true when the candle(<tf>) is being closed
+    onclose(tf) {
+        return (se.t + se.tf) % u.tf_from_str(tf) === 0
+    }
+
+    // Send settings update
+    // (can be called from init(), update() or post())
+    settings(upd) {
+        this.env.send_modify({ settings: upd })
+        Object.assign(this.env.src.sett, upd)
+    }
+
+    offset(src, num, _id) {
+        if (src.__id__) {
+            src.__offset__ = num
+            return src
+        }
+        let id = this._tsid(_id, `offset(${num})`)
+        let out = ts(src, id)
+        out.__offset__ = num
+        return out
     }
 
     // percentile_linear_interpolation
@@ -675,6 +711,10 @@ export default class ScriptStd {
     // percentile_nearest_rank
     nearestrank() {
         // TODO: this
+    }
+
+    now() {
+        return new Date().getTime()
     }
 
     percentrank() {
@@ -877,14 +917,16 @@ export default class ScriptStd {
 
         let sumf = (x, y) => {
             let res = x + y
-            if (Math.abs(res) <= this.STDEV_EPS) {
+            return res
+            // TODO: something wrong with this checks
+            /*if (Math.abs(res) <= this.STDEV_EPS) {
                 return 0
             }
             else if (Math.abs(res) > this.STDEV_Z) {
                 return res
             } else {
                 return 15 // wtf?
-            }
+            }*/
         }
 
         let id = this._tsid(_id, `stdev(${len})`)
@@ -948,6 +990,53 @@ export default class ScriptStd {
         let sum = src[3] * this.SWMA[0] + src[2] * this.SWMA[1] +
                   src[1] * this.SWMA[2] + src[0] * this.SWMA[3]
         return this.ts(sum, id, src.__tf__)
+    }
+
+    // Creates a new Symbol. Argument variations:
+    // <data>(Array), [<params>(Object)]
+    // <ts>(TS), [<params>(Object)]
+    // <point>(Number), [<params>(Object)]
+    // <tf>(String) 1m, 5m, 1H, etc. (uses main OHLCV)
+    // Params object: {
+    //  id: <String>,
+    //  tf: <String|Number>,
+    //  aggtype: <String> (TODO: Type of aggregation)
+    //  format: <String> (Data format, e.g. "time:price:vol")
+    //  window: <String|Number> (Aggregation window)
+    //  main <true|false> (Use as the main chart)
+    // }
+    sym(x, y = {}, _id) {
+        let id = y.id || this._tsid(_id, `sym`)
+        y.id = id
+        if (this.env.syms[id]) {
+            this.env.syms[id].update(x)
+            return this.env.syms[id]
+        }
+
+        switch(typeof x) {
+            case 'object':
+                var sym = new Sym(x, y)
+                this.env.syms[id] = sym
+                if (x.__id__) {
+                    sym.data_type = TSS
+                } else {
+                    sym.data_type = ARR
+                }
+                break
+            case 'number':
+                sym = new Sym(null, y)
+                sym.data_type = NUM
+                break
+            case 'string':
+                y.tf = x
+                sym = new Sym(se.data.ohlcv.data, y)
+                sym.data_type = ARR
+                break
+        }
+
+        this.env.syms[id] = sym
+        if (!sym.main) sym.update(x)
+        return sym
     }
 
     tan(x) {

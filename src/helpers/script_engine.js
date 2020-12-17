@@ -23,6 +23,7 @@ class ScriptEngine {
         this.state = {}
         this.mods = {}          // Modules (extensions)
         this.std_plus = {}      // Functions to inject
+        this.tf = undefined     // Main chart TF
     }
 
     exec_all() {
@@ -58,6 +59,7 @@ class ScriptEngine {
     async exec_sel(delta) {
 
         // Wait for the data
+        // TODO: Check data requirements
         if (!this.data.ohlcv) return
 
         let sel = Object.keys(delta).filter(x => x in this.map)
@@ -70,7 +72,7 @@ class ScriptEngine {
         for (var id in delta) {
             if (!this.map[id]) continue
 
-            let props = this.map[id].src.props
+            let props = this.map[id].src.props || {}
             for (var k in props) {
                 if (k in delta[id]) {
                     props[k].val = delta[id][k]
@@ -117,9 +119,11 @@ class ScriptEngine {
             low: this.low,
             close: this.close,
             vol: this.vol,
-            ohlcv: this.data.ohlcv,
+            dss: this.data,
             t: () => this.t,
             iter: () => this.iter,
+            tf: this.tf,
+            range: this.range
         }, this.tss))
 
         this.map[s.uuid] = s
@@ -135,14 +139,14 @@ class ScriptEngine {
     }
 
     // Live update
-    update(candle) {
+    update(candles) {
 
-        if (!this.data.ohlcv || !this.data.ohlcv.length) {
+        if (!this.data.ohlcv || !this.data.ohlcv.data.length) {
             return
         }
 
         if (this.running) {
-            this.update_queue.push(candle)
+            this.update_queue.push(candles)
             return
         }
 
@@ -150,20 +154,22 @@ class ScriptEngine {
         let mfs2 = this.make_mods_hooks('post_step')
 
         try {
-            let ohlcv = this.data.ohlcv
+            let ohlcv = this.data.ohlcv.data
             let i = ohlcv.length - 1
             let last = ohlcv[i]
             let sel = Object.keys(this.map)
             let unshift = false
 
-            if (candle[0] > last[0]) {
-                ohlcv.push(candle)
-                unshift = true
-                i++
-            } else if (candle[0] < last[0]) {
-                return
-            } else {
-                ohlcv[i] = candle
+            for (var candle of candles) {
+                if (candle[0] > last[0]) {
+                    ohlcv.push(candle)
+                    unshift = true
+                    i++
+                } else if (candle[0] < last[0]) {
+                    continue
+                } else {
+                    ohlcv[i] = candle
+                }
             }
 
             this.iter = i
@@ -235,6 +241,7 @@ class ScriptEngine {
             last_perf: this.perf,
             iter: this.iter,
             last_t: this.t,
+            data_size: this.data_size,
             running: false
         })
     }
@@ -268,7 +275,7 @@ class ScriptEngine {
                 this.map[id].env.init()
             }
 
-            let ohlcv = this.data.ohlcv
+            let ohlcv = this.data.ohlcv.data
             let start = this.start(ohlcv)
 
             for (var i = start; i < ohlcv.length; i++) {
@@ -294,6 +301,8 @@ class ScriptEngine {
                 for (var m = 0; m < mfs2.length; m++) {
                     mfs2[m](sel) // post_step
                 }
+
+                if (this.custom_main) this.make_ohlcv()
                 this.limit()
             }
 
@@ -373,16 +382,34 @@ class ScriptEngine {
         }
     }
 
-    format_map(sel) {
+    format_map(sel, range, output) {
         sel = sel || Object.keys(this.map)
         let res = []
         for (var id of sel) {
             let x = this.map[id]
+            let f = x => x
+            if ((x.output === false || x.output === 'none') &&
+                !output) {
+                res.push({id: id, data: null})
+                continue
+            }
+            if (x.output === 'range' || range) {
+                var [t1, t2] = range || this.range
+                f = x => x.filter(
+                    y => y[0] >= t1 && y[0] <= t2
+                )
+            }
             res.push({
-                id: id, data: x.env.data, new_ovs: {
-                    onchart: x.env.onchart,
-                    offchart: x.env.offchart
+                id: id, data: f(x.env.data), new_ovs: {
+                    onchart: u.ovf(x.env.onchart, f),
+                    offchart: u.ovf(x.env.offchart, f)
                 }
+            })
+        }
+        if (this.custom_main) {
+            res.push({
+                id: 'chart',
+                data: this.data.ohlcv.data
             })
         }
         return res
@@ -392,10 +419,23 @@ class ScriptEngine {
         let res = []
         for (var id in this.map) {
             let x = this.map[id]
+            if (x.output === false) {
+                res.push({id: id, data: null})
+                continue
+            }
             res.push({
                 id: id,
                 data: x.env.data[x.env.data.length - 1]
             })
+            for (var side of ['onchart', 'offchart']) {
+                for (var id in x.env[side]) {
+                    let y = x.env[side][id]
+                    res.push({
+                        id: `${side}.${id}`,
+                        data: y.data[y.data.length - 1]
+                    })
+                }
+            }
         }
         return res
     }
@@ -441,6 +481,81 @@ class ScriptEngine {
             }
         }
         return arr
+    }
+
+    data_required(s) {
+
+        let all = Object.values(this.map)
+        if (s) all.push(s)
+
+        let types = [{ type: 'OHLCV' }]
+        for (var s of all) {
+            if (s.src.data) {
+                let reqs = Object.values(s.src.data)
+                types.push(...reqs.map(x => ({
+                    id: s.uuid,
+                    type: x.type
+                })))
+            }
+        }
+        let unf = types.filter(x =>
+            !Object.values(this.data)
+            .find(y => y.type === x.type)
+        )
+        return unf.length ? unf : null
+    }
+
+    // Match dataset id using script id & required type
+    match_ds(id, type) {
+        // TODO: develop further
+        for (var id in this.data) {
+            if (this.data[id].type === type) {
+                return id
+            }
+        }
+    }
+
+    // Make a ohlcv data point if there is a symbol
+    // with { main: true } props (overwrites ohlcv).
+    make_ohlcv() {
+        let sym = this.custom_main
+        let tNext = this.t + this.tf
+        if (sym.update(null, tNext)) {
+            this.data.ohlcv.data.push([
+                tNext,
+                sym.open[0],
+                sym.high[0],
+                sym.low[0],
+                sym.close[0],
+                sym.vol[0]
+            ])
+        }
+    }
+
+    // Calculate data size
+    recalc_size() {
+        while(true) {
+            var sz = u.size_of_dss(this.data) / (1024 * 1024)
+            let lim = this.sett.ww_ram_limit
+            if (lim && sz > lim) {
+                this.limit_size()
+            } else break
+        }
+        this.data_size = +sz.toFixed(2)
+        this.send_state()
+    }
+
+    // Limit data size by throwing out the least
+    // active datasets (measured by 'last_upd')
+    limit_size() {
+        let dss = Object.values(this.data).map(x => ({
+            id: x.id,
+            t: x.last_upd
+        }))
+        dss.sort((a, b) => a.t - b.t)
+        if (dss.length) {
+            delete this.data[dss[0].id]
+        }
     }
 }
 

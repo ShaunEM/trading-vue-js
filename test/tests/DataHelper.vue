@@ -1,6 +1,8 @@
 <template>
+<!-- Real time data example -->
 <span>
     <trading-vue :data="chart" :width="this.width" :height="this.height"
+            :chart-config="{MIN_ZOOM:1}"
             ref="tvjs"
             :toolbar="true"
             :index-based="index_based"
@@ -23,6 +25,7 @@ import Const from '../../src/stuff/constants.js'
 import DataCube from '../../src/helpers/datacube.js'
 import Stream from './DataHelper/stream.js'
 import ScriptOverlay from './Scripts/EMAx6.vue'
+import BSB from './Scripts/BuySellBalance.vue'
 
 // Gettin' data through webpeck proxy
 const PORT = location.port
@@ -32,7 +35,7 @@ const WSS = `ws://localhost:${PORT}/ws/btcusdt@aggTrade`
 export default {
     name: 'DataHelper',
     icon: '⚡',
-    description: 'Play with DataCube in console',
+    description: 'Real-time updates. Play with DataCube in the console',
     props: ['night'],
     components: {
         TradingVue
@@ -50,6 +53,17 @@ export default {
                     type: 'EMAx6',
                     name: 'Multiple EMA',
                     data: []
+                }],
+                offchart: [{
+                    type: 'BuySellBalance',
+                    name: 'Buy/Sell Balance, $lookback',
+                    data: [],
+                    settings: {}
+                }],
+                datasets: [{
+                    type: 'Trades',
+                    id: 'binance-btcusdt',
+                    data: []
                 }]
             }, { aggregation: 100 })
             // Register onrange callback & And a stream of trades
@@ -57,7 +71,7 @@ export default {
             this.$refs.tvjs.resetChart()
             this.stream = new Stream(WSS)
             this.stream.ontrades = this.on_trades
-            window.dc = this.chart // Debug
+            window.dc = this.chart      // Debug
             window.tv = this.$refs.tvjs // Debug
 
         })
@@ -71,13 +85,11 @@ export default {
         // New data handler. Should return Promise, or
         // use callback: load_chunk(range, tf, callback)
         async load_chunk(range) {
-            const [t1, t2] = range
-            const x = 'BTCUSDT'
-            return this.tech(
-                    this.parse_binance(
-                     await fetch(
-                URL + `${x}&interval=1m&startTime=${t1}&endTime=${t2}`
-            ).then(response => response.json())))
+            let [t1, t2] = range
+            let x = 'BTCUSDT'
+            let q = `${x}&interval=1m&startTime=${t1}&endTime=${t2}`
+            let r = await fetch(URL + q).then(r => r.json())
+            return this.format(this.parse_binance(r))
         },
         // Parse a specific exchange format
         parse_binance(data) {
@@ -89,34 +101,27 @@ export default {
                 return x.slice(0,6)
             })
         },
-        tech(data) {
+        format(data) {
             // Each query sets data to a corresponding overlay
             return {
                 'chart.data': data
+                // other onchart/offchart overlays can be added here,
+                // but we are using Script Engine to calculate some:
+                // see EMAx6 & BuySellBalance
             }
-        },
-        sma(data) {
-            // Just an example of a simple indicator.
-            // First, calculate SMA for the chunk, then
-            // keep updating it for the whole OHLCV
-            let ohlcv = this.chart.data ?
-                this.chart.get_one('chart.data') : data
-
-            let sma = []
-            for (var i = 26; i < ohlcv.length; i++) {
-                let buff = 0
-                for (var k = i - 25; k <= i; k++) {
-                    buff += ohlcv[k][4]
-                }
-                sma.push([ ohlcv[i][0], buff / 26 ])
-            }
-
-            return sma
         },
         on_trades(trade) {
             this.chart.update({
-                price: parseFloat(trade.p),  // Trade price
-                volume: parseFloat(trade.q)  // Trade amount
+                t: trade.T,     // Exchange time (optional)
+                price: parseFloat(trade.p),   // Trade price
+                volume: parseFloat(trade.q),  // Trade amount
+                'datasets.binance-btcusdt': [ // Update dataset
+                    trade.T,
+                    trade.m ? 0 : 1,          // Sell or Buy
+                    parseFloat(trade.q),
+                    parseFloat(trade.p)
+                ],
+                // ... other onchart/offchart updates
             })
         }
     },
@@ -139,7 +144,7 @@ export default {
             width: window.innerWidth,
             height: window.innerHeight,
             index_based: false,
-            overlays: [ScriptOverlay]
+            overlays: [ScriptOverlay, BSB]
         }
     }
 }

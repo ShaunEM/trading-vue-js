@@ -17,23 +17,28 @@ export default class DataCube extends DCCore {
             aggregation: 100,       // Update aggregation interval
             script_depth: 0,        // 0 === Exec on all data
             auto_scroll: true,      // Auto scroll to a new candle
-            scripts: true           // Enable overlays scripts
+            scripts: true,          // Enable overlays scripts,
+            ww_ram_limit: 0,        // WebWorker RAM limit (MB)
+            node_url: null,         // Use node.js instead of WW
+            shift_measure: true     // Draw measurment shift+click
         }
         sett = Object.assign(def_sett, sett)
 
         super()
+        this.sett = sett
         this.data = data
         this.sett = SettProxy(sett, this.ww)
-        this.agg = new AggTool(sett.aggregation)
+        this.agg = new AggTool(this, sett.aggregation)
         this.se_state = {}
 
-        this.agg.update = this.agg_update.bind(this)
+        //this.agg.update = this.agg_update.bind(this)
     }
 
     // Add new overlay
     add(side, overlay) {
 
-        if (side !== 'onchart' && side !== 'offchart') {
+        if (side !== 'onchart' && side !== 'offchart' &&
+            side !== 'datasets') {
             return
         }
 
@@ -65,7 +70,7 @@ export default class DataCube extends DCCore {
                 obj.p.indexOf(obj.v)
 
             if (i !== -1) {
-                this.tv.$set(obj.p, i, data)
+                obj.p[i] = data
             }
         }
 
@@ -105,7 +110,7 @@ export default class DataCube extends DCCore {
         for (var obj of objects) {
 
             // Find current index of the field (if not defined)
-            let i = obj.i !== undefined ?
+            let i = typeof obj.i !== 'number' ?
                 obj.i : obj.p.indexOf(obj.v)
 
             if (i !== -1) {
@@ -118,8 +123,6 @@ export default class DataCube extends DCCore {
     }
 
     // Update/append data point, depending on timestamp
-    // v2.0 TODO: to web worker
-    //
     update(data) {
         if(data['candle']) {
             return this.update_candle(data)

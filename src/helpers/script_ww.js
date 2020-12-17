@@ -4,6 +4,7 @@
 import se from './script_engine.js'
 import Utils from '../stuff/utils.js'
 import * as u from './script_utils.js'
+import { DatasetWW } from './dataset.js'
 
 var data_requested = false
 
@@ -21,38 +22,49 @@ self.onmessage = async e => {
 
         case 'exec-script':
 
-            if (!se.data.ohlcv && !data_requested) {
+            var req = se.data_required(e.data.data.s)
+            if (req && !data_requested) {
                 data_requested = true
-                self.postMessage({ type: 'request-data' })
+                self.postMessage({
+                    type: 'request-data', data: req
+                })
             }
-
-            se.queue.push(e.data.data)
+            se.tf = u.tf_from_str(e.data.data.tf)
+            se.range = e.data.data.range
+            se.queue.push(e.data.data.s)
             se.exec_all()
 
             break
 
         case 'exec-all-scripts':
 
-            if (!se.data.ohlcv && !data_requested) {
+            var req = se.data_required(e.data.data.s)
+            if (req && !data_requested) {
                 data_requested = true
-                self.postMessage({ type: 'request-data' })
+                self.postMessage({
+                    type: 'request-data', data: req
+                })
             }
 
+            se.tf = u.tf_from_str(e.data.data.tf)
+            se.range = e.data.data.range
             se.exec_all()
 
             break
 
         case 'upload-data':
+            self.postMessage({ type: 'data-uploaded' })
 
-            if (e.data.data.ohlcv) {
-                self.postMessage({ type: 'data-uploaded' })
+            await Utils.pause(1)
 
-                await Utils.pause(1)
-
-                se.data.ohlcv = e.data.data.ohlcv
-                data_requested = false
-                se.exec_all()
+            for (var id in e.data.data) {
+                let data = e.data.data[id]
+                se.data[id] = new DatasetWW(id, data)
             }
+
+            se.recalc_size()
+            data_requested = false
+            se.exec_all()
 
             break
 
@@ -74,17 +86,47 @@ self.onmessage = async e => {
 
         case 'update-data':
 
+            DatasetWW.update_all(se, e.data.data)
+
             if (e.data.data.ohlcv) {
-
                 se.update(e.data.data.ohlcv)
-
             }
+
+            break
+
+        case 'get-dataset':
+
+            self.postMessage({
+                id: e.data.id,
+                data: se.data[e.data.data]
+            })
+
+            break
+
+        case 'dataset-op':
+
+            await Utils.pause(1)
+
+            if (e.data.data.id in se.data) {
+                se.data[e.data.data.id].op(se, e.data.data)
+            }
+
+            if (e.data.data.exec) se.exec_all()
 
             break
 
         case 'update-ov-settings':
 
-            se.exec_sel(e.data.data)
+            se.tf = u.tf_from_str(e.data.data.tf)
+            se.range = e.data.data.range
+            se.exec_sel(e.data.data.delta)
+
+            break
+
+        case 'send-meta-info':
+
+            se.tf = u.tf_from_str(e.data.data.tf)
+            se.range = e.data.data.range
 
             break
 
@@ -106,7 +148,7 @@ se.send = (type, data) => {
         case 'overlay-data':
         case 'overlay-update':
         case 'engine-state':
-        case 'change-overlay':
+        case 'modify-overlay':
         case 'module-data':
 
             self.postMessage({type, data})

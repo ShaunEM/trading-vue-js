@@ -7,10 +7,10 @@ export default {
     props: [
         'id', 'num', 'interval', 'cursor', 'colors',
         'layout', 'sub', 'data', 'settings', 'grid_id',
-        'font', 'config', 'meta', 'tf'
+        'font', 'config', 'meta', 'tf', 'i0'
     ],
     mounted() {
-        // TODO: when hot reloading, dynamicaly changed mixins
+        // TODO(1): when hot reloading, dynamicaly changed mixins
         // dissapear (cuz it's a hack), the only way for now
         // is to reload the browser
         if (!this.draw) {
@@ -23,10 +23,8 @@ export default {
         let main = this.$props.sub === this.$props.data
 
         this.meta_info()
-        this._$emit = this.$emit
-        this.$emit = this.custom_event
 
-        this._$emit('new-grid-layer', {
+        this.$emit('new-grid-layer', {
             name: this.$options.name,
             id: this.$props.id,
             renderer: this,
@@ -37,7 +35,7 @@ export default {
         })
 
         // Overlay meta-props (adjusting behaviour)
-        this._$emit('layer-meta-props', {
+        this.$emit('layer-meta-props', {
             grid_id: this.$props.grid_id,
             layer_id: this.$props.id,
             legend: this.legend,
@@ -49,9 +47,9 @@ export default {
         if (this.init_tool) this.init_tool()
         if (this.init) this.init()
     },
-    beforeDestroy() {
+    beforeUnmount() {
         if (this.destroy) this.destroy()
-        this._$emit('delete-grid-layer', this.$props.id)
+        this.$emit('delete-grid-layer', this.$props.id)
     },
     methods: {
         use_for() {
@@ -92,9 +90,10 @@ export default {
                 args[0].uuid = this.last_ux_id =
                     `${this.grid_id}-${this.id}-${this.uxs_count++}`
             }
-            // TODO: add a namespace to the event name
-            this._$emit('custom-event', {event, args})
+            this.$emit('custom-event', {event, args})
         },
+        // TODO: the event is not firing when the same
+        // overlay type is added to the offchart[]
         exec_script() {
             if (this.calc) this.$emit('exec-script', {
                 grid_id: this.$props.grid_id,
@@ -108,7 +107,7 @@ export default {
         settings: {
             handler: function(n, p) {
                 if (this.watch_uuid) this.watch_uuid(n, p)
-                this._$emit('show-grid-layer', {
+                this.$emit('show-grid-layer', {
                     id: this.$props.id,
                     display: 'display' in this.$props.settings ?
                         this.$props.settings['display'] : true,
@@ -118,5 +117,5 @@ export default {
         }
     },
     data() { return { uxs_count: 0, last_ux_id: null } },
-    render(h) { return h() }
+    render() { return [] }
 }

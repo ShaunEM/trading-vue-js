@@ -1,5 +1,5 @@
 /*!
- * TradingVue.JS - v0.7.0-alpha - Wed Sep 09 2020
+ * TradingVue.JS - v0.10.0-alpha - Thu Dec 03 2020
  *     https://github.com/tvjsx/trading-vue-js
  *     Copyright (c) 2019 C451 Code's All Right;
  *     Licensed under the MIT license
@@ -97,20 +97,20 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 66);
+/******/ 	return __webpack_require__(__webpack_require__.s = 70);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayWithoutHoles = __webpack_require__(35);
+var arrayWithoutHoles = __webpack_require__(34);
 
-var iterableToArray = __webpack_require__(36);
+var iterableToArray = __webpack_require__(35);
 
-var unsupportedIterableToArray = __webpack_require__(28);
+var unsupportedIterableToArray = __webpack_require__(30);
 
-var nonIterableSpread = __webpack_require__(37);
+var nonIterableSpread = __webpack_require__(36);
 
 function _toConsumableArray(arr) {
   return arrayWithoutHoles(arr) || iterableToArray(arr) || unsupportedIterableToArray(arr) || nonIterableSpread();
@@ -156,20 +156,13 @@ module.exports = _createClass;
 /* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(64);
+var arrayWithHoles = __webpack_require__(37);
 
+var iterableToArrayLimit = __webpack_require__(38);
 
-/***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
+var unsupportedIterableToArray = __webpack_require__(30);
 
-var arrayWithHoles = __webpack_require__(38);
-
-var iterableToArrayLimit = __webpack_require__(39);
-
-var unsupportedIterableToArray = __webpack_require__(28);
-
-var nonIterableRest = __webpack_require__(40);
+var nonIterableRest = __webpack_require__(39);
 
 function _slicedToArray(arr, i) {
   return arrayWithHoles(arr) || iterableToArrayLimit(arr, i) || unsupportedIterableToArray(arr, i) || nonIterableRest();
@@ -178,49 +171,13 @@ function _slicedToArray(arr, i) {
 module.exports = _slicedToArray;
 
 /***/ }),
-/* 5 */
-/***/ (function(module, exports) {
+/* 4 */
+/***/ (function(module) {
 
-function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
-  try {
-    var info = gen[key](arg);
-    var value = info.value;
-  } catch (error) {
-    reject(error);
-    return;
-  }
-
-  if (info.done) {
-    resolve(value);
-  } else {
-    Promise.resolve(value).then(_next, _throw);
-  }
-}
-
-function _asyncToGenerator(fn) {
-  return function () {
-    var self = this,
-        args = arguments;
-    return new Promise(function (resolve, reject) {
-      var gen = fn.apply(self, args);
-
-      function _next(value) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
-      }
-
-      function _throw(err) {
-        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
-      }
-
-      _next(undefined);
-    });
-  };
-}
-
-module.exports = _asyncToGenerator;
+module.exports = JSON.parse("{\"extended.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAANElEQVR4nGNggABGEMEEIlhABAeI+AASF0AlHmAqA4kzKAAx8wGQuAMKwd6AoYzBAWonAwAcLwTgNfJ3RQAAAABJRU5ErkJggg==\",\"ray.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAAMklEQVR4nGNgQAJMIIIFRHCACAEQoQAiHICYvQEkjkrwYypjAIkzwk2zAREuqIQFzD4AE3kE4BEmGggAAAAASUVORK5CYII=\",\"segment.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAgMAAAC5h23wAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAlQTFRFAAAATU1NJCQkCxcHIQAAAAN0Uk5TAP8SmutI5AAAACxJREFUeJxjYMACGAMgNAsLdpoVKi8AVe8A1QblQlWRKt0AoULw2w1zGxoAABdiAviQhF/mAAAAAElFTkSuQmCC\",\"add.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAH5QTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoKBgYGGxsbKioqPz8/Pj4+BQUFCQkJAQEBZGRkh4eHAgICEBAQNjY2g4ODgYGBAAAAAwMDeXl5d3d3GBgYERERgICAgICANDQ0PDw8Y2NjCAgIhYWFGhoaJycnOjo6YWFhgICAdXV14Y16sQAAACp0Uk5TAAILDxIKESEnJiYoKCgTKSkpKCAnKSkFKCkpJiDl/ycpKSA2JyYpKSkpOkQ+xgAAARdJREFUeJzllNt2gyAQRTWiRsHLoDU0GpPYmMv//2BMS+sgl6Z9bM8bi73gnJkBz/sn8lcBIUHofwtG8TpJKUuTLI6cYF7QEqRKynP71VX9AkhNXVlsbMQrLLQVGyPZLsGHWgPrCxMJwHUPlXa79NBp2et5d9f3u3m1XxatQNn7SagOXCUjCjYUDuqxcWlHj4MSfw12FDJchFViRN8+1qcQoUH6lR1L1mEMEErofB6WzEUwylzomfzOQGiOJdXiWH7mQoUyMa4WXJQWOBvLFvPCGxt6FSr5kyH0qi0YddNG2/pgCsOjff4ZTizXPNwKIzl56OoGg9d9Z/+5cs6On+CFCfevFQ3ZaTycx1YMbvDdRvjkp/lHdAcPXzokxcwfDwAAAABJRU5ErkJggg==\",\"cursor.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAgMAAAC5h23wAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAxQTFRFAAAATU1NTU1NTU1NwlMHHwAAAAR0Uk5TAOvhxbpPrUkAAAAkSURBVHicY2BgYHBggAByabxg1WoGBq2pRCk9AKUbcND43AEAufYHlSuusE4AAAAASUVORK5CYII=\",\"display_off.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAU1QTFRFAAAAh4eHh4eHAAAAAAAAAAAAAwMDAAAAAAAAhoaGGBgYgYGBAAAAPz8/AgICg4ODCQkJhISEh4eHh4eHPj4+NjY2gYGBg4ODgYGBgYGBgoKCAQEBJycngoKChYWFEBAQg4ODCAgIKioqZGRkCgoKBQUFERERd3d3gYGBGxsbNDQ0hISEgYGBPDw8gYGBgYGBh4eHh4eHhYWFh4eHgoKChYWFgYGBgYGBg4ODhoaGg4ODYWFhgoKCBgYGdXV1goKCg4ODgYGBgICAgYGBAAAAg4ODhYWFhISEh4eHgoKChYWFOjo6goKCGhoah4eHh4eHh4eHgoKCh4eHeXl5hoaGgoKChISEgYGBgYGBgoKCY2NjgYGBgoKCh4eHgoKCgYGBhoaGg4ODhoaGhYWFh4eHgYGBhoaGhoaGhoaGg4ODgoKChISEgoKChYWFh4eHfKktUwAAAG90Uk5TACn/AhEFKA8SLCbxCigoVBNKUTYoJ/lh3PyAKSaTNiBtICYpISggKSkmJ0LEKef3lGxA8rn//+pcMSkpnCcptHPJKe0LUjnx5LzKKaMnX73hl64pLnhkzNSgKeLv17LQ+liIzaLe7PfTw5tFpz3K1fXR/gAAAgBJREFUeJzllNdXwjAUxknB0lIoCKVsGTIFQRAZ7r333nuv///R3LZ4mlDQZ/0ekp7b37n5bnITk+mfyDxv5Tir3fwjaElO5BIOKZFLJS1dQVfI0Y809TtEV+elo95RpFPWG+1go4fdQ5QybI8haaNBkM2ANbM09bnrwaPY7iFKrz7EMBdu7CHdVruXIt0M1hb+GKA3LTRKkp5lTA6Dg6xIkhaHhvQ1IlW/UCouQdJNJTRIpk1qO7+wUpcfpl537oBc7VNip3Gi/AmVPBAC1UrL6HXtSGVT+k2Yz0Focad07OMRf3P5BEbd63PFQx7HN+w61JoAm+uBlV48O/0jkLSMmtPCmQ8HwlYdykFV4/LJPp7e3hVyFdapHNehLk6PSjhSkBvwu/cFyJGIYvOyhoc1jjYQFGbygD4CWjoAMla/og3YoSw+KPhjPNoFcim4iFD+pFYA8zZ9WeYU5OBjZ3ORWyCfG03E+47kKpCIJTpGO4KP8XMgtw990xG/PBNTgmPEEXwf7P42oOdFIRAoBCtqTKL6Rcwq4Xsgh5xYC/mmSs6yJKk1YbnVeTq1NaEpmlHbmVn2EORkW2trF2ZzmHGTSUMGl1a9hp4ySRpdQ8yKGURpMmRIYg9pb1YPzg6kO79cLlE6bYFjEtv91bLEUxvhwbWwjY13BxUb9l8+mn9EX8x3Nki8ff5wAAAAAElFTkSuQmCC\",\"display_on.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAR1QTFRFAAAAh4eHgYGBAAAAAAAAgYGBAAAAAwMDAAAAAAAAgYGBg4ODGBgYgYGBhISEAAAAPz8/AgIChoaGCQkJhYWFPj4+NjY2goKCgYGBAQEBJycngYGBgoKCEBAQCAgIhISEKioqZGRkCgoKBQUFERERd3d3gYGBg4ODgYGBGxsbNDQ0hISEgoKCgoKChYWFPDw8gYGBgYGBhoaGgoKCg4ODgoKCgYGBgoKCgoKCgoKCg4ODgoKChoaGgoKCgYGBhoaGg4ODYWFhBgYGdXV1gYGBg4ODgoKCgICAg4ODg4ODhISEAAAAg4ODOjo6gYGBGhoaeXl5goKCgYGBgoKChYWFgoKChISEgoKCY2NjgYGBg4ODgYGBgYGBg4ODgYGBo8n54AAAAF90Uk5TACn/AhH3BSgPEuhUJvFACigoLBM2KCeA6ykm+pMgIEkmKSEoICn9XCkmJ0u6nDop4sUypGuEzLZ6vmCYLZ/dLykpJynUYa8pcllCC1Ip2ycpisl1PadFsintbsPQZdi/bTW7AAAB4UlEQVR4nOWUZ1fCMBSGSSGWFiq0UDbIkr2XbBwMxS0b1P//M0xK9XSiftX7oel585zkvfcmMRj+SRhvzRRlthm/BU3Ry3TYzofTsajpIOjw2iNAjIiddehvHXSdA0mkXEEdG0fkE1DEKXmkSVqVIA6rBmsktUgAWLWHoGp30UNclbtLmwQgoyya91wPTbFy0mQXJ5zJQO6BgXRjfH0iSkX5stHIXr5r0bB/lu8syjR8rzsFbR2SpX+5J2eMP3csLtYsEY2K8BeTFuE2jaVCBw7bHOBuxq16AXmpbui3LtIfbRLUHMY2q4lcFo2WB4KA1SUAlWumNEKCzyxBKZxVHvYGaFguCBx1vM/x0IPzoqQoj5SdP4mns2cCGhBsrgj0uaeUBtzMyxQN8w4mYROTW8+r0oANp8W5mf6WQw5aCYJ2o7ymPaKMi2uVpmWM4TW6tdImgGo1bT4nK6DbbsCc0AZSdmLEFszzHrh6riVvRrNA3/9SE8QLWQu+Gjto9+gE9NBMwr9zi83gFeeFTe11zpm1CHE3HeyVCSknf3MIDcFTbfJKdbR1L4xX49L+/BoillV5uPJqkshD3JWSgpNMXP/lcrD8+hO84MnDr5YpFHv0Fe99VjJ0GBRs2H74aP6R+ACr+TFvZNAQ1wAAAABJRU5ErkJggg==\",\"down.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAKVQTFRFAAAAg4ODgICAAAAAAAAAAAAACAgIAAAAAAAAAAAAAAAAOTk5hYWFEBAQfHx8ODg4dnZ2NDQ0XV1dGxsbKCgogICAFBQUIiIiZGRkgICAgICAFRUVAAAAgICAgICAgICAf39/Li4ugICAcHBwgoKCgICAgoKCgICAg4ODgYGBPj4+goKCgICAhISEgYGBgICAgoKCgICAgYGBgYGBf39/gICAgICAIdPQHAAAADd0Uk5TACn/KAIRIBMFDwooKyApKSknKSYmzCcmKfL7JRCUi2L3J7IpcLUrr0VbKXntNEnkMbxrUcG56CMpi50AAAFZSURBVHic5ZRpf4MgDIeFKFatWm/tfW091u7evv9Hm1Acoujm2y0vFPH5Jf+EEE37J6bblmlatv4jaBCI4rMfR0CMXtAEJ0fccgfM7tAkQHXzArdDxggmqGETGCnJWROkNlOwOqhIhKCtgbSicw1uK/dATSK0aRatIzytA8ik4XSiyJnLSm+VPxULgeyLI3uHRJH+qcB4WZGrKb4c20WwI7b3iUt74OS6XD+xZWrXUCtme0uKTvfcJ65CZFa9VOebqwXmft+oT8yF+/VymT4XeGB+Xx8L+j4gBcoFIDT+oMz6Qp93Y74pCeBpUXaLuW0rUk6r1iv3nP322ewYkgv2nZIvgpSPQDrY5wTjRJDNg9XAE/+uSXIVX812GdKEmtvR2rtWaw+5MAOuofJy79SXu9TgBl4d9DZdI0NjgyiswNCB/qk1J5Bmvp+lQOa9IJNhW4bxm6H5R+wLQYMSQXZNzbcAAAAASUVORK5CYII=\",\"price_range.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAAIUlEQVR4nGNggAPm/w9gTA4QIQMitECEJ1yMEgLNDiAAADfgBMRu78GgAAAAAElFTkSuQmCC\",\"price_time.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAAOklEQVR4nGNggAPm/w9gTA4QIQPEClpMQMITRHCACScQoQQihBgY9P//grKgYk5wdTACYhQHFjuAAABZFAlc4e1fcQAAAABJRU5ErkJggg==\",\"remove.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAK5QTFRFAAAAh4eHgICAAAAAAAAAh4eHAAAAAwMDAAAAAAAAgICAGBgYAAAAPz8/AgICgICACQkJhoaGhoaGgICAPj4+NjY2gYGBg4ODgYGBAQEBJycngoKCEBAQgICAgICACAgIKioqZGRkCgoKBQUFERERd3d3gYGBGxsbNDQ0gICAPDw8YWFhBgYGdXV1gICAg4ODgICAAAAAOjo6GhoaeXl5gICAhYWFY2NjhYWFgICA9O0oCgAAADp0Uk5TACn/AhErBSgPEvEmCigowxMuMcgoJ7hWrCkmdCD6vSAmKSEoICkpJie6KSknKSkp0wspJynCMik11rrLte8AAAFwSURBVHic5ZTXkoIwFIZNAAPSpKkoRQV7Wcva3v/FFiRmEwise7t7bs7MP98k/ylJq/VPQjjKiiJrwo+gON0uxro7XiRTsRHs+voE4JjoRrf+6sD7AFTMvaDGRht9glLMUJtLqmUwD5XDCohHAmBUPQSV27GHtFK7xycBWJab5uPaR+Hlmue7GfZxHwyWFHVMQghXFgD2A8IOZtfssdNJIXcyFEaSfchzp9BuMVP+Fhvr5Qh0nGfqYTGhm3BcYFUaQBKOhMWzRqHyGFRY03ppQ5lCFZ30RloVZGQTaa3QqEt0OyrQnkSkk8I1YJkvAwPCMgY0UpbzXRZhVbosIWGbZTLNQszGMCM42FJEjWDDjIAMtp+xj6x2K+/DqNDc0r4Yc8yGl3uer2aIyT1iyd8sYSuY8cldZbVrH4zPebTvP8OMNSoedj6XzDyk3pwG98u0/ufqGu7tBW5c1PxriXFyHq5PQxXFzeDThvbmp/lH4gt6WxfZ03H8DwAAAABJRU5ErkJggg==\",\"settings.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAW5QTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoKBgYGGxsbKioqQEBAPj4+BQUFCAgIAQEBPz8/ZWVlh4eHZGRkAgICCQkJDw8PNjY2g4ODgoKCNTU1EBAQAAAAAwMDeXl5d3d3AAAAGBgYAAAAERERioqKgoKCgoKCgoKCgYGBgoKChISEhoaGNDQ0g4ODgICAgICAgICAgYGBgYGBhYWFgICAgICAPT09AAAAgYGBgICAgICAgICAgICAY2NjCAgIgICAgICAhYWFhYWFgYGBHBwcgICAhYWFGhoagYGBgYGBg4ODhoaGJycnAAAAhISEgICAg4ODPDw8AAAAgoKCgICAhISEOjo6h4eHgoKCgYGBgICAf39/gYGBgoKCgICAGBgYgYGBg4ODg4ODgICACwsLgYGBgICAgYGBgYGBgYGBgICAgYGBYWFhf39/g4ODPj4+gYGBg4ODgICAhYWFgoKCgYGBgICAgYGBgoKCdXV1T0kC9QAAAHp0Uk5TAAILDxMKESEnJiYpKSgTKSgpKSkoEyAnKSknIAYoKSkFJQEgKl94jYVvVC4nU9f/+K8pOu71KBCi3NPq/ikg0e01Nokm1UUnsZVqQSYOT9lrKRJz5lIpK12jyu+sesgnhGVLxCG55a6Um+GaKfJCKKRgKUt8ocergymDQ9knAAABsElEQVR4nOWUV1vCMBSGg1AQpBZrcVdE3KJxo4LgnuCoe4F7orjHv7doTk3bgF7rd5OnX94nZ+SkCP0TWQqsNpuVs/wI2h2FTleR2+XkHfa8YLHgKRGJSj2SN3fosvIKkVJlVXWONGrkWtEgn1zHJP1GMCs/g7XILFIUpXoTWmaKTnIImGovh72Gxqbmlta2dvgOGpsmQO0dnfhTXd3E6JH0pN1DNnr7MFE/HDsQ0qEO6Pxg9sCh4XDkGx2J6sovBD+G8eiYuo5PxLTKeLoJBZNgT2EcnjY0YYajUKsL7Fk1gcjU3PwChcYTFGorAnsRqlpa1tAVhUbdmr+6RtjIOlgbCjMBUdzc2t7ZzbJ7zAQ4p6GSfRVNwkeKLsvCg31w2JBdjlT0GDxZNzEnpcQ+xWfnFxeXVyp6Tay07gq+L/YUOoBvbomV0V8skiq//DutWfeEfJD1JPLCED4+Pb8kX986tApNQ4iqfSJT76bRzvlgBPODQXW/foYqK5lyeBeYJEL1gaoeGnwIBhjRoQ9SZgTAdEbO/9cKRfmZ+MpGPCVHQ3nBzzS4hKIkuNyh/5g+ALiAXSSas9hwAAAAAElFTkSuQmCC\",\"time_range.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAAJElEQVR4nGNgwAsUGJhQCScQoQQihBgY9P//grKgYk4YOvACACOpBKG6Svj+AAAAAElFTkSuQmCC\",\"trash.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAALUlEQVR4nGNgAIN6ENHQACX4//9gYBBgYIESYC4LkA0lPEkmGFAI5v8PILYCAHygDJxlK0RUAAAAAElFTkSuQmCC\",\"up.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAMZQTFRFAAAAh4eHgICAAAAAAAAAAAAAAwMDAAAAAAAAGBgYAAAAPz8/AgICCQkJgICAh4eHPj4+NjY2AQEBJycnEBAQgICAgICACAgIKioqZGRkCgoKBQUFgYGBERERd3d3gYGBGxsbNDQ0gICAgYGBPDw8gYGBh4eHgICAYWFhBgYGgYGBdXV1goKCg4ODhYWFgICAgoKCAAAAhISEOjo6gICAGhoagYGBeXl5hoaGgICAY2Njg4ODgoKCgoKCgYGBgoKCg4ODgoKC64uw1gAAAEJ0Uk5TACn/AhEFKA8SJgooKBP7KignKSYg9c0gJikhKLQgKSkmJ7ywKY8s5SknlClxKTMpXwtFKe0neiku8ClKWmSbbFFjM5GHSgAAAW5JREFUeJzllGd/gjAQxk3AMFWWOHDvVa2rVbu//5cqhJWQQO3b9nkVjv/v7rnLKJX+iYS9JMuSKvwIiu3loKkZzYHXFgvBiqW1QKSWplfySzvmAyDUN50cG2X0DDLqoTKXVLJgIIXDCohHAqCzHhymeuShy/Ru8kkAhtmhWUTvW9fdEnPQaVLU0n8XF0L3kn5P6LTtZPKgNoK+RrUkcGtQ7S9TsgOxxinrkUPYD+LwLCIh7CTsWSVQqRmTuPqpitlZFLQlApXjrsYBc335wOw47ksmUSMMrgKi/gnAE/awCqNHmTUwDf5X34LlBuedsgbUsK15kPMxTIXzzvFSIdsSPBw7nGD1K+7bL3F9xStEnZhoCw71TbpL71GBBbUF1MZmZWTOi97PI3eIJn9zCEtOj0+umaOde2EszqW9/xr6rM54WFtc0vfQNak57Ibd/Jerohu3GFwYqPjVEhve2Z4cbQU1ikFsQ73z0fwj+ga3VBezGuggFQAAAABJRU5ErkJggg==\"}");
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -320,7 +277,7 @@ function toComment(sourceMap) {
 }
 
 /***/ }),
-/* 7 */
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -585,13 +542,14 @@ function applyToTag (styleElement, obj) {
 
 
 /***/ }),
-/* 8 */
-/***/ (function(module) {
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
 
-module.exports = JSON.parse("{\"extended.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAANElEQVR4nGNggABGEMEEIlhABAeI+AASF0AlHmAqA4kzKAAx8wGQuAMKwd6AoYzBAWonAwAcLwTgNfJ3RQAAAABJRU5ErkJggg==\",\"segment.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAgMAAAC5h23wAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAlQTFRFAAAATU1NJCQkCxcHIQAAAAN0Uk5TAP8SmutI5AAAACxJREFUeJxjYMACGAMgNAsLdpoVKi8AVe8A1QblQlWRKt0AoULw2w1zGxoAABdiAviQhF/mAAAAAElFTkSuQmCC\",\"add.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAH5QTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoKBgYGGxsbKioqPz8/Pj4+BQUFCQkJAQEBZGRkh4eHAgICEBAQNjY2g4ODgYGBAAAAAwMDeXl5d3d3GBgYERERgICAgICANDQ0PDw8Y2NjCAgIhYWFGhoaJycnOjo6YWFhgICAdXV14Y16sQAAACp0Uk5TAAILDxIKESEnJiYoKCgTKSkpKCAnKSkFKCkpJiDl/ycpKSA2JyYpKSkpOkQ+xgAAARdJREFUeJzllNt2gyAQRTWiRsHLoDU0GpPYmMv//2BMS+sgl6Z9bM8bi73gnJkBz/sn8lcBIUHofwtG8TpJKUuTLI6cYF7QEqRKynP71VX9AkhNXVlsbMQrLLQVGyPZLsGHWgPrCxMJwHUPlXa79NBp2et5d9f3u3m1XxatQNn7SagOXCUjCjYUDuqxcWlHj4MSfw12FDJchFViRN8+1qcQoUH6lR1L1mEMEErofB6WzEUwylzomfzOQGiOJdXiWH7mQoUyMa4WXJQWOBvLFvPCGxt6FSr5kyH0qi0YddNG2/pgCsOjff4ZTizXPNwKIzl56OoGg9d9Z/+5cs6On+CFCfevFQ3ZaTycx1YMbvDdRvjkp/lHdAcPXzokxcwfDwAAAABJRU5ErkJggg==\",\"cursor.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAgMAAAC5h23wAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAxQTFRFAAAATU1NTU1NTU1NwlMHHwAAAAR0Uk5TAOvhxbpPrUkAAAAkSURBVHicY2BgYHBggAByabxg1WoGBq2pRCk9AKUbcND43AEAufYHlSuusE4AAAAASUVORK5CYII=\",\"display_off.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAU1QTFRFAAAAh4eHh4eHAAAAAAAAAAAAAwMDAAAAAAAAhoaGGBgYgYGBAAAAPz8/AgICg4ODCQkJhISEh4eHh4eHPj4+NjY2gYGBg4ODgYGBgYGBgoKCAQEBJycngoKChYWFEBAQg4ODCAgIKioqZGRkCgoKBQUFERERd3d3gYGBGxsbNDQ0hISEgYGBPDw8gYGBgYGBh4eHh4eHhYWFh4eHgoKChYWFgYGBgYGBg4ODhoaGg4ODYWFhgoKCBgYGdXV1goKCg4ODgYGBgICAgYGBAAAAg4ODhYWFhISEh4eHgoKChYWFOjo6goKCGhoah4eHh4eHh4eHgoKCh4eHeXl5hoaGgoKChISEgYGBgYGBgoKCY2NjgYGBgoKCh4eHgoKCgYGBhoaGg4ODhoaGhYWFh4eHgYGBhoaGhoaGhoaGg4ODgoKChISEgoKChYWFh4eHfKktUwAAAG90Uk5TACn/AhEFKA8SLCbxCigoVBNKUTYoJ/lh3PyAKSaTNiBtICYpISggKSkmJ0LEKef3lGxA8rn//+pcMSkpnCcptHPJKe0LUjnx5LzKKaMnX73hl64pLnhkzNSgKeLv17LQ+liIzaLe7PfTw5tFpz3K1fXR/gAAAgBJREFUeJzllNdXwjAUxknB0lIoCKVsGTIFQRAZ7r333nuv///R3LZ4mlDQZ/0ekp7b37n5bnITk+mfyDxv5Tir3fwjaElO5BIOKZFLJS1dQVfI0Y809TtEV+elo95RpFPWG+1go4fdQ5QybI8haaNBkM2ANbM09bnrwaPY7iFKrz7EMBdu7CHdVruXIt0M1hb+GKA3LTRKkp5lTA6Dg6xIkhaHhvQ1IlW/UCouQdJNJTRIpk1qO7+wUpcfpl537oBc7VNip3Gi/AmVPBAC1UrL6HXtSGVT+k2Yz0Focad07OMRf3P5BEbd63PFQx7HN+w61JoAm+uBlV48O/0jkLSMmtPCmQ8HwlYdykFV4/LJPp7e3hVyFdapHNehLk6PSjhSkBvwu/cFyJGIYvOyhoc1jjYQFGbygD4CWjoAMla/og3YoSw+KPhjPNoFcim4iFD+pFYA8zZ9WeYU5OBjZ3ORWyCfG03E+47kKpCIJTpGO4KP8XMgtw990xG/PBNTgmPEEXwf7P42oOdFIRAoBCtqTKL6Rcwq4Xsgh5xYC/mmSs6yJKk1YbnVeTq1NaEpmlHbmVn2EORkW2trF2ZzmHGTSUMGl1a9hp4ySRpdQ8yKGURpMmRIYg9pb1YPzg6kO79cLlE6bYFjEtv91bLEUxvhwbWwjY13BxUb9l8+mn9EX8x3Nki8ff5wAAAAAElFTkSuQmCC\",\"display_on.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAR1QTFRFAAAAh4eHgYGBAAAAAAAAgYGBAAAAAwMDAAAAAAAAgYGBg4ODGBgYgYGBhISEAAAAPz8/AgIChoaGCQkJhYWFPj4+NjY2goKCgYGBAQEBJycngYGBgoKCEBAQCAgIhISEKioqZGRkCgoKBQUFERERd3d3gYGBg4ODgYGBGxsbNDQ0hISEgoKCgoKChYWFPDw8gYGBgYGBhoaGgoKCg4ODgoKCgYGBgoKCgoKCgoKCg4ODgoKChoaGgoKCgYGBhoaGg4ODYWFhBgYGdXV1gYGBg4ODgoKCgICAg4ODg4ODhISEAAAAg4ODOjo6gYGBGhoaeXl5goKCgYGBgoKChYWFgoKChISEgoKCY2NjgYGBg4ODgYGBgYGBg4ODgYGBo8n54AAAAF90Uk5TACn/AhH3BSgPEuhUJvFACigoLBM2KCeA6ykm+pMgIEkmKSEoICn9XCkmJ0u6nDop4sUypGuEzLZ6vmCYLZ/dLykpJynUYa8pcllCC1Ip2ycpisl1PadFsintbsPQZdi/bTW7AAAB4UlEQVR4nOWUZ1fCMBSGSSGWFiq0UDbIkr2XbBwMxS0b1P//M0xK9XSiftX7oel585zkvfcmMRj+SRhvzRRlthm/BU3Ry3TYzofTsajpIOjw2iNAjIiddehvHXSdA0mkXEEdG0fkE1DEKXmkSVqVIA6rBmsktUgAWLWHoGp30UNclbtLmwQgoyya91wPTbFy0mQXJ5zJQO6BgXRjfH0iSkX5stHIXr5r0bB/lu8syjR8rzsFbR2SpX+5J2eMP3csLtYsEY2K8BeTFuE2jaVCBw7bHOBuxq16AXmpbui3LtIfbRLUHMY2q4lcFo2WB4KA1SUAlWumNEKCzyxBKZxVHvYGaFguCBx1vM/x0IPzoqQoj5SdP4mns2cCGhBsrgj0uaeUBtzMyxQN8w4mYROTW8+r0oANp8W5mf6WQw5aCYJ2o7ymPaKMi2uVpmWM4TW6tdImgGo1bT4nK6DbbsCc0AZSdmLEFszzHrh6riVvRrNA3/9SE8QLWQu+Gjto9+gE9NBMwr9zi83gFeeFTe11zpm1CHE3HeyVCSknf3MIDcFTbfJKdbR1L4xX49L+/BoillV5uPJqkshD3JWSgpNMXP/lcrD8+hO84MnDr5YpFHv0Fe99VjJ0GBRs2H74aP6R+ACr+TFvZNAQ1wAAAABJRU5ErkJggg==\",\"down.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAKVQTFRFAAAAg4ODgICAAAAAAAAAAAAACAgIAAAAAAAAAAAAAAAAOTk5hYWFEBAQfHx8ODg4dnZ2NDQ0XV1dGxsbKCgogICAFBQUIiIiZGRkgICAgICAFRUVAAAAgICAgICAgICAf39/Li4ugICAcHBwgoKCgICAgoKCgICAg4ODgYGBPj4+goKCgICAhISEgYGBgICAgoKCgICAgYGBgYGBf39/gICAgICAIdPQHAAAADd0Uk5TACn/KAIRIBMFDwooKyApKSknKSYmzCcmKfL7JRCUi2L3J7IpcLUrr0VbKXntNEnkMbxrUcG56CMpi50AAAFZSURBVHic5ZRpf4MgDIeFKFatWm/tfW091u7evv9Hm1Acoujm2y0vFPH5Jf+EEE37J6bblmlatv4jaBCI4rMfR0CMXtAEJ0fccgfM7tAkQHXzArdDxggmqGETGCnJWROkNlOwOqhIhKCtgbSicw1uK/dATSK0aRatIzytA8ik4XSiyJnLSm+VPxULgeyLI3uHRJH+qcB4WZGrKb4c20WwI7b3iUt74OS6XD+xZWrXUCtme0uKTvfcJ65CZFa9VOebqwXmft+oT8yF+/VymT4XeGB+Xx8L+j4gBcoFIDT+oMz6Qp93Y74pCeBpUXaLuW0rUk6r1iv3nP322ewYkgv2nZIvgpSPQDrY5wTjRJDNg9XAE/+uSXIVX812GdKEmtvR2rtWaw+5MAOuofJy79SXu9TgBl4d9DZdI0NjgyiswNCB/qk1J5Bmvp+lQOa9IJNhW4bxm6H5R+wLQYMSQXZNzbcAAAAASUVORK5CYII=\",\"price_range.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAAIUlEQVR4nGNggAPm/w9gTA4QIQMitECEJ1yMEgLNDiAAADfgBMRu78GgAAAAAElFTkSuQmCC\",\"remove.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAK5QTFRFAAAAh4eHgICAAAAAAAAAh4eHAAAAAwMDAAAAAAAAgICAGBgYAAAAPz8/AgICgICACQkJhoaGhoaGgICAPj4+NjY2gYGBg4ODgYGBAQEBJycngoKCEBAQgICAgICACAgIKioqZGRkCgoKBQUFERERd3d3gYGBGxsbNDQ0gICAPDw8YWFhBgYGdXV1gICAg4ODgICAAAAAOjo6GhoaeXl5gICAhYWFY2NjhYWFgICA9O0oCgAAADp0Uk5TACn/AhErBSgPEvEmCigowxMuMcgoJ7hWrCkmdCD6vSAmKSEoICkpJie6KSknKSkp0wspJynCMik11rrLte8AAAFwSURBVHic5ZTXkoIwFIZNAAPSpKkoRQV7Wcva3v/FFiRmEwise7t7bs7MP98k/ylJq/VPQjjKiiJrwo+gON0uxro7XiRTsRHs+voE4JjoRrf+6sD7AFTMvaDGRht9glLMUJtLqmUwD5XDCohHAmBUPQSV27GHtFK7xycBWJab5uPaR+Hlmue7GfZxHwyWFHVMQghXFgD2A8IOZtfssdNJIXcyFEaSfchzp9BuMVP+Fhvr5Qh0nGfqYTGhm3BcYFUaQBKOhMWzRqHyGFRY03ppQ5lCFZ30RloVZGQTaa3QqEt0OyrQnkSkk8I1YJkvAwPCMgY0UpbzXRZhVbosIWGbZTLNQszGMCM42FJEjWDDjIAMtp+xj6x2K+/DqNDc0r4Yc8yGl3uer2aIyT1iyd8sYSuY8cldZbVrH4zPebTvP8OMNSoedj6XzDyk3pwG98u0/ufqGu7tBW5c1PxriXFyHq5PQxXFzeDThvbmp/lH4gt6WxfZ03H8DwAAAABJRU5ErkJggg==\",\"settings.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAW5QTFRFAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoKBgYGGxsbKioqQEBAPj4+BQUFCAgIAQEBPz8/ZWVlh4eHZGRkAgICCQkJDw8PNjY2g4ODgoKCNTU1EBAQAAAAAwMDeXl5d3d3AAAAGBgYAAAAERERioqKgoKCgoKCgoKCgYGBgoKChISEhoaGNDQ0g4ODgICAgICAgICAgYGBgYGBhYWFgICAgICAPT09AAAAgYGBgICAgICAgICAgICAY2NjCAgIgICAgICAhYWFhYWFgYGBHBwcgICAhYWFGhoagYGBgYGBg4ODhoaGJycnAAAAhISEgICAg4ODPDw8AAAAgoKCgICAhISEOjo6h4eHgoKCgYGBgICAf39/gYGBgoKCgICAGBgYgYGBg4ODg4ODgICACwsLgYGBgICAgYGBgYGBgYGBgICAgYGBYWFhf39/g4ODPj4+gYGBg4ODgICAhYWFgoKCgYGBgICAgYGBgoKCdXV1T0kC9QAAAHp0Uk5TAAILDxMKESEnJiYpKSgTKSgpKSkoEyAnKSknIAYoKSkFJQEgKl94jYVvVC4nU9f/+K8pOu71KBCi3NPq/ikg0e01Nokm1UUnsZVqQSYOT9lrKRJz5lIpK12jyu+sesgnhGVLxCG55a6Um+GaKfJCKKRgKUt8ocergymDQ9knAAABsElEQVR4nOWUV1vCMBSGg1AQpBZrcVdE3KJxo4LgnuCoe4F7orjHv7doTk3bgF7rd5OnX94nZ+SkCP0TWQqsNpuVs/wI2h2FTleR2+XkHfa8YLHgKRGJSj2SN3fosvIKkVJlVXWONGrkWtEgn1zHJP1GMCs/g7XILFIUpXoTWmaKTnIImGovh72Gxqbmlta2dvgOGpsmQO0dnfhTXd3E6JH0pN1DNnr7MFE/HDsQ0qEO6Pxg9sCh4XDkGx2J6sovBD+G8eiYuo5PxLTKeLoJBZNgT2EcnjY0YYajUKsL7Fk1gcjU3PwChcYTFGorAnsRqlpa1tAVhUbdmr+6RtjIOlgbCjMBUdzc2t7ZzbJ7zAQ4p6GSfRVNwkeKLsvCg31w2JBdjlT0GDxZNzEnpcQ+xWfnFxeXVyp6Tay07gq+L/YUOoBvbomV0V8skiq//DutWfeEfJD1JPLCED4+Pb8kX986tApNQ4iqfSJT76bRzvlgBPODQXW/foYqK5lyeBeYJEL1gaoeGnwIBhjRoQ9SZgTAdEbO/9cKRfmZ+MpGPCVHQ3nBzzS4hKIkuNyh/5g+ALiAXSSas9hwAAAAAElFTkSuQmCC\",\"trash.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABkAAAAZAQMAAAD+JxcgAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAAZQTFRFAAAATU1NkJ+rOQAAAAJ0Uk5TAP9bkSK1AAAALUlEQVR4nGNgAIN6ENHQACX4//9gYBBgYIESYC4LkA0lPEkmGFAI5v8PILYCAHygDJxlK0RUAAAAAElFTkSuQmCC\",\"up.png\":\"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAMZQTFRFAAAAh4eHgICAAAAAAAAAAAAAAwMDAAAAAAAAGBgYAAAAPz8/AgICCQkJgICAh4eHPj4+NjY2AQEBJycnEBAQgICAgICACAgIKioqZGRkCgoKBQUFgYGBERERd3d3gYGBGxsbNDQ0gICAgYGBPDw8gYGBh4eHgICAYWFhBgYGgYGBdXV1goKCg4ODhYWFgICAgoKCAAAAhISEOjo6gICAGhoagYGBeXl5hoaGgICAY2Njg4ODgoKCgoKCgYGBgoKCg4ODgoKC64uw1gAAAEJ0Uk5TACn/AhEFKA8SJgooKBP7KignKSYg9c0gJikhKLQgKSkmJ7ywKY8s5SknlClxKTMpXwtFKe0neiku8ClKWmSbbFFjM5GHSgAAAW5JREFUeJzllGd/gjAQxk3AMFWWOHDvVa2rVbu//5cqhJWQQO3b9nkVjv/v7rnLKJX+iYS9JMuSKvwIiu3loKkZzYHXFgvBiqW1QKSWplfySzvmAyDUN50cG2X0DDLqoTKXVLJgIIXDCohHAqCzHhymeuShy/Ru8kkAhtmhWUTvW9fdEnPQaVLU0n8XF0L3kn5P6LTtZPKgNoK+RrUkcGtQ7S9TsgOxxinrkUPYD+LwLCIh7CTsWSVQqRmTuPqpitlZFLQlApXjrsYBc335wOw47ksmUSMMrgKi/gnAE/awCqNHmTUwDf5X34LlBuedsgbUsK15kPMxTIXzzvFSIdsSPBw7nGD1K+7bL3F9xStEnZhoCw71TbpL71GBBbUF1MZmZWTOi97PI3eIJn9zCEtOj0+umaOde2EszqW9/xr6rM54WFtc0vfQNak57Ibd/Jerohu3GFwYqPjVEhve2Z4cbQU1ikFsQ73z0fwj+ga3VBezGuggFQAAAABJRU5ErkJggg==\"}");
+module.exports = __webpack_require__(68);
+
 
 /***/ }),
-/* 9 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;/*! Hammer.JS - v2.0.7 - 2016-04-22
@@ -3237,7 +3195,7 @@ if (true) {
 
 
 /***/ }),
-/* 10 */
+/* 9 */
 /***/ (function(module, exports) {
 
 function _getPrototypeOf(o) {
@@ -3250,208 +3208,7 @@ function _getPrototypeOf(o) {
 module.exports = _getPrototypeOf;
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(45);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("21fde573", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(47);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("68f243ea", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(49);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("9895d3a6", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(51);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("5b620605", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(53);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("1db01c0b", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(55);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("12d2309d", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(57);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("1b34bfeb", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 18 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(59);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("604bf5ef", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(61);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("f32fd36e", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(63);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(7).default
-var update = add("fd83689e", content, false, {});
-// Hot Module Replacement
-if(false) {}
-
-/***/ }),
-/* 21 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(29);
-
-function _inherits(subClass, superClass) {
-  if (typeof superClass !== "function" && superClass !== null) {
-    throw new TypeError("Super expression must either be null or a function");
-  }
-
-  subClass.prototype = Object.create(superClass && superClass.prototype, {
-    constructor: {
-      value: subClass,
-      writable: true,
-      configurable: true
-    }
-  });
-  if (superClass) setPrototypeOf(subClass, superClass);
-}
-
-module.exports = _inherits;
-
-/***/ }),
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var _typeof = __webpack_require__(23);
-
-var assertThisInitialized = __webpack_require__(24);
-
-function _possibleConstructorReturn(self, call) {
-  if (call && (_typeof(call) === "object" || typeof call === "function")) {
-    return call;
-  }
-
-  return assertThisInitialized(self);
-}
-
-module.exports = _possibleConstructorReturn;
-
-/***/ }),
-/* 23 */
+/* 10 */
 /***/ (function(module, exports) {
 
 function _typeof(obj) {
@@ -3473,7 +3230,303 @@ function _typeof(obj) {
 module.exports = _typeof;
 
 /***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) {
+  try {
+    var info = gen[key](arg);
+    var value = info.value;
+  } catch (error) {
+    reject(error);
+    return;
+  }
+
+  if (info.done) {
+    resolve(value);
+  } else {
+    Promise.resolve(value).then(_next, _throw);
+  }
+}
+
+function _asyncToGenerator(fn) {
+  return function () {
+    var self = this,
+        args = arguments;
+    return new Promise(function (resolve, reject) {
+      var gen = fn.apply(self, args);
+
+      function _next(value) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value);
+      }
+
+      function _throw(err) {
+        asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err);
+      }
+
+      _next(undefined);
+    });
+  };
+}
+
+module.exports = _asyncToGenerator;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var setPrototypeOf = __webpack_require__(45);
+
+function _inherits(subClass, superClass) {
+  if (typeof superClass !== "function" && superClass !== null) {
+    throw new TypeError("Super expression must either be null or a function");
+  }
+
+  subClass.prototype = Object.create(superClass && superClass.prototype, {
+    constructor: {
+      value: subClass,
+      writable: true,
+      configurable: true
+    }
+  });
+  if (superClass) setPrototypeOf(subClass, superClass);
+}
+
+module.exports = _inherits;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var _typeof = __webpack_require__(10);
+
+var assertThisInitialized = __webpack_require__(27);
+
+function _possibleConstructorReturn(self, call) {
+  if (call && (_typeof(call) === "object" || typeof call === "function")) {
+    return call;
+  }
+
+  return assertThisInitialized(self);
+}
+
+module.exports = _possibleConstructorReturn;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports) {
+
+function _defineProperty(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value: value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+
+  return obj;
+}
+
+module.exports = _defineProperty;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(44);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("21fde573", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(47);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("68f243ea", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(49);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("9895d3a6", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(51);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("5b620605", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(53);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("1db01c0b", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(55);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("12d2309d", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(57);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("1b34bfeb", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(59);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("8139036a", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(61);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("604bf5ef", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
 /* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(63);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("f32fd36e", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(65);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("fd83689e", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(67);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var add = __webpack_require__(6).default
+var update = add("550b47ab", content, false, {});
+// Hot Module Replacement
+if(false) {}
+
+/***/ }),
+/* 27 */
 /***/ (function(module, exports) {
 
 function _assertThisInitialized(self) {
@@ -3487,7 +3540,7 @@ function _assertThisInitialized(self) {
 module.exports = _assertThisInitialized;
 
 /***/ }),
-/* 25 */
+/* 28 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -3497,9 +3550,9 @@ module.exports = _assertThisInitialized;
 /**
  * Dependencies
  */
-var util = __webpack_require__(41),
-    cmp = __webpack_require__(42),
-    bin = __webpack_require__(43);
+var util = __webpack_require__(40),
+    cmp = __webpack_require__(41),
+    bin = __webpack_require__(42);
 
 /**
  * Module interface definition
@@ -3711,28 +3764,7 @@ IndexedArray.prototype.getRange = function (begin, end) {
 
 
 /***/ }),
-/* 26 */
-/***/ (function(module, exports) {
-
-function _defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-
-  return obj;
-}
-
-module.exports = _defineProperty;
-
-/***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 function _arrayLikeToArray(arr, len) {
@@ -3748,10 +3780,10 @@ function _arrayLikeToArray(arr, len) {
 module.exports = _arrayLikeToArray;
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeToArray = __webpack_require__(27);
+var arrayLikeToArray = __webpack_require__(29);
 
 function _unsupportedIterableToArray(o, minLen) {
   if (!o) return;
@@ -3765,22 +3797,7 @@ function _unsupportedIterableToArray(o, minLen) {
 module.exports = _unsupportedIterableToArray;
 
 /***/ }),
-/* 29 */
-/***/ (function(module, exports) {
-
-function _setPrototypeOf(o, p) {
-  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
-    o.__proto__ = p;
-    return o;
-  };
-
-  return _setPrototypeOf(o, p);
-}
-
-module.exports = _setPrototypeOf;
-
-/***/ }),
-/* 30 */
+/* 31 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /*
@@ -4110,13 +4127,13 @@ if (typeof window.define === 'function' && window.define.amd) {
 
 
 /***/ }),
-/* 31 */
+/* 32 */
 /***/ (function(module) {
 
-module.exports = JSON.parse("[\"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=\"]");
+module.exports = JSON.parse("[\"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\"]");
 
 /***/ }),
-/* 32 */
+/* 33 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_RESULT__;// Copyright (c) 2013 Pieroxy <pieroxy@pieroxy.net>
@@ -4622,43 +4639,10 @@ if (true) {
 
 
 /***/ }),
-/* 33 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var setPrototypeOf = __webpack_require__(29);
-
-var isNativeReflectConstruct = __webpack_require__(65);
-
-function _construct(Parent, args, Class) {
-  if (isNativeReflectConstruct()) {
-    module.exports = _construct = Reflect.construct;
-  } else {
-    module.exports = _construct = function _construct(Parent, args, Class) {
-      var a = [null];
-      a.push.apply(a, args);
-      var Constructor = Function.bind.apply(Parent, a);
-      var instance = new Constructor();
-      if (Class) setPrototypeOf(instance, Class.prototype);
-      return instance;
-    };
-  }
-
-  return _construct.apply(null, arguments);
-}
-
-module.exports = _construct;
-
-/***/ }),
 /* 34 */
-/***/ (function(module, exports) {
-
-// Draws a ray, adds corresponding collision f-n
-
-/***/ }),
-/* 35 */
 /***/ (function(module, exports, __webpack_require__) {
 
-var arrayLikeToArray = __webpack_require__(27);
+var arrayLikeToArray = __webpack_require__(29);
 
 function _arrayWithoutHoles(arr) {
   if (Array.isArray(arr)) return arrayLikeToArray(arr);
@@ -4667,7 +4651,7 @@ function _arrayWithoutHoles(arr) {
 module.exports = _arrayWithoutHoles;
 
 /***/ }),
-/* 36 */
+/* 35 */
 /***/ (function(module, exports) {
 
 function _iterableToArray(iter) {
@@ -4677,7 +4661,7 @@ function _iterableToArray(iter) {
 module.exports = _iterableToArray;
 
 /***/ }),
-/* 37 */
+/* 36 */
 /***/ (function(module, exports) {
 
 function _nonIterableSpread() {
@@ -4687,7 +4671,7 @@ function _nonIterableSpread() {
 module.exports = _nonIterableSpread;
 
 /***/ }),
-/* 38 */
+/* 37 */
 /***/ (function(module, exports) {
 
 function _arrayWithHoles(arr) {
@@ -4697,7 +4681,7 @@ function _arrayWithHoles(arr) {
 module.exports = _arrayWithHoles;
 
 /***/ }),
-/* 39 */
+/* 38 */
 /***/ (function(module, exports) {
 
 function _iterableToArrayLimit(arr, i) {
@@ -4730,7 +4714,7 @@ function _iterableToArrayLimit(arr, i) {
 module.exports = _iterableToArrayLimit;
 
 /***/ }),
-/* 40 */
+/* 39 */
 /***/ (function(module, exports) {
 
 function _nonIterableRest() {
@@ -4740,7 +4724,7 @@ function _nonIterableRest() {
 module.exports = _nonIterableRest;
 
 /***/ }),
-/* 41 */
+/* 40 */
 /***/ (function(module, exports) {
 
 /**
@@ -4785,7 +4769,7 @@ module.exports.isSortableArrayLike = function (o) {
 
 
 /***/ }),
-/* 42 */
+/* 41 */
 /***/ (function(module, exports) {
 
 /**
@@ -4820,7 +4804,7 @@ module.exports = {
 
 
 /***/ }),
-/* 43 */
+/* 42 */
 /***/ (function(module, exports) {
 
 /**
@@ -4882,34 +4866,49 @@ module.exports.search = search;
 
 
 /***/ }),
-/* 44 */
+/* 43 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_UxWrapper_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_UxWrapper_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_UxWrapper_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_UxWrapper_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_UxWrapper_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
-/* 45 */
+/* 44 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.trading-vue-ux-wrapper {\n    position: absolute;\n    display: flex;\n}\n.tvjs-ux-wrapper-pin {\n    position: absolute;\n    width: 9px;\n    height: 9px;\n    z-index: 100;\n    background-color: #23a776;\n    border-radius: 10px;\n    margin-left: -6px;\n    margin-top: -6px;\n    pointer-events: none;\n}\n.tvjs-ux-wrapper-head {\n    position: absolute;\n    height: 23px;\n    width: 100%;\n}\n.tvjs-ux-wrapper-close {\n    position: absolute;\n    width: 11px;\n    height: 11px;\n    font-size: 1.5em;\n    line-height: 0.5em;\n    padding: 1px 0px 1px 2px;\n    border-radius: 10px;\n    right: 5px;\n    top: 5px;\n    user-select: none;\n}\n.tvjs-ux-wrapper-close-hb {\n}\n.tvjs-ux-wrapper-close:hover {\n    background-color: #FF605C !important;\n    color: #692324 !important;\n}\n.tvjs-ux-wrapper-full {\n}\n", ""]);
+exports.push([module.i, "\n.trading-vue-ux-wrapper {\n    position: absolute;\n    display: flex;\n}\n.tvjs-ux-wrapper-pin {\n    position: absolute;\n    width: 9px;\n    height: 9px;\n    z-index: 100;\n    background-color: #23a776;\n    border-radius: 10px;\n    margin-left: -6px;\n    margin-top: -6px;\n    pointer-events: none;\n}\n.tvjs-ux-wrapper-head {\n    position: absolute;\n    height: 23px;\n    width: 100%;\n}\n.tvjs-ux-wrapper-close {\n    position: absolute;\n    width: 11px;\n    height: 11px;\n    font-size: 1.5em;\n    line-height: 0.5em;\n    padding: 1px 1px 1px 1px;\n    border-radius: 10px;\n    right: 5px;\n    top: 5px;\n    user-select: none;\n    text-align: center;\n}\n.tvjs-ux-wrapper-close-hb {\n}\n.tvjs-ux-wrapper-close:hover {\n    background-color: #FF605C !important;\n    color: #692324 !important;\n}\n.tvjs-ux-wrapper-full {\n}\n", ""]);
 // Exports
 module.exports = exports;
 
+
+/***/ }),
+/* 45 */
+/***/ (function(module, exports) {
+
+function _setPrototypeOf(o, p) {
+  module.exports = _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    o.__proto__ = p;
+    return o;
+  };
+
+  return _setPrototypeOf(o, p);
+}
+
+module.exports = _setPrototypeOf;
 
 /***/ }),
 /* 46 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_LegendButton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(12);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_LegendButton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(16);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_LegendButton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_LegendButton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_LegendButton_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
@@ -4919,10 +4918,10 @@ module.exports = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.t-vue-lbtn {\n    z-index: 100;\n    width: 21px;\n    height: 21px;\n    margin-bottom: -6px;\n    pointer-events: all;\n    cursor: pointer;\n}\n", ""]);
+exports.push([module.i, "\n.t-vue-lbtn {\n    z-index: 100;\n    pointer-events: all;\n    cursor: pointer;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -4932,7 +4931,7 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(13);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ButtonGroup_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
@@ -4942,7 +4941,7 @@ module.exports = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "\n.t-vue-lbtn-grp {\n    margin-left: 0.5em;\n}\n", ""]);
@@ -4955,7 +4954,7 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Spinner_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(14);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Spinner_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Spinner_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Spinner_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Spinner_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
@@ -4965,7 +4964,7 @@ module.exports = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "\n.tvjs-spinner {\n    display: inline-block;\n    position: relative;\n    width: 20px;\n    height: 16px;\n    margin: -4px 0px -1px 0px;\n    opacity: 0.7;\n}\n.tvjs-spinner div {\n    position: absolute;\n    top: 8px;\n    width: 4px;\n    height: 4px;\n    border-radius: 50%;\n    animation-timing-function: cubic-bezier(1, 1, 1, 1);\n}\n.tvjs-spinner div:nth-child(1) {\n    left: 2px;\n    animation: tvjs-spinner1 0.6s infinite;\n    opacity: 0.9;\n}\n.tvjs-spinner div:nth-child(2) {\n    left: 2px;\n    animation: tvjs-spinner2 0.6s infinite;\n}\n.tvjs-spinner div:nth-child(3) {\n    left: 9px;\n    animation: tvjs-spinner2 0.6s infinite;\n}\n.tvjs-spinner div:nth-child(4) {\n    left: 16px;\n    animation: tvjs-spinner3 0.6s infinite;\n    opacity: 0.9;\n}\n@keyframes tvjs-spinner1 {\n0% {\n        transform: scale(0);\n}\n100% {\n        transform: scale(1);\n}\n}\n@keyframes tvjs-spinner3 {\n0% {\n        transform: scale(1);\n}\n100% {\n        transform: scale(0);\n}\n}\n@keyframes tvjs-spinner2 {\n0% {\n        transform: translate(0, 0);\n}\n100% {\n        transform: translate(7px, 0);\n}\n}\n", ""]);
@@ -4978,7 +4977,7 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Legend_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(15);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Legend_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Legend_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Legend_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Legend_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
@@ -4988,10 +4987,10 @@ module.exports = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.trading-vue-legend {\n    position: relative;\n    z-index: 100;\n    font-size: 1.25em;\n    margin-left: 10px;\n    pointer-events: none;\n}\n.trading-vue-ohlcv {\n    pointer-events: none;\n    margin-bottom: 0.5em;\n}\n.t-vue-lspan {\n    font-variant-numeric: tabular-nums;\n    font-weight: 100;\n    font-size: 0.95em;\n    color: #999999; /* TODO: move => params */\n    margin-left: 0.1em;\n    margin-right: 0.2em;\n}\n.t-vue-title {\n    margin-right: 0.25em;\n    font-size: 1.45em;\n    font-weight: 200;\n}\n.t-vue-ind {\n    margin-left: 0.2em;\n    margin-bottom: 0.5em;\n    font-weight: 200;\n    font-size: 1.0em;\n    margin-top: 0.3em;\n}\n.t-vue-ivalue {\n    margin-left: 0.5em;\n}\n.t-vue-unknown {\n    color: #999999; /* TODO: move => params */\n}\n.tvjs-appear-enter-active,\n.tvjs-appear-leave-active\n{\n    transition: all .25s ease;\n}\n.tvjs-appear-enter, .tvjs-appear-leave-to\n{\n    opacity: 0;\n}\n", ""]);
+exports.push([module.i, "\n.trading-vue-legend {\n    position: relative;\n    z-index: 100;\n    font-size: 1.25em;\n    margin-left: 10px;\n    pointer-events: none;\n    text-align: left;\n    user-select: none;\n}\n.trading-vue-ohlcv {\n    pointer-events: none;\n    margin-bottom: 0.5em;\n}\n.t-vue-lspan {\n    font-variant-numeric: tabular-nums;\n    font-weight: 100;\n    font-size: 0.95em;\n    color: #999999; /* TODO: move => params */\n    margin-left: 0.1em;\n    margin-right: 0.2em;\n}\n.t-vue-title {\n    margin-right: 0.25em;\n    font-size: 1.45em;\n    font-weight: 200;\n}\n.t-vue-ind {\n    margin-left: 0.2em;\n    margin-bottom: 0.5em;\n    font-weight: 200;\n    font-size: 1.0em;\n    margin-top: 0.3em;\n}\n.t-vue-ivalue {\n    margin-left: 0.5em;\n}\n.t-vue-unknown {\n    color: #999999; /* TODO: move => params */\n}\n.tvjs-appear-enter-active,\n.tvjs-appear-leave-active\n{\n    transition: all .25s ease;\n}\n.tvjs-appear-enter, .tvjs-appear-leave-to\n{\n    opacity: 0;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5001,7 +5000,7 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Section_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(16);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Section_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(20);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Section_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Section_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Section_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
@@ -5011,7 +5010,7 @@ module.exports = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "\n.trading-vue-section {\n    height: 0;\n    position: absolute;\n}\n", ""]);
@@ -5024,7 +5023,7 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Botbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(17);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Botbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(21);
 /* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Botbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Botbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
  /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Botbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
@@ -5034,7 +5033,7 @@ module.exports = exports;
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "\n.trading-vue-botbar {\n    position: relative !important;\n}\n", ""]);
@@ -5047,20 +5046,20 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(18);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(22);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ItemList_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 /* 59 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.trading-vue-tbitem {\n}\n.trading-vue-tbitem:hover {\n    background-color: #76878319;\n}\n.trading-vue-tbicon {\n    position: absolute;\n}\n.trading-vue-tbitem.selected-item .trading-vue-tbicon {\n     filter: brightness(1.45) sepia(1) hue-rotate(90deg) saturate(4.5) !important;\n}\n.pixelated {\n    -ms-interpolation-mode: nearest-neighbor;\n    image-rendering: -webkit-optimize-contrast;\n    image-rendering: -webkit-crisp-edges;\n    image-rendering: -moz-crisp-edges;\n    image-rendering: -o-crisp-edges;\n    image-rendering: pixelated;\n}\n\n", ""]);
+exports.push([module.i, "\n.tvjs-item-list {\n    position: absolute;\n    user-select: none;\n    margin-top: -5px;\n}\n.tvjs-item-list-item {\n    display: flex;\n    align-items: center;\n    padding-right: 20px;\n    font-size: 1.15em;\n    letter-spacing: 0.05em;\n}\n.tvjs-item-list-item:hover {\n    background-color: #76878319;\n}\n.tvjs-item-list-item * {\n    position: relative !important;\n}\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5070,20 +5069,20 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(19);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(23);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_ToolbarItem_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 /* 61 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
-exports.push([module.i, "\n.trading-vue-toolbar {\n    position: absolute;\n    border-right: 1px solid black;\n    z-index: 100;\n    padding-top: 3px;\n}\n", ""]);
+exports.push([module.i, "\n.trading-vue-tbitem {\n}\n.trading-vue-tbitem:hover {\n    background-color: #76878319;\n}\n.trading-vue-tbitem-exp {\n    position: absolute;\n    right: -3px;\n    padding: 18.5px 5px;\n    font-stretch: extra-condensed;\n    transform: scaleX(0.6);\n    font-size: 0.6em;\n    opacity: 0.0;\n    user-select: none;\n    line-height: 0;\n}\n.trading-vue-tbitem:hover\n.trading-vue-tbitem-exp {\n    opacity: 0.5;\n}\n.trading-vue-tbitem-exp:hover {\n    background-color: #76878330;\n    opacity: 0.9 !important;\n}\n.trading-vue-tbicon {\n    position: absolute;\n}\n.trading-vue-tbitem.selected-item > .trading-vue-tbicon,\n.tvjs-item-list-item.selected-item > .trading-vue-tbicon {\n     filter: brightness(1.45) sepia(1) hue-rotate(90deg) saturate(4.5) !important;\n}\n.tvjs-pixelated {\n    -ms-interpolation-mode: nearest-neighbor;\n    image-rendering: -webkit-optimize-contrast;\n    image-rendering: -webkit-crisp-edges;\n    image-rendering: -moz-crisp-edges;\n    image-rendering: -o-crisp-edges;\n    image-rendering: pixelated;\n}\n\n", ""]);
 // Exports
 module.exports = exports;
 
@@ -5093,17 +5092,40 @@ module.exports = exports;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(20);
-/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
 /* unused harmony reexport * */
- /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Toolbar_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 /* 63 */
 /***/ (function(module, exports, __webpack_require__) {
 
 // Imports
-var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(6);
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "\n.trading-vue-toolbar {\n    position: absolute;\n    border-right: 1px solid black;\n    z-index: 101;\n    padding-top: 3px;\n}\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+/* 64 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(25);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_Widgets_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+/* 65 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
 exports = ___CSS_LOADER_API_IMPORT___(false);
 // Module
 exports.push([module.i, "\n.tvjs-widgets {\n    position: absolute;\n    z-index: 1000;\n    pointer-events: none;\n}\n", ""]);
@@ -5112,7 +5134,30 @@ module.exports = exports;
 
 
 /***/ }),
-/* 64 */
+/* 66 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_TradingVue_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(26);
+/* harmony import */ var _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_TradingVue_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_TradingVue_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* unused harmony reexport * */
+ /* unused harmony default export */ var _unused_webpack_default_export = (_node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_vue_loader_lib_index_js_vue_loader_options_TradingVue_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+
+/***/ }),
+/* 67 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// Imports
+var ___CSS_LOADER_API_IMPORT___ = __webpack_require__(5);
+exports = ___CSS_LOADER_API_IMPORT___(false);
+// Module
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/* Anit-boostrap tactix */\n.trading-vue *, ::after, ::before {\n    box-sizing: content-box;\n}\n.trading-vue img {\n    vertical-align: initial;\n}\n", ""]);
+// Exports
+module.exports = exports;
+
+
+/***/ }),
+/* 68 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /**
@@ -5866,26 +5911,13 @@ try {
 
 
 /***/ }),
-/* 65 */
+/* 69 */
 /***/ (function(module, exports) {
 
-function _isNativeReflectConstruct() {
-  if (typeof Reflect === "undefined" || !Reflect.construct) return false;
-  if (Reflect.construct.sham) return false;
-  if (typeof Proxy === "function") return true;
 
-  try {
-    Date.prototype.toString.call(Reflect.construct(Date, [], function () {}));
-    return true;
-  } catch (e) {
-    return false;
-  }
-}
-
-module.exports = _isNativeReflectConstruct;
 
 /***/ }),
-/* 66 */
+/* 70 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -5916,12 +5948,13 @@ var TradingVuevue_type_template_id_235c0ade_render = function() {
     {
       staticClass: "trading-vue",
       style: {
-        color: this.colorText,
-        font: this.font,
+        color: this.chart_props.colors.text,
+        font: this.font_comp,
         width: this.width + "px",
         height: this.height + "px"
       },
-      attrs: { id: _vm.id }
+      attrs: { id: _vm.id },
+      on: { mousedown: _vm.mousedown, mouseleave: _vm.mouseleave }
     },
     [
       _vm.toolbar
@@ -5929,6 +5962,7 @@ var TradingVuevue_type_template_id_235c0ade_render = function() {
             "toolbar",
             _vm._b(
               {
+                ref: "toolbar",
                 attrs: { config: _vm.chart_config },
                 on: { "custom-event": _vm.custom_event }
               },
@@ -5939,8 +5973,9 @@ var TradingVuevue_type_template_id_235c0ade_render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.ctrllist.length
+      _vm.controllers.length
         ? _c("widgets", {
+            ref: "widgets",
             attrs: {
               map: _vm.ws,
               width: _vm.width,
@@ -6005,6 +6040,8 @@ var $SCALES = [0.05, 0.1, 0.2, 0.25, 0.5, 0.8, 1, 2, 5];
 var ChartConfig = {
   SBMIN: 60,
   // Minimal sidebar px
+  SBMAX: Infinity,
+  // Max sidebar, px
   TOOLBAR: 57,
   // Toolbar width px
   TB_ICON: 25,
@@ -6013,6 +6050,8 @@ var ChartConfig = {
   // Toolbar item margin px
   TB_ICON_BRI: 1,
   // Toolbar icon brightness
+  TB_ICON_HOLD: 420,
+  // ms, wait to expand
   TB_BORDER: 1,
   // Toolbar border px
   TB_B_STYLE: 'dotted',
@@ -6043,7 +6082,13 @@ var ChartConfig = {
   // %/100 of height
   UX_OPACITY: 0.9,
   // Ux background opacity
-  ZOOM_MODE: 'tv' // 'tv' or 'tl'
+  ZOOM_MODE: 'tv',
+  // 'tv' or 'tl'
+  L_BTN_SIZE: 21,
+  // Legend Button size, px
+  L_BTN_MARGIN: '-6px 0 -6px 0',
+  // css margin
+  SCROLL_WHEEL: 'prevent' // 'pass', 'click'
 
 };
 ChartConfig.FONT = "11px -apple-system,BlinkMacSystemFont,\n    Segoe UI,Roboto,Oxygen,Ubuntu,Cantarell,\n    Fira Sans,Droid Sans,Helvetica Neue,\n    sans-serif";
@@ -6102,6 +6147,8 @@ var Chartvue_type_template_id_4d06a4de_render = function() {
       _vm._l(this._layout.grids, function(grid, i) {
         return _c("grid-section", {
           key: grid.id,
+          ref: "sec",
+          refInFor: true,
           attrs: { common: _vm.section_props(i), grid_id: i },
           on: {
             "register-kb-listener": _vm.register_kb,
@@ -6120,7 +6167,7 @@ var Chartvue_type_template_id_4d06a4de_render = function() {
       _c(
         "botbar",
         _vm._b(
-          { attrs: { shaders: _vm.shaders } },
+          { attrs: { shaders: _vm.shaders, timezone: _vm.timezone } },
           "botbar",
           _vm.botbar_props,
           false
@@ -6137,7 +6184,7 @@ Chartvue_type_template_id_4d06a4de_render._withStripped = true
 // CONCATENATED MODULE: ./src/components/Chart.vue?vue&type=template&id=4d06a4de&
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/slicedToArray.js
-var slicedToArray = __webpack_require__(4);
+var slicedToArray = __webpack_require__(3);
 var slicedToArray_default = /*#__PURE__*/__webpack_require__.n(slicedToArray);
 
 // CONCATENATED MODULE: ./src/stuff/context.js
@@ -6151,8 +6198,8 @@ function Context($p) {
 
 /* harmony default export */ var context = (Context);
 // EXTERNAL MODULE: ./node_modules/arrayslicer/lib/index.js
-var arrayslicer_lib = __webpack_require__(25);
-var lib_default = /*#__PURE__*/__webpack_require__.n(arrayslicer_lib);
+var lib = __webpack_require__(28);
+var lib_default = /*#__PURE__*/__webpack_require__.n(lib);
 
 // CONCATENATED MODULE: ./src/stuff/utils.js
 
@@ -6272,13 +6319,14 @@ var lib_default = /*#__PURE__*/__webpack_require__.n(arrayslicer_lib);
     try {
       var ia = new lib_default.a(arr, "0");
       var res = ia.getRange(t1, t2);
-      return [res];
+      var i0 = ia.valpos[t1].next;
+      return [res, i0];
     } catch (e) {
       // Something wrong with fancy slice lib
       // Fast fix: fallback to filter
       return [arr.filter(function (x) {
         return x[0] >= t1 && x[0] <= t2;
-      })];
+      }), 0];
     }
   },
   // Fast filter (index-based)
@@ -6378,6 +6426,7 @@ var lib_default = /*#__PURE__*/__webpack_require__.n(arrayslicer_lib);
         el = doc.createElement("div");
         el.id = id;
         el.style.position = 'absolute';
+        el.style.top = '-1000px';
         base.appendChild(el);
       }
 
@@ -6403,6 +6452,57 @@ var lib_default = /*#__PURE__*/__webpack_require__.n(arrayslicer_lib);
   },
   uuid2: function uuid2() {
     return this.uuid('xxxxxxxxxxxx');
+  },
+  // Delayed warning, f = condition lambda fn
+  warn: function warn(f, text, delay) {
+    if (delay === void 0) {
+      delay = 0;
+    }
+
+    setTimeout(function () {
+      if (f()) console.warn(text);
+    }, delay);
+  },
+  // Checks if script props updated
+  // (and not style settings or something else)
+  is_scr_props_upd: function is_scr_props_upd(n, prev) {
+    var p = prev.find(function (x) {
+      return x.v.$uuid === n.v.$uuid;
+    });
+    if (!p) return false;
+    var props = n.p.settings.$props;
+    if (!props) return false;
+    return props.some(function (x) {
+      return n.v[x] !== p.v[x];
+    });
+  },
+  // Checks if it's time to make a script update
+  // (based on execInterval in ms)
+  delayed_exec: function delayed_exec(v) {
+    if (!v.script || !v.script.execInterval) return true;
+    var t = this.now();
+    var dt = v.script.execInterval;
+
+    if (!v.settings.$last_exec || t > v.settings.$last_exec + dt) {
+      v.settings.$last_exec = t;
+      return true;
+    }
+
+    return false;
+  },
+  // Format names such 'RSI, $length', where
+  // length - is one of the settings
+  format_name: function format_name(ov) {
+    if (!ov.name) return undefined;
+    var name = ov.name;
+
+    for (var k in ov.settings || {}) {
+      var val = ov.settings[k];
+      var reg = new RegExp("\\$".concat(k), 'g');
+      name = name.replace(reg, val);
+    }
+
+    return name;
   }
 });
 // CONCATENATED MODULE: ./src/stuff/math.js
@@ -6541,6 +6641,7 @@ var lib_default = /*#__PURE__*/__webpack_require__.n(arrayslicer_lib);
     },
     // Time-axis nearest step
     t_magnet: function t_magnet(t) {
+      if (ib) t = self.ti_map.smth2i(t);
       var cn = self.candles || self.master_grid.candles;
       var arr = cn.map(function (x) {
         return x.raw[0];
@@ -6616,7 +6717,9 @@ var grid_maker_TIMESCALES = constants.TIMESCALES,
     grid_maker_$SCALES = constants.$SCALES,
     grid_maker_WEEK = constants.WEEK,
     grid_maker_MONTH = constants.MONTH,
-    grid_maker_YEAR = constants.YEAR;
+    grid_maker_YEAR = constants.YEAR,
+    grid_maker_HOUR = constants.HOUR,
+    grid_maker_DAY = constants.DAY;
 var MAX_INT = Number.MAX_SAFE_INTEGER; // master_grid - ref to the master grid
 
 function GridMaker(id, params, master_grid) {
@@ -6633,7 +6736,8 @@ function GridMaker(id, params, master_grid) {
       height = params.height,
       y_t = params.y_t,
       ti_map = params.ti_map,
-      grid = params.grid;
+      grid = params.grid,
+      timezone = params.timezone;
   var self = {
     ti_map: ti_map
   };
@@ -6645,8 +6749,9 @@ function GridMaker(id, params, master_grid) {
     // Gets last y_range fn()
     var yrs = Object.values(lm).filter(function (x) {
       return x.y_range;
-    });
-    if (yrs.length) y_range_fn = yrs[yrs.length - 1].y_range;
+    }); // The first y_range() determines the range
+
+    if (yrs.length) y_range_fn = yrs[0].y_range;
   } // Calc vertical ($/₿) range
 
 
@@ -6679,12 +6784,11 @@ function GridMaker(id, params, master_grid) {
       }
 
       if (y_range_fn) {
-        var _y_range_fn3 = y_range_fn(hi, lo);
-
-        var _y_range_fn4 = slicedToArray_default()(_y_range_fn3, 2);
-
-        hi = _y_range_fn4[0];
-        lo = _y_range_fn4[1];
+        var _y_range_fn3 = y_range_fn(hi, lo),
+            _y_range_fn4 = slicedToArray_default()(_y_range_fn3, 3),
+            hi = _y_range_fn4[0],
+            lo = _y_range_fn4[1],
+            exp = _y_range_fn4[2];
       }
     } // Fixed y-range in non-auto mode
 
@@ -6694,8 +6798,9 @@ function GridMaker(id, params, master_grid) {
       self.$_lo = y_t.range[1];
     } else {
       if (!ls) {
-        self.$_hi = hi + (hi - lo) * $p.config.EXPAND;
-        self.$_lo = lo - (hi - lo) * $p.config.EXPAND;
+        exp = exp === false ? 0 : 1;
+        self.$_hi = hi + (hi - lo) * $p.config.EXPAND * exp;
+        self.$_lo = lo - (hi - lo) * $p.config.EXPAND * exp;
       } else {
         self.$_hi = hi;
         self.$_lo = lo;
@@ -6740,6 +6845,7 @@ function GridMaker(id, params, master_grid) {
     var str = '0'.repeat(Math.max.apply(Math, toConsumableArray_default()(lens))) + '    ';
     self.sb = ctx.measureText(str).width;
     self.sb = Math.max(Math.floor(self.sb), $p.config.SBMIN);
+    self.sb = Math.min(self.sb, $p.config.SBMAX);
   } // Calculate $ precision for the Y-axis
 
 
@@ -6918,7 +7024,7 @@ function GridMaker(id, params, master_grid) {
             self.xs.splice(self.xs.length - 2, 1);
           }
         }
-      } // TODO: fix grid extention for bigger timeframes
+      } // TODO: fix grid extension for bigger timeframes
 
 
       if (interval < grid_maker_WEEK && r > 0) {
@@ -6935,15 +7041,26 @@ function GridMaker(id, params, master_grid) {
 
   function insert_line(prev, p, x, m0) {
     var prev_t = ti_map.ib ? ti_map.i2t(prev[0]) : prev[0];
-    var p_t = ti_map.ib ? ti_map.i2t(p[0]) : p[0]; // TODO: take this block =========> (see below)
+    var p_t = ti_map.ib ? ti_map.i2t(p[0]) : p[0];
+
+    if (ti_map.tf < grid_maker_DAY) {
+      prev_t += timezone * grid_maker_HOUR;
+      p_t += timezone * grid_maker_HOUR;
+    }
+
+    var d = timezone * grid_maker_HOUR; // TODO: take this block =========> (see below)
 
     if ((prev[0] || interval === grid_maker_YEAR) && utils.get_year(p_t) !== utils.get_year(prev_t)) {
       self.xs.push([x, p, grid_maker_YEAR]); // [px, [...], rank]
     } else if (prev[0] && utils.get_month(p_t) !== utils.get_month(prev_t)) {
       self.xs.push([x, p, grid_maker_MONTH]);
-    } else if (p[0] % self.t_step === 0) {
-      self.xs.push([x, p, interval]);
-    }
+    } // TODO: should be added if this day !== prev day
+    // And the same for 'botbar.js', TODO(*)
+    else if (utils.day_start(p_t) === p_t) {
+        self.xs.push([x, p, grid_maker_DAY]);
+      } else if (p[0] % self.t_step === 0) {
+        self.xs.push([x, p, interval]);
+      }
   }
 
   function extend_left(dt, r) {
@@ -6995,6 +7112,7 @@ function GridMaker(id, params, master_grid) {
     // a problem here ?
     self.$_mult = dollar_mult();
     self.ys = [];
+    if (!sub.length) return;
     var v = Math.abs(sub[sub.length - 1][1] || 1);
     var y1 = search_start_pos(v);
     var y2 = search_start_neg(-v);
@@ -7282,7 +7400,8 @@ function Layout(params) {
     ti_map: ti_map,
     height: hs[0],
     y_t: y_ts[0],
-    grid: mgrid
+    grid: mgrid,
+    timezone: $p.timezone
   };
   var gms = [new grid_maker(0, specs)]; // Sub grids
 
@@ -7504,6 +7623,7 @@ var Sectionvue_type_template_id_8fbe9336_render = function() {
     { staticClass: "trading-vue-section" },
     [
       _c("chart-legend", {
+        ref: "legend",
         attrs: {
           values: _vm.section_values,
           grid_id: _vm.grid_id,
@@ -7517,6 +7637,7 @@ var Sectionvue_type_template_id_8fbe9336_render = function() {
         "grid",
         _vm._b(
           {
+            ref: "grid",
             attrs: { grid_id: _vm.grid_id },
             on: {
               "register-kb-listener": _vm.register_kb,
@@ -7540,12 +7661,8 @@ var Sectionvue_type_template_id_8fbe9336_render = function() {
         "sidebar",
         _vm._b(
           {
-            ref: "grid-" + _vm.grid_id,
-            attrs: {
-              grid_id: _vm.grid_id,
-              rerender: _vm.rerender,
-              shaders: _vm.shaders
-            },
+            ref: "sb-" + _vm.grid_id,
+            attrs: { grid_id: _vm.grid_id, rerender: _vm.rerender },
             on: { "sidebar-transform": _vm.sidebar_transform }
           },
           "sidebar",
@@ -7564,11 +7681,11 @@ Sectionvue_type_template_id_8fbe9336_render._withStripped = true
 // CONCATENATED MODULE: ./src/components/Section.vue?vue&type=template&id=8fbe9336&
 
 // EXTERNAL MODULE: ./node_modules/hammerjs/hammer.js
-var hammer = __webpack_require__(9);
+var hammer = __webpack_require__(8);
 
 // EXTERNAL MODULE: ./node_modules/hamsterjs/hamster.js
-var hamsterjs_hamster = __webpack_require__(30);
-var hamster_default = /*#__PURE__*/__webpack_require__.n(hamsterjs_hamster);
+var hamster = __webpack_require__(31);
+var hamster_default = /*#__PURE__*/__webpack_require__.n(hamster);
 
 // CONCATENATED MODULE: ./src/components/js/grid.js
 
@@ -7610,6 +7727,7 @@ var grid_Grid = /*#__PURE__*/function () {
     this.offset_y = 0;
     this.deltas = 0; // Wheel delta events
 
+    this.wmode = this.$p.config.SCROLL_WHEEL;
     this.listeners();
     this.overlays = [];
   }
@@ -7619,11 +7737,11 @@ var grid_Grid = /*#__PURE__*/function () {
     value: function listeners() {
       var _this = this;
 
-      var hamster = hamster_default()(this.canvas);
-      hamster.wheel(function (event, delta) {
+      this.hm = hamster_default()(this.canvas);
+      this.hm.wheel(function (event, delta) {
         return _this.mousezoom(-delta * 50, event);
       });
-      var mc = new hammer["Manager"](this.canvas);
+      var mc = this.mc = new hammer["Manager"](this.canvas);
       mc.add(new hammer["Pan"]({
         threshold: 0
       }));
@@ -7690,15 +7808,25 @@ var grid_Grid = /*#__PURE__*/function () {
       mc.on('pinch', function (event) {
         if (_this.pinch) _this.pinchzoom(event.scale);
       });
-      window.addEventListener("gesturestart", function (event) {
-        event.preventDefault();
-      });
-      window.addEventListener("gesturechange", function (event) {
-        event.preventDefault();
-      });
-      window.addEventListener("gestureend", function (event) {
-        event.preventDefault();
-      });
+      var add = addEventListener;
+      add("gesturestart", this.gesturestart);
+      add("gesturechange", this.gesturechange);
+      add("gestureend", this.gestureend);
+    }
+  }, {
+    key: "gesturestart",
+    value: function gesturestart(event) {
+      event.preventDefault();
+    }
+  }, {
+    key: "gesturechange",
+    value: function gesturechange(event) {
+      event.preventDefault();
+    }
+  }, {
+    key: "gestureend",
+    value: function gestureend(event) {
+      event.preventDefault();
     }
   }, {
     key: "mousemove",
@@ -7707,11 +7835,15 @@ var grid_Grid = /*#__PURE__*/function () {
         grid_id: this.id,
         x: event.layerX,
         y: event.layerY + this.layout.offset
-      }); // TODO: Temp solution, need to implement
-      // a proper way to get the chart el offset
+      });
+      var rect = this.canvas.getBoundingClientRect();
+      this.offset_x = -rect.x; //event.layerX - event.pageX
+      //+ window.scrollX
 
-      this.offset_x = event.layerX - event.pageX + window.scrollX;
-      this.offset_y = event.layerY - event.pageY + this.layout.offset + window.scrollY;
+      this.offset_y = -rect.y; //event.layerY - event.pageY
+      //+ this.layout.offset
+      //+ window.scrollY
+
       this.propagate('mousemove', event);
     }
   }, {
@@ -7736,7 +7868,7 @@ var grid_Grid = /*#__PURE__*/function () {
       if (event.defaultPrevented) return;
       this.comp.$emit('custom-event', {
         event: 'grid-mousedown',
-        args: [this.id]
+        args: [this.id, event]
       });
     }
   }, {
@@ -7782,6 +7914,7 @@ var grid_Grid = /*#__PURE__*/function () {
       this.interval = this.$p.interval;
       if (!this.layout) return;
       this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+      if (this.$p.shaders.length) this.apply_shaders();
       this.grid();
       var overlays = [];
       overlays.push.apply(overlays, toConsumableArray_default()(this.overlays)); // z-index sorting
@@ -7805,49 +7938,82 @@ var grid_Grid = /*#__PURE__*/function () {
       if (this.crosshair) {
         this.crosshair.renderer.draw(this.ctx);
       }
-    } // Actually draws the grid (for real)
-
+    }
   }, {
-    key: "grid",
-    value: function grid() {
-      this.ctx.strokeStyle = this.$p.colors.colorGrid;
-      this.ctx.beginPath();
-      var ymax = this.layout.height;
+    key: "apply_shaders",
+    value: function apply_shaders() {
+      var layout = this.$p.layout.grids[this.id];
+      var props = {
+        layout: layout,
+        range: this.range,
+        interval: this.interval,
+        tf: layout.ti_map.tf,
+        cursor: this.cursor,
+        colors: this.$p.colors,
+        sub: this.data,
+        font: this.$p.font,
+        config: this.$p.config,
+        meta: this.$p.meta
+      };
 
-      var _iterator = grid_createForOfIteratorHelper(this.layout.xs),
+      var _iterator = grid_createForOfIteratorHelper(this.$p.shaders),
           _step;
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var _step$value = slicedToArray_default()(_step.value, 2),
-              x = _step$value[0],
-              p = _step$value[1];
-
-          this.ctx.moveTo(x - 0.5, 0);
-          this.ctx.lineTo(x - 0.5, ymax);
+          var s = _step.value;
+          this.ctx.save();
+          s.draw(this.ctx, props);
+          this.ctx.restore();
         }
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
+    } // Actually draws the grid (for real)
 
-      var _iterator2 = grid_createForOfIteratorHelper(this.layout.ys),
+  }, {
+    key: "grid",
+    value: function grid() {
+      this.ctx.strokeStyle = this.$p.colors.grid;
+      this.ctx.beginPath();
+      var ymax = this.layout.height;
+
+      var _iterator2 = grid_createForOfIteratorHelper(this.layout.xs),
           _step2;
 
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var _step2$value = slicedToArray_default()(_step2.value, 2),
-              y = _step2$value[0],
-              y$ = _step2$value[1];
+              x = _step2$value[0],
+              p = _step2$value[1];
 
-          this.ctx.moveTo(0, y - 0.5);
-          this.ctx.lineTo(this.layout.width, y - 0.5);
+          this.ctx.moveTo(x - 0.5, 0);
+          this.ctx.lineTo(x - 0.5, ymax);
         }
       } catch (err) {
         _iterator2.e(err);
       } finally {
         _iterator2.f();
+      }
+
+      var _iterator3 = grid_createForOfIteratorHelper(this.layout.ys),
+          _step3;
+
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var _step3$value = slicedToArray_default()(_step3.value, 2),
+              y = _step3$value[0],
+              y$ = _step3$value[1];
+
+          this.ctx.moveTo(0, y - 0.5);
+          this.ctx.lineTo(this.layout.width, y - 0.5);
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
       }
 
       this.ctx.stroke();
@@ -7856,7 +8022,7 @@ var grid_Grid = /*#__PURE__*/function () {
   }, {
     key: "upper_border",
     value: function upper_border() {
-      this.ctx.strokeStyle = this.$p.colors.colorScale;
+      this.ctx.strokeStyle = this.$p.colors.scale;
       this.ctx.beginPath();
       this.ctx.moveTo(0, 0.5);
       this.ctx.lineTo(this.layout.width, 0.5);
@@ -7865,8 +8031,15 @@ var grid_Grid = /*#__PURE__*/function () {
   }, {
     key: "mousezoom",
     value: function mousezoom(delta, event) {
-      event.originalEvent.preventDefault();
-      event.preventDefault();
+      if (this.wmode !== 'pass') {
+        if (this.wmode === 'click' && !this.$p.meta.activated) {
+          return;
+        }
+
+        event.originalEvent.preventDefault();
+        event.preventDefault();
+      }
+
       event.deltaX = event.deltaX || utils.get_deltaX(event);
       event.deltaY = event.deltaY || utils.get_deltaY(event);
 
@@ -7994,12 +8167,12 @@ var grid_Grid = /*#__PURE__*/function () {
   }, {
     key: "propagate",
     value: function propagate(name, event) {
-      var _iterator3 = grid_createForOfIteratorHelper(this.overlays),
-          _step3;
+      var _iterator4 = grid_createForOfIteratorHelper(this.overlays),
+          _step4;
 
       try {
-        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-          var layer = _step3.value;
+        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+          var layer = _step4.value;
 
           if (layer.renderer[name]) {
             layer.renderer[name](event);
@@ -8017,10 +8190,20 @@ var grid_Grid = /*#__PURE__*/function () {
           }
         }
       } catch (err) {
-        _iterator3.e(err);
+        _iterator4.e(err);
       } finally {
-        _iterator3.f();
+        _iterator4.f();
       }
+    }
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      var rm = removeEventListener;
+      rm("gesturestart", this.gesturestart);
+      rm("gesturechange", this.gesturechange);
+      rm("gestureend", this.gestureend);
+      if (this.mc) this.mc.destroy();
+      if (this.hm) this.hm.unwheel();
     }
   }]);
 
@@ -8178,8 +8361,11 @@ var grid_Grid = /*#__PURE__*/function () {
         }
       }
     },
-    remove_all_ux: function remove_all_ux() {
-      this.uxs = [];
+    // Remove all UXs for a given overlay id
+    remove_all_ux: function remove_all_ux(id) {
+      this.uxs = this.uxs.filter(function (x) {
+        return x.overlay.id !== id;
+      });
     }
   },
   data: function data() {
@@ -8205,22 +8391,15 @@ var crosshair_Crosshair = /*#__PURE__*/function () {
   }
 
   createClass_default()(Crosshair, [{
-    key: "update",
-    value: function update(x, y) {
-      this.x = this.$p.cursor.x;
-      this.y = y;
-    }
-  }, {
     key: "draw",
     value: function draw(ctx) {
       // Update reference to the grid
       this.layout = this.$p.layout;
-      if (!this.visible) return; // Adjust x here cuz there is a delay between
-      // update() and draw()
-
+      if (!this.visible) return;
       this.x = this.$p.cursor.x;
+      this.y = this.$p.cursor.y;
       ctx.save();
-      ctx.strokeStyle = this.$p.colors.colorCross;
+      ctx.strokeStyle = this.$p.colors.cross;
       ctx.beginPath();
       ctx.setLineDash([5]); // H
 
@@ -8284,8 +8463,7 @@ var crosshair_Crosshair = /*#__PURE__*/function () {
           return;
         }
 
-        this.ch.visible = true;
-        this.ch.update(cursor.x, cursor.y);
+        this.ch.visible = true; //this.ch.update(cursor.x, cursor.y)
       },
       deep: true
     }
@@ -8667,6 +8845,7 @@ UxWrappervue_type_template_id_4bc32070_render._withStripped = true
       this.y = y + this.oy;
     },
     parse_coord: function parse_coord(str, scale) {
+      str = str.trim();
       if (str === '0' || str === '') return 0;
       var plus = str.split('+');
 
@@ -8745,7 +8924,7 @@ UxWrappervue_type_template_id_4bc32070_render._withStripped = true
         'z-index': this.z_index
       };
       if (this.uxr.win_styling !== false) st = Object.assign(st, {
-        'border': "1px solid ".concat(this.$props.colors.colorGrid),
+        'border': "1px solid ".concat(this.$props.colors.grid),
         'border-radius': '3px',
         'background': "".concat(this.background)
       });
@@ -8785,11 +8964,11 @@ UxWrappervue_type_template_id_4bc32070_render._withStripped = true
       return base_index + ux_index;
     },
     background: function background() {
-      var c = this.uxr.background || this.$props.colors.colorBack;
+      var c = this.uxr.background || this.$props.colors.back;
       return utils.apply_opacity(c, this.uxr.background_opacity || this.$props.config.UX_OPACITY);
     },
     inactive_btn_color: function inactive_btn_color() {
-      return this.uxr.inactive_btn_color || this.$props.colors.colorGrid;
+      return this.uxr.inactive_btn_color || this.$props.colors.grid;
     },
     wrapper: function wrapper() {
       return {
@@ -8818,7 +8997,7 @@ UxWrappervue_type_template_id_4bc32070_render._withStripped = true
 // CONCATENATED MODULE: ./src/components/UxWrapper.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_UxWrappervue_type_script_lang_js_ = (UxWrappervue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/components/UxWrapper.vue?vue&type=style&index=0&lang=css&
-var UxWrappervue_type_style_index_0_lang_css_ = __webpack_require__(44);
+var UxWrappervue_type_style_index_0_lang_css_ = __webpack_require__(43);
 
 // CONCATENATED MODULE: ./src/components/UxWrapper.vue
 
@@ -9011,9 +9190,9 @@ var mouse_Mouse = /*#__PURE__*/function () {
 // Usuful stuff for creating overlays. Include as mixin
 
 /* harmony default export */ var mixins_overlay = ({
-  props: ['id', 'num', 'interval', 'cursor', 'colors', 'layout', 'sub', 'data', 'settings', 'grid_id', 'font', 'config', 'meta', 'tf'],
+  props: ['id', 'num', 'interval', 'cursor', 'colors', 'layout', 'sub', 'data', 'settings', 'grid_id', 'font', 'config', 'meta', 'tf', 'i0'],
   mounted: function mounted() {
-    // TODO: when hot reloading, dynamicaly changed mixins
+    // TODO(1): when hot reloading, dynamicaly changed mixins
     // dissapear (cuz it's a hack), the only way for now
     // is to reload the browser
     if (!this.draw) {
@@ -9025,9 +9204,15 @@ var mouse_Mouse = /*#__PURE__*/function () {
 
 
     var main = this.$props.sub === this.$props.data;
-    this.meta_info();
-    this._$emit = this.$emit;
-    this.$emit = this.custom_event;
+    this.meta_info(); // TODO(1): quick fix for vue2, in vue3 we use 3rd party emit
+
+    try {
+      new Function('return ' + this.$emit)();
+      this._$emit = this.$emit;
+      this.$emit = this.custom_event;
+    } catch (e) {
+      return;
+    }
 
     this._$emit('new-grid-layer', {
       name: this.$options.name,
@@ -9087,13 +9272,19 @@ var mouse_Mouse = /*#__PURE__*/function () {
         args[0].overlay = this;
         args[0].uuid = this.last_ux_id = "".concat(this.grid_id, "-").concat(this.id, "-").concat(this.uxs_count++);
       } // TODO: add a namespace to the event name
+      // TODO(2): this prevents call overflow, but
+      // the root of evil is in (1)
 
+
+      if (event === 'custom-event') return;
 
       this._$emit('custom-event', {
         event: event,
         args: args
       });
     },
+    // TODO: the event is not firing when the same
+    // overlay type is added to the offchart[]
     exec_script: function exec_script() {
       if (this.calc) this.$emit('exec-script', {
         grid_id: this.$props.grid_id,
@@ -9145,7 +9336,7 @@ function Splinevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == n
     meta_info: function meta_info() {
       return {
         author: 'C451',
-        version: '1.1.0'
+        version: '1.1.1'
       };
     },
     // Here goes your code. You are provided with:
@@ -9201,7 +9392,7 @@ function Splinevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == n
 
             var _y = layout.$2screen(p[i]);
 
-            if (_y == null || _y !== _y) {
+            if (p[i] == null || _y !== _y) {
               this._skip = true;
             } else {
               if (this._skip) ctx.moveTo(_x, _y);
@@ -9620,7 +9811,7 @@ function Tradesvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == n
         value: pos
       }, {
         value: values[2].toFixed(4),
-        color: this.$props.colors.colorText
+        color: this.$props.colors.text
       }].concat(values[3] ? [{
         value: values[3]
       }] : []);
@@ -9691,7 +9882,7 @@ Trades_component.options.__file = "src/components/overlays/Trades.vue"
     meta_info: function meta_info() {
       return {
         author: 'C451',
-        version: '1.0.0'
+        version: '1.0.1'
       };
     },
     draw: function draw(ctx) {
@@ -9702,7 +9893,9 @@ Trades_component.options.__file = "src/components/overlays/Trades.vue"
       for (var i = 0; i < this.$props.data.length - 1; i++) {
         var p1 = this.mapp(this.$props.data[i]);
         var p2 = this.mapp(this.$props.data[i + 1]);
-        if (!p2) continue; // Background
+        if (!p2) continue;
+        if (p1.y1 !== p1.y1) continue; // Fix NaN
+        // Background
 
         ctx.beginPath();
         ctx.moveTo(p1.x, p1.y1);
@@ -10142,7 +10335,7 @@ var price_Price = /*#__PURE__*/function () {
           var y = bar.y - h * 0.5 - 0.5;
           var a = 7;
           ctx.fillRect(x - 0.5, y, w + 1, h);
-          ctx.fillStyle = comp.$props.colors.colorTextHL;
+          ctx.fillStyle = comp.$props.colors.textHL;
           ctx.textAlign = 'left';
           ctx.fillText(lbl, a, y + 15);
         }
@@ -10300,25 +10493,25 @@ function Candlesvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == 
       return 'priceLine' in this.sett ? this.sett.priceLine : true;
     },
     colorCandleUp: function colorCandleUp() {
-      return this.sett.colorCandleUp || this.$props.colors.colorCandleUp;
+      return this.sett.colorCandleUp || this.$props.colors.candleUp;
     },
     colorCandleDw: function colorCandleDw() {
-      return this.sett.colorCandleDw || this.$props.colors.colorCandleDw;
+      return this.sett.colorCandleDw || this.$props.colors.candleDw;
     },
     colorWickUp: function colorWickUp() {
-      return this.sett.colorWickUp || this.$props.colors.colorWickUp;
+      return this.sett.colorWickUp || this.$props.colors.wickUp;
     },
     colorWickDw: function colorWickDw() {
-      return this.sett.colorWickDw || this.$props.colors.colorWickDw;
+      return this.sett.colorWickDw || this.$props.colors.wickDw;
     },
     colorWickSm: function colorWickSm() {
-      return this.sett.colorWickSm || this.$props.colors.colorWickSm;
+      return this.sett.colorWickSm || this.$props.colors.wickSm;
     },
     colorVolUp: function colorVolUp() {
-      return this.sett.colorVolUp || this.$props.colors.colorVolUp;
+      return this.sett.colorVolUp || this.$props.colors.volUp;
     },
     colorVolDw: function colorVolDw() {
-      return this.sett.colorVolDw || this.$props.colors.colorVolDw;
+      return this.sett.colorVolDw || this.$props.colors.volDw;
     }
   },
   data: function data() {
@@ -10429,16 +10622,16 @@ function Volumevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == n
       return this.$props.settings;
     },
     colorVolUp: function colorVolUp() {
-      return this.sett.colorVolUp || this.$props.colors.colorVolUp;
+      return this.sett.colorVolUp || this.$props.colors.volUp;
     },
     colorVolDw: function colorVolDw() {
-      return this.sett.colorVolDw || this.$props.colors.colorVolDw;
+      return this.sett.colorVolDw || this.$props.colors.volDw;
     },
     colorVolUpLegend: function colorVolUpLegend() {
-      return this.sett.colorVolUpLegend || this.$props.colors.colorCandleUp;
+      return this.sett.colorVolUpLegend || this.$props.colors.candleUp;
     },
     colorVolDwLegend: function colorVolDwLegend() {
-      return this.sett.colorVolDwLegend || this.$props.colors.colorCandleDw;
+      return this.sett.colorVolDwLegend || this.$props.colors.candleDw;
     },
     volscale: function volscale() {
       return this.sett.volscale || this.$props.grid_id > 0 ? 0.85 : this.$props.config.VOLSCALE;
@@ -10483,7 +10676,7 @@ Volume_component.options.__file = "src/components/overlays/Volume.vue"
     meta_info: function meta_info() {
       return {
         author: 'C451',
-        version: '1.0.0'
+        version: '1.0.1'
       };
     },
     draw: function draw(ctx) {
@@ -10511,7 +10704,7 @@ Volume_component.options.__file = "src/components/overlays/Volume.vue"
       var w = ctx.measureText(p[1]).width + 10;
       var y = this.layout.height * (1.0 - pos);
       y = Math.floor(y);
-      ctx.fillStyle = p[3] || this.label_color;
+      ctx.fillStyle = p[3] || this.flag_color;
       ctx.beginPath();
       ctx.moveTo(x, y);
       ctx.lineTo(x + 10 * side, y - 10 * side);
@@ -10520,7 +10713,7 @@ Volume_component.options.__file = "src/components/overlays/Volume.vue"
       ctx.lineTo(x + 10 * side, y + 10 * side);
       ctx.closePath();
       ctx.fill();
-      ctx.fillStyle = '#fff';
+      ctx.fillStyle = this.label_color;
       ctx.textAlign = side < 0 ? 'right' : 'left';
       ctx.fillText(p[1], x + 15 * side, y + 4);
     },
@@ -10536,8 +10729,11 @@ Volume_component.options.__file = "src/components/overlays/Volume.vue"
     new_font: function new_font() {
       return this.sett.font || '12px ' + this.$props.font.split('px').pop();
     },
+    flag_color: function flag_color() {
+      return this.sett.flagColor || '#4285f4';
+    },
     label_color: function label_color() {
-      return this.sett.labelColor || '#4285f4';
+      return this.sett.labelColor || '#fff';
     },
     line_color: function line_color() {
       return this.sett.lineColor || '#4285f4';
@@ -10782,10 +10978,10 @@ function tool_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) 
   }
 });
 // EXTERNAL MODULE: ./src/stuff/icons.json
-var icons = __webpack_require__(8);
+var icons = __webpack_require__(4);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/defineProperty.js
-var defineProperty = __webpack_require__(26);
+var defineProperty = __webpack_require__(14);
 var defineProperty_default = /*#__PURE__*/__webpack_require__.n(defineProperty);
 
 // CONCATENATED MODULE: ./src/components/primitives/pin.js
@@ -10808,13 +11004,14 @@ var pin_Pin = /*#__PURE__*/function () {
 
     this.RADIUS = comp.$props.config.PIN_RADIUS || 5.5;
     this.RADIUS_SQ = Math.pow(this.RADIUS + 7, 2);
-    this.COLOR_BACK = comp.$props.colors.colorBack;
-    this.COLOR_BR = comp.$props.colors.colorText;
+    this.COLOR_BACK = comp.$props.colors.back;
+    this.COLOR_BR = comp.$props.colors.text;
     this.comp = comp;
     this.layout = comp.layout;
     this.mouse = comp.mouse;
     this.name = name;
     this.state = params.state || 'settled';
+    this.hidden = params.hidden || false;
     this.mouse.on('mousemove', function (e) {
       return _this.mousemove(e);
     });
@@ -10845,6 +11042,8 @@ var pin_Pin = /*#__PURE__*/function () {
   }, {
     key: "draw",
     value: function draw(ctx) {
+      if (this.hidden) return;
+
       switch (this.state) {
         case 'tracking':
           break;
@@ -10946,6 +11145,8 @@ var pin_Pin = /*#__PURE__*/function () {
           break;
 
         case 'settled':
+          if (this.hidden) return;
+
           if (this.hover()) {
             this.state = 'dragging';
             this.moved = false;
@@ -11080,8 +11281,12 @@ var line_Line = /*#__PURE__*/function () {
 
       this.ctx.moveTo(x2, y2);
       this.ctx.lineTo(x2 + dx, y2 + dy);
-      this.ctx.moveTo(x1, y1);
-      this.ctx.lineTo(x1 - dx, y1 - dy);
+
+      if (!this.ray) {
+        this.ctx.moveTo(x1, y1);
+        this.ctx.lineTo(x1 - dx, y1 - dy);
+      }
+
       this.comp.collisions.push(this.make([x1, y1], [x2, y2]));
     } // Collision function. x, y - mouse coord.
 
@@ -11090,8 +11295,9 @@ var line_Line = /*#__PURE__*/function () {
     value: function make(p1, p2) {
       var _this = this;
 
+      var f = this.ray ? math.point2ray.bind(math) : math.point2line.bind(math);
       return function (x, y) {
-        return math.point2line([x, y], p1, p2) < _this.T;
+        return f([x, y], p1, p2) < _this.T;
       };
     }
   }]);
@@ -11100,8 +11306,54 @@ var line_Line = /*#__PURE__*/function () {
 }();
 
 
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inherits.js
+var inherits = __webpack_require__(12);
+var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
+var possibleConstructorReturn = __webpack_require__(13);
+var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
+
+// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
+var getPrototypeOf = __webpack_require__(9);
+var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
+
+// CONCATENATED MODULE: ./src/components/primitives/ray.js
+
+
+
+
+
+function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = getPrototypeOf_default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
+
+function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+
+// Draws a ray, adds corresponding collision f-n
+
+
+var ray_Ray = /*#__PURE__*/function (_Line) {
+  inherits_default()(Ray, _Line);
+
+  var _super = _createSuper(Ray);
+
+  function Ray(overlay, ctx) {
+    var _this;
+
+    classCallCheck_default()(this, Ray);
+
+    _this = _super.call(this, overlay, ctx);
+    _this.ray = true;
+    return _this;
+  }
+
+  return Ray;
+}(line_Line);
+
+
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/overlays/LineTool.vue?vue&type=script&lang=js&
 // Line drawing tool
+// TODO: make an angle-snap when "Shift" is pressed
+
 
 
 
@@ -11115,7 +11367,7 @@ var line_Line = /*#__PURE__*/function () {
     meta_info: function meta_info() {
       return {
         author: 'C451',
-        version: '1.0.0'
+        version: '1.1.0'
       };
     },
     tool: function tool() {
@@ -11137,6 +11389,13 @@ var line_Line = /*#__PURE__*/function () {
               extended: true
             },
             icon: icons['extended.png']
+          },
+          'Ray': {
+            // Rewrites the default setting fields
+            settings: {
+              ray: true
+            },
+            icon: icons['ray.png']
           }
         }
       };
@@ -11165,7 +11424,9 @@ var line_Line = /*#__PURE__*/function () {
       ctx.strokeStyle = this.color;
       ctx.beginPath();
 
-      if (this.sett.extended) {
+      if (this.sett.ray) {
+        new ray_Ray(this, ctx).draw(this.p1, this.p2);
+      } else if (this.sett.extended) {
         new line_Line(this, ctx).draw(this.p1, this.p2);
       } else {
         new seg_Seg(this, ctx).draw(this.p1, this.p2);
@@ -11229,7 +11490,8 @@ if (false) { var LineTool_api; }
 LineTool_component.options.__file = "src/components/overlays/LineTool.vue"
 /* harmony default export */ var LineTool = (LineTool_component.exports);
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/overlays/RangeTool.vue?vue&type=script&lang=js&
-// Line drawing tool
+
+// Price/Time measurment tool
 
 
 
@@ -11242,7 +11504,7 @@ LineTool_component.options.__file = "src/components/overlays/LineTool.vue"
     meta_info: function meta_info() {
       return {
         author: 'C451',
-        version: '1.0.0'
+        version: '2.0.1'
       };
     },
     tool: function tool() {
@@ -11254,8 +11516,35 @@ LineTool_component.options.__file = "src/components/overlays/LineTool.vue"
         hint: 'Price Range',
         data: [],
         // Default data
-        settings: {} // Default settings
-
+        settings: {},
+        // Default settings
+        mods: {
+          'Time': {
+            // Rewrites the default setting fields
+            icon: icons['time_range.png'],
+            settings: {
+              price: false,
+              time: true
+            }
+          },
+          'PriceTime': {
+            // Rewrites the default setting fields
+            icon: icons['price_time.png'],
+            settings: {
+              price: true,
+              time: true
+            }
+          },
+          'ShiftMode': {
+            // Rewrites the default setting fields
+            settings: {
+              price: true,
+              time: true,
+              shiftMode: true
+            },
+            hidden: true
+          }
+        }
       };
     },
     // Called after overlay mounted
@@ -11263,63 +11552,172 @@ LineTool_component.options.__file = "src/components/overlays/LineTool.vue"
       var _this = this;
 
       // First pin is settled at the mouse position
-      this.pins.push(new pin_Pin(this, 'p1')); // Second one is following mouse until it clicks
+      this.pins.push(new pin_Pin(this, 'p1', {
+        hidden: this.shift
+      })); // Second one is following mouse until it clicks
 
       this.pins.push(new pin_Pin(this, 'p2', {
-        state: 'tracking'
+        state: 'tracking',
+        hidden: this.shift
       }));
       this.pins[1].on('settled', function () {
         // Call when current tool drawing is finished
         // (Optionally) reset the mode back to 'Cursor'
         _this.set_state('finished');
 
-        _this.$emit('drawing-mode-off');
+        _this.$emit('drawing-mode-off'); // Deselect the tool in shiftMode
+
+
+        if (_this.shift) _this._$emit('custom-event', {
+          event: 'object-selected',
+          args: []
+        });
       });
     },
     draw: function draw(ctx) {
       if (!this.p1 || !this.p2) return;
       var dir = Math.sign(this.p2[1] - this.p1[1]);
+      var layout = this.$props.layout;
+      var xm = layout.t2screen((this.p1[0] + this.p2[0]) * 0.5);
       ctx.lineWidth = this.line_width;
-      ctx.strokeStyle = this.color;
-      ctx.beginPath(); // Background
+      ctx.strokeStyle = this.color; // Background
 
       ctx.fillStyle = this.back_color;
-      var layout = this.$props.layout;
       var x1 = layout.t2screen(this.p1[0]);
       var y1 = layout.$2screen(this.p1[1]);
       var x2 = layout.t2screen(this.p2[0]);
       var y2 = layout.$2screen(this.p2[1]);
-      ctx.fillRect(x1, y1, x2 - x1, y2 - y1); // Top
+      ctx.fillRect(x1, y1, x2 - x1, y2 - y1);
+      if (this.price) this.vertical(ctx, x1, y1, x2, y2, xm);
+      if (this.time) this.horizontal(ctx, x1, y1, x2, y2, xm);
+      this.draw_value(ctx, dir, xm, y2);
+      this.render_pins(ctx);
+    },
+    vertical: function vertical(ctx, x1, y1, x2, y2, xm) {
+      var layout = this.$props.layout;
+      var dir = Math.sign(this.p2[1] - this.p1[1]);
+      ctx.beginPath();
 
-      new seg_Seg(this, ctx).draw([this.p1[0], this.p2[1]], [this.p2[0], this.p2[1]]); // Bottom
+      if (!this.shift) {
+        // Top
+        new seg_Seg(this, ctx).draw([this.p1[0], this.p2[1]], [this.p2[0], this.p2[1]]); // Bottom
 
-      new seg_Seg(this, ctx).draw([this.p1[0], this.p1[1]], [this.p2[0], this.p1[1]]); // Arrow
+        new seg_Seg(this, ctx).draw([this.p1[0], this.p1[1]], [this.p2[0], this.p1[1]]);
+      } // Vertical Arrow
 
-      var xm = layout.t2screen((this.p1[0] + this.p2[0]) * 0.5);
+
       ctx.moveTo(xm - 4, y2 + 5 * dir);
       ctx.lineTo(xm, y2);
       ctx.lineTo(xm + 4, y2 + 5 * dir);
-      ctx.stroke(); // Vertical
+      ctx.stroke(); // Vertical Line
 
       ctx.beginPath();
       ctx.setLineDash([5, 5]);
       new seg_Seg(this, ctx).draw([(this.p1[0] + this.p2[0]) * 0.5, this.p2[1]], [(this.p1[0] + this.p2[0]) * 0.5, this.p1[1]]);
       ctx.stroke();
       ctx.setLineDash([]);
-      this.draw_value(ctx, dir, xm, y2);
-      this.render_pins(ctx);
     },
+    horizontal: function horizontal(ctx, x1, y1, x2, y2, xm) {
+      var layout = this.$props.layout;
+      var xdir = Math.sign(this.p2[0] - this.p1[0]);
+      var ym = (layout.$2screen(this.p1[1]) + layout.$2screen(this.p2[1])) / 2;
+      ctx.beginPath();
+
+      if (!this.shift) {
+        // Left
+        new seg_Seg(this, ctx).draw([this.p1[0], this.p1[1]], [this.p1[0], this.p2[1]]); // Right
+
+        new seg_Seg(this, ctx).draw([this.p2[0], this.p1[1]], [this.p2[0], this.p2[1]]);
+      } // Horizontal Arrow
+
+
+      ctx.moveTo(x2 - 5 * xdir, ym - 4);
+      ctx.lineTo(x2, ym);
+      ctx.lineTo(x2 - 5 * xdir, ym + 4);
+      ctx.stroke(); // Horizontal Line
+
+      ctx.beginPath();
+      ctx.setLineDash([5, 5]);
+      ctx.moveTo(x1, ym);
+      ctx.lineTo(x2, ym);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    },
+    // WTF? I know dude, a lot of shitty code here
     draw_value: function draw_value(ctx, dir, xm, y) {
-      ctx.font = this.new_font;
+      var _this2 = this;
+
+      ctx.font = this.new_font; // Price delta (anf percent)
+
       var d$ = (this.p2[1] - this.p1[1]).toFixed(this.prec);
-      var p = (100 * (this.p2[1] / this.p1[1] - 1)).toFixed(this.prec);
-      var text = "".concat(d$, "  (").concat(p, "%)");
-      var w = Math.max(ctx.measureText(text).width + 20, 100);
+      var p = (100 * (this.p2[1] / this.p1[1] - 1)).toFixed(this.prec); // Map interval to the actual tf (in ms)
+
+      var f = function f(t) {
+        return _this2.layout.ti_map.smth2t(t);
+      };
+
+      var dt = f(this.p2[0]) - f(this.p1[0]);
+      var tf = this.layout.ti_map.tf; // Bars count (through the candle index)
+
+      var f2 = function f2(t) {
+        var c = _this2.layout.c_magnet(t);
+
+        var cn = _this2.layout.candles || _this2.layout.master_grid.candles;
+        return cn.indexOf(c);
+      }; // Bars count (and handling the negative values)
+
+
+      var b = f2(this.p2[0]) - f2(this.p1[0]); // Format time delta
+      // Format time delta
+
+      var dtstr = this.t2str(dt);
+      var text = [];
+      if (this.price) text.push("".concat(d$, "  (").concat(p, "%)"));
+      if (this.time) text.push("".concat(b, " bars, ").concat(dtstr));
+      text = text.join('\n'); // "Multiple" fillText
+
+      var lines = text.split('\n');
+      var w = Math.max.apply(Math, toConsumableArray_default()(lines.map(function (x) {
+        return ctx.measureText(x).width + 20;
+      })).concat([100]));
+      var n = lines.length;
+      var h = 20 * n;
       ctx.fillStyle = this.value_back;
-      ctx.fillRect(xm - w * 0.5, y - 30 * dir, w, 20 * dir);
+      ctx.fillRect(xm - w * 0.5, y - (10 + h) * dir, w, h * dir);
       ctx.fillStyle = this.value_color;
       ctx.textAlign = 'center';
-      ctx.fillText(text, xm, y + (dir > 0 ? -15 : 25));
+      lines.forEach(function (l, i) {
+        ctx.fillText(l, xm, y + (dir > 0 ? 20 * i - 20 * n + 5 : 20 * i + 25));
+      });
+    },
+    // Formats time from ms to `1D 12h` for example
+    t2str: function t2str(t) {
+      var sign = Math.sign(t);
+      var abs = Math.abs(t);
+      var tfs = [[1000, 's', 60], [60000, 'm', 60], [3600000, 'h', 24], [86400000, 'D', 7], [604800000, 'W', 4], [2592000000, 'M', 12], [31536000000, 'Y', Infinity], [Infinity, 'Eternity', Infinity]];
+
+      for (var i = 0; i < tfs.length; i++) {
+        tfs[i][0] = Math.floor(abs / tfs[i][0]);
+
+        if (tfs[i][0] === 0) {
+          var p1 = tfs[i - 1];
+          var p2 = tfs[i - 2];
+          var txt = sign < 0 ? '-' : '';
+
+          if (p1) {
+            txt += p1.slice(0, 2).join('');
+          }
+
+          var n2 = p2 ? p2[0] - p1[0] * p2[2] : 0;
+
+          if (p2 && n2) {
+            txt += ' ';
+            txt += "".concat(n2).concat(p2[1]);
+          }
+
+          return txt;
+        }
+      }
     },
     use_for: function use_for() {
       return ['RangeTool'];
@@ -11343,7 +11741,7 @@ LineTool_component.options.__file = "src/components/overlays/LineTool.vue"
       return this.sett.lineWidth || 0.9;
     },
     color: function color() {
-      return this.sett.color || this.$props.colors.colorCross;
+      return this.sett.color || this.$props.colors.cross;
     },
     back_color: function back_color() {
       return this.sett.backColor || '#9b9ba316';
@@ -11352,13 +11750,22 @@ LineTool_component.options.__file = "src/components/overlays/LineTool.vue"
       return this.sett.valueBack || '#9b9ba316';
     },
     value_color: function value_color() {
-      return this.sett.valueColor || this.$props.colors.colorText;
+      return this.sett.valueColor || this.$props.colors.text;
     },
     prec: function prec() {
       return this.sett.precision || 2;
     },
     new_font: function new_font() {
       return '12px ' + this.$props.font.split('px').pop();
+    },
+    price: function price() {
+      return 'price' in this.sett ? this.sett.price : true;
+    },
+    time: function time() {
+      return 'time' in this.sett ? this.sett.time : false;
+    },
+    shift: function shift() {
+      return this.sett.shiftMode;
     }
   },
   data: function data() {
@@ -11417,7 +11824,7 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
 
 /* harmony default export */ var Gridvue_type_script_lang_js_ = ({
   name: 'Grid',
-  props: ['sub', 'layout', 'range', 'interval', 'cursor', 'colors', 'overlays', 'width', 'height', 'data', 'grid_id', 'y_transform', 'font', 'tv_id', 'config', 'meta'],
+  props: ['sub', 'layout', 'range', 'interval', 'cursor', 'colors', 'overlays', 'width', 'height', 'data', 'grid_id', 'y_transform', 'font', 'tv_id', 'config', 'meta', 'shaders'],
   mixins: [mixins_canvas, uxlist],
   components: {
     Crosshair: components_Crosshair,
@@ -11452,6 +11859,9 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
       return _this.on_ux_event(e, 'grid');
     });
   },
+  beforeDestroy: function beforeDestroy() {
+    if (this.renderer) this.renderer.destroy();
+  },
   mounted: function mounted() {
     var _this2 = this;
 
@@ -11476,7 +11886,7 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
         overflow: 'hidden'
       },
       style: {
-        backgroundColor: this.$props.colors.colorBack
+        backgroundColor: this.$props.colors.back
       },
       hs: [h(components_Crosshair, {
         props: this.common_props(),
@@ -11522,7 +11932,7 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
         event: 'remove-layer-meta',
         args: [grid_id, layer]
       });
-      this.remove_all_ux();
+      this.remove_all_ux(layer);
     },
     get_overlays: function get_overlays(h) {
       var _this5 = this;
@@ -11550,6 +11960,7 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
               type: d.type,
               data: d.data,
               settings: d.settings,
+              i0: d.i0,
               tf: d.tf
             });
             count[d.type] = 0;
@@ -11569,6 +11980,7 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
             type: x.type,
             data: x.data,
             settings: x.settings,
+            i0: x.i0,
             tf: x.tf,
             num: i,
             grid_id: _this5.$props.grid_id,
@@ -11660,7 +12072,14 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
 
                 if (tuple.join('_') === ov.name) {
                   comp.calc = ov.methods.calc;
-                  comp.exec_script();
+                  if (!comp.calc) continue;
+                  var calc = comp.calc.toString();
+
+                  if (calc !== ov.__prevscript__) {
+                    comp.exec_script();
+                  }
+
+                  ov.__prevscript__ = calc;
                 }
               }
             } catch (err) {
@@ -11676,6 +12095,10 @@ function Gridvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == nul
         }
       },
       deep: true
+    },
+    // Redraw on the shader list change
+    shaders: function shaders(n, p) {
+      this.redraw();
     }
   },
   data: function data() {
@@ -11790,7 +12213,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
     value: function listeners() {
       var _this = this;
 
-      var mc = new hammer["Manager"](this.canvas);
+      var mc = this.mc = new hammer["Manager"](this.canvas);
       mc.add(new hammer["Pan"]({
         direction: hammer["DIRECTION_VERTICAL"],
         threshold: 1
@@ -11862,7 +12285,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
           h,
           side = this.side;
       var sb = this.layout.sb;
-      this.ctx.fillStyle = this.$p.colors.colorBack;
+      this.ctx.fillStyle = this.$p.colors.back;
       this.ctx.font = this.$p.font;
 
       switch (side) {
@@ -11872,7 +12295,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
           w = Math.floor(sb);
           h = this.layout.height;
           this.ctx.fillRect(x, y, w, h);
-          this.ctx.strokeStyle = this.$p.colors.colorScale;
+          this.ctx.strokeStyle = this.$p.colors.scale;
           this.ctx.beginPath();
           this.ctx.moveTo(x + 0.5, 0);
           this.ctx.lineTo(x + 0.5, h);
@@ -11885,7 +12308,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
           w = Math.floor(sb);
           h = this.layout.height;
           this.ctx.fillRect(x, y, w, h);
-          this.ctx.strokeStyle = this.$p.colors.colorScale;
+          this.ctx.strokeStyle = this.$p.colors.scale;
           this.ctx.beginPath();
           this.ctx.moveTo(x + 0.5, 0);
           this.ctx.lineTo(x + 0.5, h);
@@ -11893,7 +12316,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
           break;
       }
 
-      this.ctx.fillStyle = this.$p.colors.colorText;
+      this.ctx.fillStyle = this.$p.colors.text;
       this.ctx.beginPath();
 
       var _iterator = sidebar_createForOfIteratorHelper(points),
@@ -11926,6 +12349,12 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
   }, {
     key: "apply_shaders",
     value: function apply_shaders() {
+      var layout = this.$p.layout.grids[this.id];
+      var props = {
+        layout: layout,
+        cursor: this.$p.cursor
+      };
+
       var _iterator2 = sidebar_createForOfIteratorHelper(this.$p.shaders),
           _step2;
 
@@ -11933,7 +12362,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var s = _step2.value;
           this.ctx.save();
-          s.draw(this.ctx);
+          s.draw(this.ctx, props);
           this.ctx.restore();
         }
       } catch (err) {
@@ -11945,7 +12374,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
   }, {
     key: "upper_border",
     value: function upper_border() {
-      this.ctx.strokeStyle = this.$p.colors.colorScale;
+      this.ctx.strokeStyle = this.$p.colors.scale;
       this.ctx.beginPath();
       this.ctx.moveTo(0, 0.5);
       this.ctx.lineTo(this.layout.width, 0.5);
@@ -11960,13 +12389,13 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
       }
 
       var lbl = this.$p.cursor.y$.toFixed(this.layout.prec);
-      this.ctx.fillStyle = this.$p.colors.colorPanel;
+      this.ctx.fillStyle = this.$p.colors.panel;
       var panwidth = this.layout.sb + 1;
       var x = -0.5;
       var y = this.$p.cursor.y - PANHEIGHT * 0.5 - 0.5;
       var a = 7;
       this.ctx.fillRect(x - 0.5, y, panwidth, PANHEIGHT);
-      this.ctx.fillStyle = this.$p.colors.colorTextHL;
+      this.ctx.fillStyle = this.$p.colors.textHL;
       this.ctx.textAlign = 'left';
       this.ctx.fillText(lbl, a, y + 15);
     }
@@ -12054,6 +12483,11 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
       });
     }
   }, {
+    key: "destroy",
+    value: function destroy() {
+      if (this.mc) this.mc.destroy();
+    }
+  }, {
     key: "mousemove",
     value: function mousemove() {}
   }, {
@@ -12099,7 +12533,7 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
         height: layout.height
       },
       style: {
-        backgroundColor: this.$props.colors.colorBack
+        backgroundColor: this.$props.colors.back
       }
     });
   },
@@ -12123,6 +12557,9 @@ var sidebar_Sidebar = /*#__PURE__*/function () {
         return _this.redraw();
       });
     }
+  },
+  beforeDestroy: function beforeDestroy() {
+    if (this.renderer) this.renderer.destroy();
   }
 });
 // CONCATENATED MODULE: ./src/components/Sidebar.vue?vue&type=script&lang=js&
@@ -12171,7 +12608,7 @@ var Legendvue_type_template_id_34724886_render = function() {
                 "span",
                 {
                   staticClass: "t-vue-title",
-                  style: { color: _vm.common.colors.colorTitle }
+                  style: { color: _vm.common.colors.title }
                 },
                 [
                   _vm._v(
@@ -12217,6 +12654,7 @@ var Legendvue_type_template_id_34724886_render = function() {
             _c("button-group", {
               attrs: {
                 buttons: _vm.common.buttons,
+                config: _vm.common.config,
                 ov_id: ind.id,
                 grid_id: _vm.grid_id,
                 index: ind.index,
@@ -12292,12 +12730,14 @@ var ButtonGroupvue_type_template_id_6f826426_render = function() {
       return _c("legend-button", {
         key: i,
         attrs: {
-          id: b,
+          id: b.name || b,
           tv_id: _vm.tv_id,
           ov_id: _vm.ov_id,
           grid_id: _vm.grid_id,
           index: _vm.index,
-          display: _vm.display
+          display: _vm.display,
+          icon: b.icon,
+          config: _vm.config
         },
         on: { "legend-button-click": _vm.button_click }
       })
@@ -12318,6 +12758,11 @@ var LegendButtonvue_type_template_id_1ad87362_render = function() {
   var _c = _vm._self._c || _h
   return _c("img", {
     staticClass: "t-vue-lbtn",
+    style: {
+      width: _vm.config.L_BTN_SIZE + "px",
+      height: _vm.config.L_BTN_SIZE + "px",
+      margin: _vm.config.L_BTN_MARGIN
+    },
     attrs: { src: _vm.base64, id: _vm.uuid },
     on: { click: _vm.onclick }
   })
@@ -12334,14 +12779,18 @@ LegendButtonvue_type_template_id_1ad87362_render._withStripped = true
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ var LegendButtonvue_type_script_lang_js_ = ({
   name: 'LegendButton',
-  props: ['id', 'tv_id', 'grid_id', 'ov_id', 'index', 'display'],
+  props: ['id', 'tv_id', 'grid_id', 'ov_id', 'index', 'display', 'icon', 'config'],
   mounted: function mounted() {},
   computed: {
     base64: function base64() {
-      return icons[this.file_name];
+      return this.icon || icons[this.file_name];
     },
     file_name: function file_name() {
       var id = this.$props.id;
@@ -12422,10 +12871,12 @@ LegendButton_component.options.__file = "src/components/LegendButton.vue"
 //
 //
 //
+//
+//
 
 /* harmony default export */ var ButtonGroupvue_type_script_lang_js_ = ({
   name: 'ButtonGroup',
-  props: ['buttons', 'tv_id', 'ov_id', 'grid_id', 'index', 'display'],
+  props: ['buttons', 'tv_id', 'ov_id', 'grid_id', 'index', 'display', 'config'],
   components: {
     LegendButton: LegendButton
   },
@@ -12473,7 +12924,7 @@ var Spinnervue_type_template_id_39432f99_render = function() {
     "div",
     { staticClass: "tvjs-spinner" },
     _vm._l(4, function(i) {
-      return _c("div", { style: { background: _vm.colors.colorText } })
+      return _c("div", { key: i, style: { background: _vm.colors.text } })
     }),
     0
   )
@@ -12485,7 +12936,6 @@ Spinnervue_type_template_id_39432f99_render._withStripped = true
 // CONCATENATED MODULE: ./src/components/Spinner.vue?vue&type=template&id=39432f99&
 
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Spinner.vue?vue&type=script&lang=js&
-//
 //
 //
 //
@@ -12569,6 +13019,7 @@ Spinner_component.options.__file = "src/components/Spinner.vue"
 //
 //
 //
+//
 
 
 /* harmony default export */ var Legendvue_type_script_lang_js_ = ({
@@ -12584,7 +13035,17 @@ Spinner_component.options.__file = "src/components/Spinner.vue"
         return Array(6).fill('n/a');
       }
 
-      var prec = this.layout.prec;
+      var prec = this.layout.prec; // TODO: main the main legend more customizable
+
+      var id = this.main_type + '_0';
+      var meta = this.$props.meta_props[id] || {};
+
+      if (meta.legend) {
+        return (meta.legend() || []).map(function (x) {
+          return x.value;
+        });
+      }
+
       return [this.$props.values.ohlcv[1].toFixed(prec), this.$props.values.ohlcv[2].toFixed(prec), this.$props.values.ohlcv[3].toFixed(prec), this.$props.values.ohlcv[4].toFixed(prec), this.$props.values.ohlcv[5] ? this.$props.values.ohlcv[5].toFixed(2) : 'n/a'];
     },
     // TODO: add support for { grid: { id : N }}
@@ -12628,6 +13089,12 @@ Spinner_component.options.__file = "src/components/Spinner.vue"
     },
     off_data: function off_data() {
       return this.$props.common.offchart;
+    },
+    main_type: function main_type() {
+      var f = this.common.data.find(function (x) {
+        return x.main;
+      });
+      return f ? f.type : undefined;
     }
   },
   methods: {
@@ -12692,9 +13159,40 @@ if (false) { var Legend_api; }
 Legend_component.options.__file = "src/components/Legend.vue"
 /* harmony default export */ var Legend = (Legend_component.exports);
 // CONCATENATED MODULE: ./src/mixins/shaders.js
+function shaders_createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = shaders_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function shaders_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return shaders_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return shaders_arrayLikeToArray(o, minLen); }
+
+function shaders_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
 // Parser for shader events
 /* harmony default export */ var shaders = ({
   methods: {
+    // Init shaders from extensions
+    init_shaders: function init_shaders(skin, prev) {
+      if (skin !== prev) {
+        if (prev) this.shaders = this.shaders.filter(function (x) {
+          return x.owner !== prev.id;
+        });
+
+        var _iterator = shaders_createForOfIteratorHelper(skin.shaders),
+            _step;
+
+        try {
+          for (_iterator.s(); !(_step = _iterator.n()).done;) {
+            var Shader = _step.value;
+            var shader = new Shader();
+            shader.owner = skin.id;
+            this.shaders.push(shader);
+          } // TODO: Sort by zIndex
+
+        } catch (err) {
+          _iterator.e(err);
+        } finally {
+          _iterator.f();
+        }
+      }
+    },
     on_shader_event: function on_shader_event(d, target) {
       if (d.event === 'new-shader') {
         if (d.args[0].target === target) {
@@ -12710,6 +13208,11 @@ Legend_component.options.__file = "src/components/Legend.vue"
           return x.id !== id;
         });
       }
+    }
+  },
+  watch: {
+    skin: function skin(n, p) {
+      this.init_shaders(n, p);
     }
   },
   data: function data() {
@@ -12765,6 +13268,9 @@ Legend_component.options.__file = "src/components/Legend.vue"
     Sidebar: components_Sidebar,
     ChartLegend: Legend
   },
+  mounted: function mounted() {
+    this.init_shaders(this.$props.common.skin);
+  },
   methods: {
     range_changed: function range_changed(r) {
       this.$emit('range-changed', r);
@@ -12797,11 +13303,20 @@ Legend_component.options.__file = "src/components/Legend.vue"
       this.$emit('remove-kb-listener', event);
     },
     rezoom_range: function rezoom_range(event) {
-      var id = 'grid-' + event.grid_id;
+      var id = 'sb-' + event.grid_id;
 
       if (this.$refs[id]) {
         this.$refs[id].renderer.rezoom_range(event.z, event.diff1, event.diff2);
       }
+    },
+    ghash: function ghash(val) {
+      // Measures grid heights configuration
+      var hs = val.layout.grids.map(function (x) {
+        return x.height;
+      });
+      return hs.reduce(function (a, b) {
+        return a + b;
+      }, '');
     }
   },
   computed: {
@@ -12825,6 +13340,7 @@ Legend_component.options.__file = "src/components/Legend.vue"
       p.width = p.layout.grids[id].width;
       p.height = p.layout.grids[id].height;
       p.y_transform = p.y_ts[id];
+      p.shaders = this.grid_shaders;
       return p;
     },
     sidebar_props: function sidebar_props() {
@@ -12833,6 +13349,7 @@ Legend_component.options.__file = "src/components/Legend.vue"
       p.width = p.layout.grids[id].sb;
       p.height = p.layout.grids[id].height;
       p.y_transform = p.y_ts[id];
+      p.shaders = this.sb_shaders;
       return p;
     },
     section_values: function section_values() {
@@ -12861,15 +13378,33 @@ Legend_component.options.__file = "src/components/Legend.vue"
     },
     get_meta_props: function get_meta_props() {
       return this.meta_props;
+    },
+    grid_shaders: function grid_shaders() {
+      return this.shaders.filter(function (x) {
+        return x.target === 'grid';
+      });
+    },
+    sb_shaders: function sb_shaders() {
+      return this.shaders.filter(function (x) {
+        return x.target === 'sidebar';
+      });
     }
   },
   watch: {
     common: {
       handler: function handler(val, old_val) {
+        var newhash = this.ghash(val);
+
+        if (newhash !== this.last_ghash) {
+          this.rerender++;
+        }
+
         if (val.data.length !== old_val.data.length) {
           // Look at this nasty trick!
           this.rerender++;
         }
+
+        this.last_ghash = newhash;
       },
       deep: true
     }
@@ -12877,8 +13412,8 @@ Legend_component.options.__file = "src/components/Legend.vue"
   data: function data() {
     return {
       meta_props: {},
-      shaders: [],
-      rerender: 0
+      rerender: 0,
+      last_ghash: ''
     };
   }
 });
@@ -12952,15 +13487,15 @@ var botbar_Botbar = /*#__PURE__*/function () {
       var width = this.layout.botbar.width;
       var height = this.layout.botbar.height;
       var sb = this.layout.grids[0].sb;
-      this.ctx.fillStyle = this.$p.colors.colorBack;
+      this.ctx.fillStyle = this.$p.colors.back;
       this.ctx.font = this.$p.font;
       this.ctx.fillRect(0, 0, width, height);
-      this.ctx.strokeStyle = this.$p.colors.colorScale;
+      this.ctx.strokeStyle = this.$p.colors.scale;
       this.ctx.beginPath();
       this.ctx.moveTo(0, 0.5);
       this.ctx.lineTo(Math.floor(width + 1), 0.5);
       this.ctx.stroke();
-      this.ctx.fillStyle = this.$p.colors.colorText;
+      this.ctx.fillStyle = this.$p.colors.text;
       this.ctx.beginPath();
 
       var _iterator = botbar_createForOfIteratorHelper(this.layout.botbar.xs),
@@ -12995,14 +13530,20 @@ var botbar_Botbar = /*#__PURE__*/function () {
   }, {
     key: "apply_shaders",
     value: function apply_shaders() {
-      var _iterator2 = botbar_createForOfIteratorHelper(this.$p.shaders),
+      var layout = this.layout.grids[0];
+      var props = {
+        layout: layout,
+        cursor: this.$p.cursor
+      };
+
+      var _iterator2 = botbar_createForOfIteratorHelper(this.comp.bot_shaders),
           _step2;
 
       try {
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var s = _step2.value;
           this.ctx.save();
-          s.draw(this.ctx);
+          s.draw(this.ctx, props);
           this.ctx.restore();
         }
       } catch (err) {
@@ -13015,7 +13556,7 @@ var botbar_Botbar = /*#__PURE__*/function () {
     key: "panel",
     value: function panel() {
       var lbl = this.format_cursor_x();
-      this.ctx.fillStyle = this.$p.colors.colorPanel;
+      this.ctx.fillStyle = this.$p.colors.panel;
       var measure = this.ctx.measureText(lbl + '    ');
       var panwidth = Math.floor(measure.width);
       var cursor = this.$p.cursor.x;
@@ -13023,18 +13564,21 @@ var botbar_Botbar = /*#__PURE__*/function () {
       var y = -0.5;
       var panheight = this.comp.config.PANHEIGHT;
       this.ctx.fillRect(x, y, panwidth, panheight + 0.5);
-      this.ctx.fillStyle = this.$p.colors.colorTextHL;
+      this.ctx.fillStyle = this.$p.colors.textHL;
       this.ctx.textAlign = 'center';
       this.ctx.fillText(lbl, cursor, y + 16);
-    } // TODO: implement time zones
-
+    }
   }, {
     key: "format_date",
     value: function format_date(p) {
       var t = p[1][0];
-      t = this.grid_0.ti_map.i2t(t); //t += new Date(t).getTimezoneOffset() * MINUTE
+      t = this.grid_0.ti_map.i2t(t);
+      var ti = this.$p.layout.grids[0].ti_map.tf; // Enable timezones only for tf < 1D
 
-      var d = new Date(t);
+      var k = ti < botbar_DAY ? 1 : 0;
+      var tZ = t + k * this.$p.timezone * botbar_HOUR; //t += new Date(t).getTimezoneOffset() * MINUTE
+
+      var d = new Date(tZ);
 
       if (p[2] === botbar_YEAR || utils.year_start(t) === t) {
         return d.getUTCFullYear();
@@ -13042,9 +13586,10 @@ var botbar_Botbar = /*#__PURE__*/function () {
 
       if (p[2] === botbar_MONTH || utils.month_start(t) === t) {
         return botbar_MONTHMAP[d.getUTCMonth()];
-      }
+      } // TODO(*) see grid_maker.js
 
-      if (utils.day_start(t) === t) return d.getDate();
+
+      if (utils.day_start(tZ) === tZ) return d.getUTCDate();
       var h = utils.add_zero(d.getUTCHours());
       var m = utils.add_zero(d.getUTCMinutes());
       return h + ":" + m;
@@ -13053,10 +13598,13 @@ var botbar_Botbar = /*#__PURE__*/function () {
     key: "format_cursor_x",
     value: function format_cursor_x() {
       var t = this.$p.cursor.t;
-      t = this.grid_0.ti_map.i2t(t);
-      var ti = this.$p.interval; //t += new Date(t).getTimezoneOffset() * MINUTE
+      t = this.grid_0.ti_map.i2t(t); //let ti = this.$p.interval
 
-      var d = new Date(t);
+      var ti = this.$p.layout.grids[0].ti_map.tf; // Enable timezones only for tf < 1D
+
+      var k = ti < botbar_DAY ? 1 : 0; //t += new Date(t).getTimezoneOffset() * MINUTE
+
+      var d = new Date(t + k * this.$p.timezone * botbar_HOUR);
 
       if (ti === botbar_YEAR) {
         return d.getUTCFullYear();
@@ -13119,7 +13667,7 @@ var botbar_Botbar = /*#__PURE__*/function () {
 
 /* harmony default export */ var Botbarvue_type_script_lang_js_ = ({
   name: 'Botbar',
-  props: ['sub', 'layout', 'range', 'interval', 'cursor', 'colors', 'font', 'width', 'height', 'rerender', 'tv_id', 'config', 'shaders'],
+  props: ['sub', 'layout', 'range', 'interval', 'cursor', 'colors', 'font', 'width', 'height', 'rerender', 'tv_id', 'config', 'shaders', 'timezone'],
   mixins: [mixins_canvas],
   mounted: function mounted() {
     var el = this.$refs['canvas'];
@@ -13140,9 +13688,16 @@ var botbar_Botbar = /*#__PURE__*/function () {
         height: sett.height
       },
       style: {
-        backgroundColor: this.$props.colors.colorBack
+        backgroundColor: this.$props.colors.back
       }
     });
+  },
+  computed: {
+    bot_shaders: function bot_shaders() {
+      return this.$props.shaders.filter(function (x) {
+        return x.target === 'botbar';
+      });
+    }
   },
   watch: {
     range: {
@@ -13571,6 +14126,15 @@ var ti_mapping_TI = /*#__PURE__*/function () {
           return smth; // it was an index
         }
     }
+  }, {
+    key: "smth2t",
+    value: function smth2t(smth) {
+      if (smth < MAX_ARR) {
+        return this.i2t(smth); // it was an index
+      } else {
+          return smth; // it was time
+        }
+    }
   }]);
 
   return TI;
@@ -13580,6 +14144,7 @@ var ti_mapping_TI = /*#__PURE__*/function () {
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Chart.vue?vue&type=script&lang=js&
 
 
+//
 //
 //
 //
@@ -13617,7 +14182,7 @@ var ti_mapping_TI = /*#__PURE__*/function () {
 
 /* harmony default export */ var Chartvue_type_script_lang_js_ = ({
   name: 'Chart',
-  props: ['title_txt', 'data', 'width', 'height', 'font', 'colors', 'overlays', 'tv_id', 'config', 'buttons', 'toolbar', 'ib'],
+  props: ['title_txt', 'data', 'width', 'height', 'font', 'colors', 'overlays', 'tv_id', 'config', 'buttons', 'toolbar', 'ib', 'skin', 'timezone'],
   mixins: [shaders, datatrack],
   components: {
     GridSection: Section,
@@ -13636,10 +14201,7 @@ var ti_mapping_TI = /*#__PURE__*/function () {
 
     this.updater = new updater(this);
     this.update_last_candle();
-
-    if (this.$props.ib && !this.chart.tf) {
-      console.warn(constants.IB_TF_WARN);
-    }
+    this.init_shaders(this.skin);
   },
   methods: {
     range_changed: function range_changed(r) {
@@ -13662,16 +14224,23 @@ var ti_mapping_TI = /*#__PURE__*/function () {
     },
     cursor_changed: function cursor_changed(e) {
       this.updater.sync(e);
+      if (this._hook_xchanged) this.ce('?x-changed', e);
     },
     cursor_locked: function cursor_locked(state) {
       if (this.cursor.scroll_lock && state) return;
       this.cursor.locked = state;
+      if (this._hook_xlocked) this.ce('?x-locked', state);
     },
     calc_interval: function calc_interval() {
+      var _this = this;
+
       if (this.ohlcv.length < 2) return;
-      var tf = utils.parse_tf(this.chart.tf);
+      var tf = utils.parse_tf(this.forced_tf);
       this.interval_ms = tf || utils.detect_interval(this.ohlcv);
       this.interval = this.$props.ib ? 1 : this.interval_ms;
+      utils.warn(function () {
+        return _this.$props.ib && !_this.chart.tf;
+      }, constants.IB_TF_WARN, constants.SECOND);
     },
     set_ytransform: function set_ytransform(s) {
       var obj = this.y_transforms[s.grid_id] || {};
@@ -13734,20 +14303,23 @@ var ti_mapping_TI = /*#__PURE__*/function () {
         tv_id: this.$props.tv_id,
         config: this.$props.config,
         buttons: this.$props.buttons,
-        meta: this.meta
+        meta: this.meta,
+        skin: this.$props.skin
       };
     },
     overlay_subset: function overlay_subset(source) {
-      var _this = this;
+      var _this2 = this;
 
       return source.map(function (d) {
+        var res = utils.fast_filter(d.data, _this2.ti_map.i2t_mode(_this2.range[0] - _this2.interval, d.indexSrc), _this2.ti_map.i2t_mode(_this2.range[1], d.indexSrc));
         return {
           type: d.type,
-          name: d.name,
-          data: _this.ti_map.parse(utils.fast_filter(d.data, _this.ti_map.i2t_mode(_this.range[0] - _this.interval, d.indexSrc), _this.ti_map.i2t_mode(_this.range[1], d.indexSrc))[0] || [], d.indexSrc || 'map'),
-          settings: d.settings || _this.settings_ov,
+          name: utils.format_name(d),
+          data: _this2.ti_map.parse(res[0] || [], d.indexSrc || 'map'),
+          settings: d.settings || _this2.settings_ov,
           grid: d.grid || {},
           tf: utils.parse_tf(d.tf),
+          i0: res[1],
           loading: d.loading
         };
       });
@@ -13786,6 +14358,7 @@ var ti_mapping_TI = /*#__PURE__*/function () {
       if (clac_tf) this.calc_interval();
       var lay = new js_layout(this);
       utils.copy_layout(this._layout, lay);
+      if (this._hook_update) this.ce('?chart-update', lay);
     },
     legend_button_click: function legend_button_click(event) {
       this.$emit('legend-button-click', event);
@@ -13801,6 +14374,29 @@ var ti_mapping_TI = /*#__PURE__*/function () {
     update_last_candle: function update_last_candle() {
       // TODO: add last values for all overlays
       this.last_candle = this.ohlcv ? this.ohlcv[this.ohlcv.length - 1] : undefined;
+    },
+    // Hook events for extensions
+    ce: function ce(event) {
+      for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+        args[_key - 1] = arguments[_key];
+      }
+
+      this.emit_custom_event({
+        event: event,
+        args: args
+      });
+    },
+    // Set hooks list (called from an extension)
+    hooks: function hooks() {
+      var _this3 = this;
+
+      for (var _len2 = arguments.length, list = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        list[_key2] = arguments[_key2];
+      }
+
+      list.forEach(function (x) {
+        return _this3["_hook_".concat(x)] = true;
+      });
     }
   },
   computed: {
@@ -13812,6 +14408,7 @@ var ti_mapping_TI = /*#__PURE__*/function () {
         type: this.chart.type || 'Candles',
         main: true,
         data: this.sub,
+        i0: this.sub_start,
         settings: this.chart.settings || this.settings_ohlcv,
         grid: this.chart.grid || {}
       });
@@ -13861,8 +14458,12 @@ var ti_mapping_TI = /*#__PURE__*/function () {
     meta: function meta() {
       return {
         last: this.last_candle,
-        sub_start: this.sub_start
+        sub_start: this.sub_start,
+        activated: this.activated
       };
+    },
+    forced_tf: function forced_tf() {
+      return this.chart.tf;
     }
   },
   data: function data() {
@@ -13896,15 +14497,18 @@ var ti_mapping_TI = /*#__PURE__*/function () {
       settings_ov: {},
       // Meta data
       last_candle: [],
-      sub_start: undefined
+      sub_start: undefined,
+      activated: false
     };
   },
   watch: {
     width: function width() {
       this.update_layout();
+      if (this._hook_resize) this.ce('?chart-resize');
     },
     height: function height() {
       this.update_layout();
+      if (this._hook_resize) this.ce('?chart-resize');
     },
     ib: function ib(nw) {
       if (!nw) {
@@ -13924,20 +14528,28 @@ var ti_mapping_TI = /*#__PURE__*/function () {
       utils.overwrite(this.sub, sub);
       this.update_layout();
     },
+    timezone: function timezone() {
+      this.update_layout();
+    },
     colors: function colors() {
       utils.overwrite(this.range, this.range);
+    },
+    forced_tf: function forced_tf(n, p) {
+      this.update_layout(true);
+      this.ce('exec-all-scripts');
     },
     data: {
       handler: function handler(n, p) {
         if (!this.sub.length) this.init_range();
-        var sub = this.subset(); // Fix Infinite loop warn, when the subset is empty
+        var sub = this.subset(); // Fixes Infinite loop warn, when the subset is empty
         // TODO: Consider removing 'sub' from data entirely
 
         if (this.sub.length || sub.length) {
           utils.overwrite(this.sub, sub);
         }
 
-        this.update_layout();
+        var nw = this.data_changed();
+        this.update_layout(nw);
         utils.overwrite(this.range, this.range);
         this.cursor.scroll_lock = !!n.scrollLock;
 
@@ -13945,7 +14557,7 @@ var ti_mapping_TI = /*#__PURE__*/function () {
           this.cursor.locked = false;
         }
 
-        this.data_changed();
+        if (this._hook_data) this.ce('?chart-data', nw);
         this.update_last_candle(); // TODO: update legend values for overalys
 
         this.rerender++;
@@ -13991,15 +14603,17 @@ var Toolbarvue_type_template_id_021887fb_render = function() {
       staticClass: "trading-vue-toolbar",
       style: _vm.styles
     },
-    _vm._l(_vm.data.tools, function(tool, i) {
-      return tool.icon
+    _vm._l(_vm.groups, function(tool, i) {
+      return tool.icon && !tool.hidden
         ? _c("toolbar-item", {
             key: i,
             attrs: {
               data: tool,
+              subs: _vm.sub_map,
+              dc: _vm.data,
               config: _vm.config,
               colors: _vm.colors,
-              selected: tool.type === _vm.data.tool
+              selected: _vm.is_selected(tool)
             },
             on: { "item-selected": _vm.selected }
           })
@@ -14024,18 +14638,47 @@ var ToolbarItemvue_type_template_id_227b3c2e_render = function() {
     {
       class: ["trading-vue-tbitem", _vm.selected ? "selected-item" : ""],
       style: _vm.item_style,
-      on: {
-        click: function($event) {
-          return _vm.$emit("item-selected", _vm.data)
-        }
-      }
+      on: { click: _vm.emit_selected, mousedown: _vm.mousedown }
     },
     [
       _c("div", {
-        staticClass: "trading-vue-tbicon pixelated",
+        staticClass: "trading-vue-tbicon tvjs-pixelated",
         style: _vm.icon_style
-      })
-    ]
+      }),
+      _vm._v(" "),
+      _vm.data.group
+        ? _c(
+            "div",
+            {
+              staticClass: "trading-vue-tbitem-exp",
+              style: _vm.exp_style,
+              on: {
+                click: _vm.exp_click,
+                mousedown: _vm.expmousedown,
+                mouseover: _vm.expmouseover,
+                mouseleave: _vm.expmouseleave
+              }
+            },
+            [_vm._v("\n        ᐳ\n    ")]
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.show_exp_list
+        ? _c("item-list", {
+            attrs: {
+              config: _vm.config,
+              items: _vm.data.items,
+              colors: _vm.colors,
+              dc: _vm.dc
+            },
+            on: {
+              "close-list": _vm.close_list,
+              "item-selected": _vm.emit_selected_sub
+            }
+          })
+        : _vm._e()
+    ],
+    1
   )
 }
 var ToolbarItemvue_type_template_id_227b3c2e_staticRenderFns = []
@@ -14044,6 +14687,164 @@ ToolbarItemvue_type_template_id_227b3c2e_render._withStripped = true
 
 // CONCATENATED MODULE: ./src/components/ToolbarItem.vue?vue&type=template&id=227b3c2e&
 
+// CONCATENATED MODULE: ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ItemList.vue?vue&type=template&id=c50b23fe&
+var ItemListvue_type_template_id_c50b23fe_render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "tvjs-item-list",
+      style: _vm.list_style(),
+      on: { mousedown: _vm.thismousedown }
+    },
+    _vm._l(_vm.items, function(item) {
+      return !item.hidden
+        ? _c(
+            "div",
+            {
+              class: _vm.item_class(item),
+              style: _vm.item_style(item),
+              on: {
+                click: function(e) {
+                  return _vm.item_click(e, item)
+                }
+              }
+            },
+            [
+              _c("div", {
+                staticClass: "trading-vue-tbicon tvjs-pixelated",
+                style: _vm.icon_style(item)
+              }),
+              _vm._v(" "),
+              _c("div", [_vm._v(_vm._s(item.type))])
+            ]
+          )
+        : _vm._e()
+    }),
+    0
+  )
+}
+var ItemListvue_type_template_id_c50b23fe_staticRenderFns = []
+ItemListvue_type_template_id_c50b23fe_render._withStripped = true
+
+
+// CONCATENATED MODULE: ./src/components/ItemList.vue?vue&type=template&id=c50b23fe&
+
+// CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ItemList.vue?vue&type=script&lang=js&
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ var ItemListvue_type_script_lang_js_ = ({
+  name: 'ItemList',
+  props: ['config', 'items', 'colors', 'dc'],
+  mounted: function mounted() {
+    window.addEventListener('mousedown', this.onmousedown);
+  },
+  beforeDestroy: function beforeDestroy() {
+    window.removeEventListener('mousedown', this.onmousedown);
+  },
+  methods: {
+    list_style: function list_style() {
+      var conf = this.$props.config;
+      var w = conf.TOOLBAR;
+      var brd = this.colors.tbListBorder || this.colors.grid;
+      var bstl = "1px solid ".concat(brd);
+      return {
+        left: "".concat(w, "px"),
+        background: this.colors.back,
+        borderTop: bstl,
+        borderRight: bstl,
+        borderBottom: bstl
+      };
+    },
+    item_class: function item_class(item) {
+      if (this.dc.tool === item.type) {
+        return "tvjs-item-list-item selected-item";
+      }
+
+      return "tvjs-item-list-item";
+    },
+    item_style: function item_style(item) {
+      var conf = this.$props.config;
+      var h = conf.TB_ICON + conf.TB_ITEM_M * 2 + 8;
+      var sel = this.dc.tool === item.type;
+      return {
+        height: "".concat(h, "px"),
+        color: sel ? undefined : "#888888"
+      };
+    },
+    icon_style: function icon_style(data) {
+      var conf = this.$props.config;
+      var br = conf.TB_ICON_BRI;
+      var im = conf.TB_ITEM_M;
+      return {
+        'background-image': "url(".concat(data.icon, ")"),
+        'width': '25px',
+        'height': '25px',
+        'margin': "".concat(im, "px"),
+        'filter': "brightness(".concat(br, ")")
+      };
+    },
+    item_click: function item_click(e, item) {
+      e.cancelBubble = true;
+      this.$emit('item-selected', item);
+      this.$emit('close-list');
+    },
+    onmousedown: function onmousedown() {
+      this.$emit('close-list');
+    },
+    thismousedown: function thismousedown(e) {
+      e.stopPropagation();
+    }
+  },
+  computed: {},
+  data: function data() {
+    return {};
+  }
+});
+// CONCATENATED MODULE: ./src/components/ItemList.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_ItemListvue_type_script_lang_js_ = (ItemListvue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/components/ItemList.vue?vue&type=style&index=0&lang=css&
+var ItemListvue_type_style_index_0_lang_css_ = __webpack_require__(58);
+
+// CONCATENATED MODULE: ./src/components/ItemList.vue
+
+
+
+
+
+
+/* normalize component */
+
+var ItemList_component = normalizeComponent(
+  components_ItemListvue_type_script_lang_js_,
+  ItemListvue_type_template_id_c50b23fe_render,
+  ItemListvue_type_template_id_c50b23fe_staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var ItemList_api; }
+ItemList_component.options.__file = "src/components/ItemList.vue"
+/* harmony default export */ var ItemList = (ItemList_component.exports);
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/ToolbarItem.vue?vue&type=script&lang=js&
 //
 //
@@ -14056,10 +14857,78 @@ ToolbarItemvue_type_template_id_227b3c2e_render._withStripped = true
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
 /* harmony default export */ var ToolbarItemvue_type_script_lang_js_ = ({
   name: 'ToolbarItem',
-  props: ['data', 'selected', 'colors', 'tv_id', 'config'],
-  mounted: function mounted() {},
+  props: ['data', 'selected', 'colors', 'tv_id', 'config', 'dc', 'subs'],
+  components: {
+    ItemList: ItemList
+  },
+  mounted: function mounted() {
+    if (this.data.group) {
+      var type = this.subs[this.data.group];
+      var item = this.data.items.find(function (x) {
+        return x.type === type;
+      });
+      if (item) this.sub_item = item;
+    }
+  },
+  methods: {
+    mousedown: function mousedown(e) {
+      var _this = this;
+
+      this.click_start = utils.now();
+      this.click_id = setTimeout(function () {
+        _this.show_exp_list = true;
+      }, this.config.TB_ICON_HOLD);
+    },
+    expmouseover: function expmouseover() {
+      this.exp_hover = true;
+    },
+    expmouseleave: function expmouseleave() {
+      this.exp_hover = false;
+    },
+    expmousedown: function expmousedown(e) {
+      if (this.show_exp_list) e.stopPropagation();
+    },
+    emit_selected: function emit_selected() {
+      if (utils.now() - this.click_start > this.config.TB_ICON_HOLD) return;
+      clearTimeout(this.click_id);
+
+      if (!this.data.group) {
+        this.$emit('item-selected', this.data);
+      } else {
+        var item = this.sub_item || this.data.items[0];
+        this.$emit('item-selected', item);
+      }
+    },
+    emit_selected_sub: function emit_selected_sub(item) {
+      this.$emit('item-selected', item);
+      this.sub_item = item;
+    },
+    exp_click: function exp_click(e) {
+      if (!this.data.group) return;
+      e.cancelBubble = true;
+      this.show_exp_list = !this.show_exp_list;
+    },
+    close_list: function close_list() {
+      this.show_exp_list = false;
+    }
+  },
   computed: {
     item_style: function item_style() {
       if (this.$props.data.type === 'System:Splitter') {
@@ -14070,11 +14939,12 @@ ToolbarItemvue_type_template_id_227b3c2e_render._withStripped = true
       var im = conf.TB_ITEM_M;
       var m = (conf.TOOLBAR - conf.TB_ICON) * 0.5 - im;
       var s = conf.TB_ICON + im * 2;
+      var b = this.exp_hover ? 0 : 3;
       return {
         'width': "".concat(s, "px"),
         'height': "".concat(s, "px"),
         'margin': "8px ".concat(m, "px 0px ").concat(m, "px"),
-        'border-radius': '3px'
+        'border-radius': "3px ".concat(b, "px ").concat(b, "px 3px")
       };
     },
     icon_style: function icon_style() {
@@ -14084,19 +14954,31 @@ ToolbarItemvue_type_template_id_227b3c2e_render._withStripped = true
 
       var conf = this.$props.config;
       var br = conf.TB_ICON_BRI;
+      var sz = conf.TB_ICON;
       var im = conf.TB_ITEM_M;
+      var ic = this.sub_item ? this.sub_item.icon : this.$props.data.icon;
       return {
-        'background-image': "url(".concat(this.$props.data.icon, ")"),
-        'width': '25px',
-        'height': '25px',
+        'background-image': "url(".concat(ic, ")"),
+        'width': "".concat(sz, "px"),
+        'height': "".concat(sz, "px"),
         'margin': "".concat(im, "px"),
         'filter': "brightness(".concat(br, ")")
+      };
+    },
+    exp_style: function exp_style() {
+      var conf = this.$props.config;
+      var im = conf.TB_ITEM_M;
+      var s = conf.TB_ICON * 0.5 + im;
+      var p = (conf.TOOLBAR - s * 2) / 4;
+      return {
+        padding: "".concat(s, "px ").concat(p, "px"),
+        transform: this.show_exp_list ? "scale(-0.6, 1)" : "scaleX(0.6)"
       };
     },
     splitter: function splitter() {
       var conf = this.$props.config;
       var colors = this.$props.colors;
-      var c = colors.colorGrid;
+      var c = colors.grid;
       var im = conf.TB_ITEM_M;
       var m = (conf.TOOLBAR - conf.TB_ICON) * 0.5 - im;
       var s = conf.TB_ICON + im * 2;
@@ -14107,12 +14989,19 @@ ToolbarItemvue_type_template_id_227b3c2e_render._withStripped = true
         'background-color': c
       };
     }
+  },
+  data: function data() {
+    return {
+      exp_hover: false,
+      show_exp_list: false,
+      sub_item: null
+    };
   }
 });
 // CONCATENATED MODULE: ./src/components/ToolbarItem.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_ToolbarItemvue_type_script_lang_js_ = (ToolbarItemvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/components/ToolbarItem.vue?vue&type=style&index=0&lang=css&
-var ToolbarItemvue_type_style_index_0_lang_css_ = __webpack_require__(58);
+var ToolbarItemvue_type_style_index_0_lang_css_ = __webpack_require__(60);
 
 // CONCATENATED MODULE: ./src/components/ToolbarItem.vue
 
@@ -14139,6 +15028,14 @@ if (false) { var ToolbarItem_api; }
 ToolbarItem_component.options.__file = "src/components/ToolbarItem.vue"
 /* harmony default export */ var ToolbarItem = (ToolbarItem_component.exports);
 // CONCATENATED MODULE: ./node_modules/babel-loader/lib!./node_modules/vue-loader/lib??vue-loader-options!./src/components/Toolbar.vue?vue&type=script&lang=js&
+function Toolbarvue_type_script_lang_js_createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = Toolbarvue_type_script_lang_js_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function Toolbarvue_type_script_lang_js_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return Toolbarvue_type_script_lang_js_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return Toolbarvue_type_script_lang_js_arrayLikeToArray(o, minLen); }
+
+function Toolbarvue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+//
+//
 //
 //
 //
@@ -14169,6 +15066,22 @@ ToolbarItem_component.options.__file = "src/components/ToolbarItem.vue"
         event: 'tool-selected',
         args: [tool.type]
       });
+
+      if (tool.group) {
+        // TODO: emit the sub map to DC (save)
+        this.sub_map[tool.group] = tool.type;
+      }
+    },
+    is_selected: function is_selected(tool) {
+      var _this = this;
+
+      if (tool.group) {
+        return !!tool.items.find(function (x) {
+          return x.type === _this.data.tool;
+        });
+      }
+
+      return tool.type === this.data.tool;
     }
   },
   computed: {
@@ -14176,9 +15089,9 @@ ToolbarItem_component.options.__file = "src/components/ToolbarItem.vue"
       var colors = this.$props.colors;
       var b = this.$props.config.TB_BORDER;
       var w = this.$props.config.TOOLBAR - b;
-      var c = colors.colorGrid;
-      var cb = colors.colorTbBack || colors.colorBack;
-      var brd = colors.colorTbBorder || colors.colorScale;
+      var c = colors.grid;
+      var cb = colors.tbBack || colors.back;
+      var brd = colors.tbBorder || colors.scale;
       var st = this.$props.config.TB_B_STYLE;
       return {
         'width': "".concat(w, "px"),
@@ -14186,6 +15099,43 @@ ToolbarItem_component.options.__file = "src/components/ToolbarItem.vue"
         'background-color': cb,
         'border-right': "".concat(b, "px ").concat(st, " ").concat(brd)
       };
+    },
+    groups: function groups() {
+      var arr = [];
+
+      var _iterator = Toolbarvue_type_script_lang_js_createForOfIteratorHelper(this.data.tools || []),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var tool = _step.value;
+
+          if (!tool.group) {
+            arr.push(tool);
+            continue;
+          }
+
+          var g = arr.find(function (x) {
+            return x.group === tool.group;
+          });
+
+          if (!g) {
+            arr.push({
+              group: tool.group,
+              icon: tool.icon,
+              items: [tool]
+            });
+          } else {
+            g.items.push(tool);
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      return arr;
     }
   },
   watch: {
@@ -14202,14 +15152,15 @@ ToolbarItem_component.options.__file = "src/components/ToolbarItem.vue"
   },
   data: function data() {
     return {
-      tool_count: 0
+      tool_count: 0,
+      sub_map: {}
     };
   }
 });
 // CONCATENATED MODULE: ./src/components/Toolbar.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_Toolbarvue_type_script_lang_js_ = (Toolbarvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/components/Toolbar.vue?vue&type=style&index=0&lang=css&
-var Toolbarvue_type_style_index_0_lang_css_ = __webpack_require__(60);
+var Toolbarvue_type_style_index_0_lang_css_ = __webpack_require__(62);
 
 // CONCATENATED MODULE: ./src/components/Toolbar.vue
 
@@ -14296,7 +15247,7 @@ Widgetsvue_type_template_id_5fe4312f_render._withStripped = true
 // CONCATENATED MODULE: ./src/components/Widgets.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_Widgetsvue_type_script_lang_js_ = (Widgetsvue_type_script_lang_js_); 
 // EXTERNAL MODULE: ./src/components/Widgets.vue?vue&type=style&index=0&lang=css&
-var Widgetsvue_type_style_index_0_lang_css_ = __webpack_require__(62);
+var Widgetsvue_type_style_index_0_lang_css_ = __webpack_require__(64);
 
 // CONCATENATED MODULE: ./src/components/Widgets.vue
 
@@ -14331,27 +15282,45 @@ function xcontrol_arrayLikeToArray(arr, len) { if (len == null || len > arr.leng
 
 // extensions control
 /* harmony default export */ var xcontrol = ({
+  mounted: function mounted() {
+    this.ctrllist();
+    this.skin_styles();
+  },
   methods: {
-    // TODO: preventDefault
-    pre_dc: function pre_dc(e) {
-      var _iterator = xcontrol_createForOfIteratorHelper(this.controllers),
+    // Build / rebuild component list
+    ctrllist: function ctrllist() {
+      this.ctrl_destroy();
+      this.controllers = [];
+
+      var _iterator = xcontrol_createForOfIteratorHelper(this.$props.extensions),
           _step;
 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var ctrl = _step.value;
+          var x = _step.value;
+          var name = x.Main.__name__;
 
-          if (ctrl.update) {
-            ctrl.update(e);
+          if (!this.xSettings[name]) {
+            this.$set(this.xSettings, name, {});
           }
+
+          var nc = new x.Main(this, // tv inst
+          this.data, // dc
+          this.xSettings[name] // settings
+          );
+          nc.name = name;
+          this.controllers.push(nc);
         }
       } catch (err) {
         _iterator.e(err);
       } finally {
         _iterator.f();
       }
+
+      return this.controllers;
     },
-    post_dc: function post_dc(e) {
+    // TODO: preventDefault
+    pre_dc: function pre_dc(e) {
       var _iterator2 = xcontrol_createForOfIteratorHelper(this.controllers),
           _step2;
 
@@ -14359,8 +15328,8 @@ function xcontrol_arrayLikeToArray(arr, len) { if (len == null || len > arr.leng
         for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
           var ctrl = _step2.value;
 
-          if (ctrl.post_update) {
-            ctrl.post_update(e);
+          if (ctrl.update) {
+            ctrl.update(e);
           }
         }
       } catch (err) {
@@ -14368,44 +15337,58 @@ function xcontrol_arrayLikeToArray(arr, len) { if (len == null || len > arr.leng
       } finally {
         _iterator2.f();
       }
-    }
-  },
-  computed: {
-    ctrllist: function ctrllist() {
+    },
+    post_dc: function post_dc(e) {
       var _iterator3 = xcontrol_createForOfIteratorHelper(this.controllers),
           _step3;
 
       try {
         for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
           var ctrl = _step3.value;
-          if (ctrl.destroy) ctrl.destroy();
+
+          if (ctrl.post_update) {
+            ctrl.post_update(e);
+          }
         }
       } catch (err) {
         _iterator3.e(err);
       } finally {
         _iterator3.f();
       }
-
-      this.controllers = [];
-
-      var _iterator4 = xcontrol_createForOfIteratorHelper(this.$props.extensions),
+    },
+    ctrl_destroy: function ctrl_destroy() {
+      var _iterator4 = xcontrol_createForOfIteratorHelper(this.controllers),
           _step4;
 
       try {
         for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var x = _step4.value;
-          this.controllers.push(new x.Main(this, // tv inst
-          this.data // dc
-          ));
+          var ctrl = _step4.value;
+          if (ctrl.destroy) ctrl.destroy();
         }
       } catch (err) {
         _iterator4.e(err);
       } finally {
         _iterator4.f();
       }
-
-      return this.controllers;
     },
+    skin_styles: function skin_styles() {
+      var id = 'tvjs-skin-styles';
+      var stbr = document.getElementById(id);
+
+      if (stbr) {
+        var parent = stbr.parentNode;
+        parent.removeChild(stbr);
+      }
+
+      if (this.skin_proto && this.skin_proto.styles) {
+        var sheet = document.createElement('style');
+        sheet.setAttribute("id", id);
+        sheet.innerHTML = this.skin_proto.styles;
+        this.$el.appendChild(sheet);
+      }
+    }
+  },
+  computed: {
     ws: function ws() {
       var ws = {};
 
@@ -14430,6 +15413,67 @@ function xcontrol_arrayLikeToArray(arr, len) { if (len == null || len > arr.leng
       }
 
       return ws;
+    },
+    skins: function skins() {
+      var sks = {};
+
+      var _iterator6 = xcontrol_createForOfIteratorHelper(this.$props.extensions),
+          _step6;
+
+      try {
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var x = _step6.value;
+
+          for (var id in x.skins || {}) {
+            sks[id] = x.skins[id];
+          }
+        }
+      } catch (err) {
+        _iterator6.e(err);
+      } finally {
+        _iterator6.f();
+      }
+
+      return sks;
+    },
+    skin_proto: function skin_proto() {
+      return this.skins[this.$props.skin];
+    },
+    colorpack: function colorpack() {
+      var sel = this.skins[this.$props.skin];
+      return sel ? sel.colors : undefined;
+    }
+  },
+  watch: {
+    // TODO: This is fast & dirty fix, need
+    // to fix the actual reactivity problem
+    skin: function skin(n, p) {
+      if (n !== p) this.resetChart();
+      this.skin_styles();
+    },
+    extensions: function extensions() {
+      this.ctrllist();
+    },
+    xSettings: {
+      handler: function handler(n, p) {
+        var _iterator7 = xcontrol_createForOfIteratorHelper(this.controllers),
+            _step7;
+
+        try {
+          for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+            var ctrl = _step7.value;
+
+            if (ctrl.onsettings) {
+              ctrl.onsettings(n, p);
+            }
+          }
+        } catch (err) {
+          _iterator7.e(err);
+        } finally {
+          _iterator7.f();
+        }
+      },
+      deep: true
     }
   },
   data: function data() {
@@ -14447,6 +15491,10 @@ function TradingVuevue_type_script_lang_js_unsupportedIterableToArray(o, minLen)
 
 function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+//
+//
+//
+//
 //
 //
 //
@@ -14573,6 +15621,9 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
       type: String,
       "default": '#8282827d'
     },
+    colors: {
+      type: Object
+    },
     font: {
       type: String,
       "default": constants.ChartConfig.FONT
@@ -14615,6 +15666,20 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
       "default": function _default() {
         return [];
       }
+    },
+    xSettings: {
+      type: Object,
+      "default": function _default() {
+        return {};
+      }
+    },
+    skin: {
+      type: String // Skin Name
+
+    },
+    timezone: {
+      type: Number,
+      "default": 0
     }
   },
   computed: {
@@ -14627,19 +15692,15 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
         data: this.decubed,
         width: this.$props.width - offset,
         height: this.$props.height,
-        font: this.$props.font,
+        font: this.font_comp,
         buttons: this.$props.legendButtons,
         toolbar: this.$props.toolbar,
         ib: this.$props.indexBased || this.index_based || false,
-        colors: {}
+        colors: Object.assign({}, this.$props.colors || this.colorpack),
+        skin: this.skin_proto,
+        timezone: this.$props.timezone
       };
-
-      for (var k in this.$props) {
-        if (k.indexOf('color') === 0) {
-          chart_props.colors[k] = this.$props[k];
-        }
-      }
-
+      this.parse_colors(chart_props.colors);
       return chart_props;
     },
     chart_config: function chart_config() {
@@ -14676,7 +15737,7 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
       try {
         for (_iterator.s(); !(_step = _iterator.n()).done;) {
           var x = _step.value;
-          arr.push.apply(arr, toConsumableArray_default()(x.overlays));
+          arr.push.apply(arr, toConsumableArray_default()(Object.values(x.overlays)));
         }
       } catch (err) {
         _iterator.e(err);
@@ -14685,6 +15746,9 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
       }
 
       return arr;
+    },
+    font_comp: function font_comp() {
+      return this.skin_proto && this.skin_proto.font ? this.skin_proto.font : this.font;
     }
   },
   data: function data() {
@@ -14696,8 +15760,10 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
     this.custom_event({
       event: 'before-destroy'
     });
+    this.ctrl_destroy();
   },
   methods: {
+    // TODO: reset extensions?
     resetChart: function resetChart(resetRange) {
       var _this = this;
 
@@ -14713,6 +15779,13 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
           return _this.setRange.apply(_this, toConsumableArray_default()(range));
         });
       }
+
+      this.$nextTick(function () {
+        return _this.custom_event({
+          event: 'chart-reset',
+          args: []
+        });
+      });
     },
     "goto": function goto(t) {
       // TODO: limit goto & setRange (out of data error)
@@ -14789,31 +15862,46 @@ function TradingVuevue_type_script_lang_js_arrayLikeToArray(arr, len) { if (len 
       }
 
       this.$emit('range-changed', r);
+      this.custom_event({
+        event: 'range-changed',
+        args: [r]
+      });
+      if (this.onrange) this.onrange(r);
     },
     set_loader: function set_loader(dc) {
       var _this2 = this;
 
-      var self = this;
-      this.$refs.chart.$off('range-changed');
-      if (dc) this.$refs.chart.$on('range-changed', function (r) {
-        var tf = _this2.$refs.chart.interval;
-
-        if (self.chart_props.ib) {
-          var ti_map = _this2.$refs.chart.ti_map;
-          r = r.map(function (x) {
-            return ti_map.i2t(x);
-          });
-          tf = _this2.$refs.chart.interval_ms;
-        }
-
+      this.onrange = function (r) {
+        var pf = _this2.chart_props.ib ? '_ms' : '';
+        var tf = _this2.$refs.chart['interval' + pf];
         dc.range_changed(r, tf);
-      });
+      };
+    },
+    parse_colors: function parse_colors(colors) {
+      for (var k in this.$props) {
+        if (k.indexOf('color') === 0 && k !== 'colors') {
+          var k2 = k.replace('color', '');
+          k2 = k2[0].toLowerCase() + k2.slice(1);
+          if (colors[k2]) continue;
+          colors[k2] = this.$props[k];
+        }
+      }
+    },
+    mousedown: function mousedown() {
+      this.$refs.chart.activated = true;
+    },
+    mouseleave: function mouseleave() {
+      this.$refs.chart.activated = false;
     }
   }
 });
 // CONCATENATED MODULE: ./src/TradingVue.vue?vue&type=script&lang=js&
  /* harmony default export */ var src_TradingVuevue_type_script_lang_js_ = (TradingVuevue_type_script_lang_js_); 
+// EXTERNAL MODULE: ./src/TradingVue.vue?vue&type=style&index=0&lang=css&
+var TradingVuevue_type_style_index_0_lang_css_ = __webpack_require__(66);
+
 // CONCATENATED MODULE: ./src/TradingVue.vue
+
 
 
 
@@ -14837,79 +15925,246 @@ if (false) { var TradingVue_api; }
 TradingVue_component.options.__file = "src/TradingVue.vue"
 /* harmony default export */ var TradingVue = (TradingVue_component.exports);
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/typeof.js
-var helpers_typeof = __webpack_require__(23);
+var helpers_typeof = __webpack_require__(10);
 var typeof_default = /*#__PURE__*/__webpack_require__.n(helpers_typeof);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/assertThisInitialized.js
-var assertThisInitialized = __webpack_require__(24);
+var assertThisInitialized = __webpack_require__(27);
 var assertThisInitialized_default = /*#__PURE__*/__webpack_require__.n(assertThisInitialized);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/inherits.js
-var inherits = __webpack_require__(21);
-var inherits_default = /*#__PURE__*/__webpack_require__.n(inherits);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/possibleConstructorReturn.js
-var possibleConstructorReturn = __webpack_require__(22);
-var possibleConstructorReturn_default = /*#__PURE__*/__webpack_require__.n(possibleConstructorReturn);
-
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/getPrototypeOf.js
-var getPrototypeOf = __webpack_require__(10);
-var getPrototypeOf_default = /*#__PURE__*/__webpack_require__.n(getPrototypeOf);
-
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/regenerator/index.js
-var regenerator = __webpack_require__(3);
+var regenerator = __webpack_require__(7);
 var regenerator_default = /*#__PURE__*/__webpack_require__.n(regenerator);
 
 // EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/asyncToGenerator.js
-var asyncToGenerator = __webpack_require__(5);
+var asyncToGenerator = __webpack_require__(11);
 var asyncToGenerator_default = /*#__PURE__*/__webpack_require__.n(asyncToGenerator);
 
 // EXTERNAL MODULE: ./src/helpers/tmp/ww$$$.json
-var ww$$$ = __webpack_require__(31);
+var ww$$$ = __webpack_require__(32);
 
 // EXTERNAL MODULE: ./node_modules/lz-string/libs/lz-string.js
-var lz_string = __webpack_require__(32);
+var lz_string = __webpack_require__(33);
 var lz_string_default = /*#__PURE__*/__webpack_require__.n(lz_string);
 
-// EXTERNAL MODULE: ./node_modules/@babel/runtime/helpers/construct.js
-var construct = __webpack_require__(33);
-var construct_default = /*#__PURE__*/__webpack_require__.n(construct);
+// EXTERNAL MODULE: ./src/helpers/script_ww.js
+var script_ww = __webpack_require__(69);
 
-// CONCATENATED MODULE: ./src/stuff/linreg.js
-/**
- * Simple linear regression
- *
- * @param {Array.<number>} data
- * @return {Function}
- */
-function regression(data, len, offset) {
-  data = data.slice(0, len).reverse().map(function (x, i) {
-    return [i, x];
-  });
-  var sum_x = 0,
-      sum_y = 0,
-      sum_xy = 0,
-      sum_xx = 0,
-      count = 0,
-      m,
-      b; // calculate sums
-
-  for (var i = 0, len = data.length; i < len; i++) {
-    if (!data[i]) return NaN;
-    var point = data[i];
-    sum_x += point[0];
-    sum_y += point[1];
-    sum_xx += point[0] * point[0];
-    sum_xy += point[0] * point[1];
-    count++;
-  } // calculate slope (m) and y-intercept (b) for f(x) = m * x + b
+// CONCATENATED MODULE: ./src/helpers/script_ww_api.js
 
 
-  m = (count * sum_xy - sum_x * sum_y) / (count * sum_xx - sum_x * sum_x);
-  b = sum_y / count - m * sum_x / count;
-  return m * (data.length - 1 - offset) + b;
-}
+
+
+// Webworker interface
+// Compiled webworker (see webpack/ww_plugin.js)
+
+
+
+ // For webworker-loader to find the ww
+
+var script_ww_api_WebWork = /*#__PURE__*/function () {
+  function WebWork(dc) {
+    classCallCheck_default()(this, WebWork);
+
+    this.dc = dc;
+    this.tasks = {};
+
+    this.onevent = function () {};
+
+    this.start();
+  }
+
+  createClass_default()(WebWork, [{
+    key: "start",
+    value: function start() {
+      var _this = this;
+
+      if (this.worker) this.worker.terminate(); // URL.createObjectURL
+
+      window.URL = window.URL || window.webkitURL;
+      var data = lz_string_default.a.decompressFromBase64(ww$$$[0]);
+      var blob;
+
+      try {
+        blob = new Blob([data], {
+          type: 'application/javascript'
+        });
+      } catch (e) {
+        // Backwards-compatibility
+        window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
+        blob = new BlobBuilder();
+        blob.append(data);
+        blob = blob.getBlob();
+      }
+
+      this.worker = new Worker(URL.createObjectURL(blob));
+
+      this.worker.onmessage = function (e) {
+        return _this.onmessage(e);
+      };
+    }
+  }, {
+    key: "start_socket",
+    value: function start_socket() {
+      var _this2 = this;
+
+      if (!this.dc.sett.node_url) return;
+      this.socket = new WebSocket(this.dc.sett.node_url);
+      this.socket.addEventListener('message', function (e) {
+        _this2.onmessage({
+          data: JSON.parse(e.data)
+        });
+      });
+      this.msg_queue = [];
+    }
+  }, {
+    key: "send",
+    value: function send(msg, tx_keys) {
+      if (this.dc.sett.node_url) {
+        return this.send_node(msg, tx_keys);
+      }
+
+      if (tx_keys) {
+        var tx_objs = tx_keys.map(function (k) {
+          return msg.data[k];
+        });
+        this.worker.postMessage(msg, tx_objs);
+      } else {
+        this.worker.postMessage(msg);
+      }
+    } // Send to node.js via websocket
+
+  }, {
+    key: "send_node",
+    value: function send_node(msg, tx_keys) {
+      if (!this.socket) this.start_socket();
+
+      if (this.socket && this.socket.readyState) {
+        // Send the old messages first
+        while (this.msg_queue.length) {
+          var m = this.msg_queue.shift();
+          this.socket.send(JSON.stringify(m));
+        }
+
+        this.socket.send(JSON.stringify(msg));
+      } else {
+        this.msg_queue.push(msg);
+      }
+    }
+  }, {
+    key: "onmessage",
+    value: function onmessage(e) {
+      if (e.data.id in this.tasks) {
+        this.tasks[e.data.id](e.data.data);
+        delete this.tasks[e.data.id];
+      } else {
+        this.onevent(e);
+      }
+    } // Execute a task
+
+  }, {
+    key: "exec",
+    value: function () {
+      var _exec = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(type, data, tx_keys) {
+        var _this3 = this;
+
+        return regenerator_default.a.wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                return _context.abrupt("return", new Promise(function (rs, rj) {
+                  var id = utils.uuid();
+
+                  _this3.send({
+                    type: type,
+                    id: id,
+                    data: data
+                  }, tx_keys);
+
+                  _this3.tasks[id] = function (res) {
+                    rs(res);
+                  };
+                }));
+
+              case 1:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      function exec(_x, _x2, _x3) {
+        return _exec.apply(this, arguments);
+      }
+
+      return exec;
+    }() // Execute a task, but just fucking do it,
+    // do not wait for the result
+
+  }, {
+    key: "just",
+    value: function just(type, data, tx_keys) {
+      var id = utils.uuid();
+      this.send({
+        type: type,
+        id: id,
+        data: data
+      }, tx_keys);
+    } // Relay an event from iframe postMessage
+    // (for the future)
+
+  }, {
+    key: "relay",
+    value: function () {
+      var _relay = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee2(event, just) {
+        var _this4 = this;
+
+        return regenerator_default.a.wrap(function _callee2$(_context2) {
+          while (1) {
+            switch (_context2.prev = _context2.next) {
+              case 0:
+                if (just === void 0) {
+                  just = false;
+                }
+
+                return _context2.abrupt("return", new Promise(function (rs, rj) {
+                  _this4.send(event, event.tx_keys);
+
+                  if (!just) {
+                    _this4.tasks[event.id] = function (res) {
+                      rs(res);
+                    };
+                  }
+                }));
+
+              case 2:
+              case "end":
+                return _context2.stop();
+            }
+          }
+        }, _callee2);
+      }));
+
+      function relay(_x4, _x5) {
+        return _relay.apply(this, arguments);
+      }
+
+      return relay;
+    }()
+  }, {
+    key: "destroy",
+    value: function destroy() {
+      if (this.worker) this.worker.terminate();
+    }
+  }]);
+
+  return WebWork;
+}();
+
+/* harmony default export */ var script_ww_api = (script_ww_api_WebWork);
 // CONCATENATED MODULE: ./src/helpers/script_utils.js
+
 
 var FDEFS = /(function |)([$A-Z_][0-9A-Z_$\.]*)[\s]*?\((.*?)\)/gmi;
 var SBRACKETS = /([$A-Z_][0-9A-Z_$\.]*)[\s]*?\[([^"^\[^\]]+?)\]/gmi;
@@ -15037,2793 +16292,428 @@ function tf_from_str(str) {
 }
 function get_fn_id(pre, id) {
   return pre + '-' + id.split('<-').pop();
+} // Apply filter for all new overlays
+
+function ovf(obj, f) {
+  var nw = {};
+
+  for (var id in obj) {
+    nw[id] = {};
+
+    for (var k in obj[id]) {
+      if (k === 'data') continue;
+      nw[id][k] = obj[id][k];
+    }
+
+    nw[id].data = f(obj[id].data);
+  }
+
+  return nw;
+} // Return index of the next element in
+// dataset (since t). Impl: simple binary search
+// TODO: optimize (remember the penultimate
+// iteration and start from there)
+
+function nextt(data, t, ti) {
+  if (ti === void 0) {
+    ti = 0;
+  }
+
+  var i0 = 0;
+  var iN = data.length - 1;
+
+  while (i0 <= iN) {
+    var mid = Math.floor((i0 + iN) / 2);
+
+    if (data[mid][ti] === t) {
+      return mid;
+    } else if (data[mid][ti] < t) {
+      i0 = mid + 1;
+    } else {
+      iN = mid - 1;
+    }
+  }
+
+  return t < data[mid][ti] ? mid : mid + 1;
+} // Estimated size of datasets
+
+function size_of_dss(data) {
+  var bytes = 0;
+
+  for (var id in data) {
+    if (data[id].data && data[id].data[0]) {
+      var s0 = size_of(data[id].data[0]);
+      bytes += s0 * data[id].data.length;
+    }
+  }
+
+  return bytes;
+} // Used to measure the size of dataset
+
+function size_of(object) {
+  var list = [],
+      stack = [object],
+      bytes = 0;
+
+  while (stack.length) {
+    var value = stack.pop();
+
+    var type = typeof_default()(value);
+
+    if (type === 'boolean') {
+      bytes += 4;
+    } else if (type === 'string') {
+      bytes += value.length * 2;
+    } else if (type === 'number') {
+      bytes += 8;
+    } else if (type === 'object' && list.indexOf(value) === -1) {
+      list.push(value);
+
+      for (var i in value) {
+        stack.push(value[i]);
+      }
+    }
+  }
+
+  return bytes;
+} // Update onchart/offchart
+
+function script_utils_update(data, val) {
+  var i = data.length - 1;
+  var last = data[i];
+
+  if (!last || val[0] > last[0]) {
+    data.push(val);
+  } else {
+    data[i] = val;
+  }
 }
-// CONCATENATED MODULE: ./src/helpers/sampler.js
-// Resamples candles
-
-var DEF_LIMIT = 5; // default buff length
-
-/* harmony default export */ var sampler = (function (T) {
-  // Define a TS type (part of the candle)
-  var Ti = ['high', 'low', 'close', 'vol'].indexOf(T);
-  return function (x) {
-    var tf = this.__tf__;
-    var id = this.__id__;
-    var val = x !== undefined ? x : script_engine[T][0];
-
-    if (!this.__t0__ || script_engine.t >= this.__t0__ + tf) {
-      this.unshift(val);
-      this.__t0__ = script_engine.t - script_engine.t % tf; // TODO: new candle signal
-    } // Update prices
-
-
-    switch (Ti) {
-      case 0:
-        if (val > this[0]) this[0] = val;
-        break;
-
-      case 1:
-        if (val < this[0]) this[0] = val;
-        break;
-
-      case 2:
-        this[0] = val;
-        break;
-
-      case 3:
-        this[0] += val;
-    } // Limit size of vector
-
-
-    this.length = this.__len__ || DEF_LIMIT;
-  };
-});
-// CONCATENATED MODULE: ./src/helpers/script_std.js
-
-
-
-
-
-function script_std_createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = script_std_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function script_std_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return script_std_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return script_std_arrayLikeToArray(o, minLen); }
-
-function script_std_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-// Script std-lib (built-in functions)
-
-
-
-
-var script_std_BUF_INC = 5;
-
-var script_std_ScriptStd = /*#__PURE__*/function () {
-  function ScriptStd(env) {
-    classCallCheck_default()(this, ScriptStd);
-
-    this.env = env;
-    this.SWMA = [1 / 6, 2 / 6, 2 / 6, 1 / 6];
-    this.STDEV_EPS = 1e-10;
-    this.STDEV_Z = 1e-4;
-
-    this._index_tracking();
-  } // Wrap every index with index-tracking function
-  // That way we will know exact index ranges
-
-
-  createClass_default()(ScriptStd, [{
-    key: "_index_tracking",
-    value: function _index_tracking() {
-      var proto = Object.getPrototypeOf(this);
-      var std = "";
-
-      var _iterator = script_std_createForOfIteratorHelper(Object.getOwnPropertyNames(proto)),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var k = _step.value;
-
-          switch (k) {
-            case 'constructor':
-            case 'ts':
-            case 'tstf':
-            case '_index_tracking':
-            case '_tsid':
-            case '_i':
-            case '_v':
-            case '_add_i':
-            case 'onchart':
-            case 'offchart':
-              continue;
-          }
-
-          var f = this._add_i(k, this[k].toString());
-
-          if (f) this[k] = f;
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-    } // Add index tracking to the function
-
-  }, {
-    key: "_add_i",
-    value: function _add_i(name, src) {
-      var args = f_args(src);
-      src = f_body(src);
-      var src2 = wrap_idxs(src, 'this.');
-
-      if (src2 !== src) {
-        return construct_default()(Function, toConsumableArray_default()(args).concat([src2]));
-      }
-
-      return null;
-    } // Generate the next timeseries id
-
-  }, {
-    key: "_tsid",
-    value: function _tsid(prev, next) {
-      // TODO: prev presence check
-      return "".concat(prev, "<-").concat(next);
-    } // Index-tracker
-
-  }, {
-    key: "_i",
-    value: function _i(i, x) {
-      // If an object is actually a timeseries
-      if (x != undefined && x === x && x.__id__) {
-        // Increase TS buff length
-        if (!x.__len__ || i >= x.__len__) {
-          x.__len__ = i + script_std_BUF_INC;
-        }
-      }
-
-      return i;
-    } // Index-tracker (object-based)
-
-  }, {
-    key: "_v",
-    value: function _v(x, i) {
-      // If an object is actually a timeseries
-      if (x != undefined && x === x && x.__id__) {
-        // Increase TS buff length
-        if (!x.__len__ || i >= x.__len__) {
-          x.__len__ = i + script_std_BUF_INC;
-        }
-      }
-
-      return x;
-    } // Creates a new time-series & records each x.
-    // Return the an array. Id is auto-genrated
-
-  }, {
-    key: "ts",
-    value: function ts(x, _id, _tf) {
-      if (_tf) return this.tstf(x, _tf, _id);
-      var ts = this.env.tss[_id];
-
-      if (!ts) {
-        ts = this.env.tss[_id] = [x];
-        ts.__id__ = _id;
-      } else {
-        ts[0] = x;
-      }
-
-      return ts;
-    } // Creates a new time-series & records each x.
-    // Uses Sampler to aggregate the values
-    // Return the an array. Id is auto-genrated
-
-  }, {
-    key: "tstf",
-    value: function tstf(x, tf, _id) {
-      var ts = this.env.tss[_id];
-
-      if (!ts) {
-        ts = this.env.tss[_id] = [x];
-        ts.__id__ = _id;
-        ts.__tf__ = tf_from_str(tf);
-        ts.__fn__ = sampler('close').bind(ts);
-      } else {
-        ts.__fn__(x);
-      }
-
-      return ts;
-    } // Wait for a value !== undefined
-
-  }, {
-    key: "nw",
-    value: function nw(x) {
-      /*if (x == undefined || x !== x) {
-          // Skip a dependend indicators + don't
-          // add the current value to the final output
-          // TODO: only when ts starts?
-          se.skip = true
-      }
-      return x*/
-    } // Skip undefined values
-
-  }, {
-    key: "ns",
-    value: function ns(x) {
-      if (x == undefined || x !== x) {
-        // Skip a dependend indicators + don't
-        // add the current value to the final output
-        script_engine.skip = true;
-      }
-
-      return x;
-    } // Replace if NaN
-
-  }, {
-    key: "nz",
-    value: function nz(x, v) {
-      if (x == undefined || x !== x) {
-        return v || 0;
-      }
-
-      return x;
-    } // Is NaN ?
-
-  }, {
-    key: "na",
-    value: function na(x) {
-      return x == undefined || x !== x;
-    } // Replace with NaN if Infinite
-
-  }, {
-    key: "nf",
-    value: function nf(x, v) {
-      if (!isFinite(x)) {
-        return v !== undefined ? v : NaN;
-      }
-
-      return x;
-    } // Math operators on t-series and numbers
-
-  }, {
-    key: "add",
-    value: function add(x, y, _id) {
-      // __id__ means this is a time-series
-      var id = this._tsid(_id, "add");
-
-      var x0 = this.na(x) ? NaN : x.__id__ ? x[0] : x;
-      var y0 = this.na(y) ? NaN : y.__id__ ? y[0] : y;
-      return this.ts(x0 + y0, id, x.__tf__);
-    }
-  }, {
-    key: "sub",
-    value: function sub(x, y, _id) {
-      var id = this._tsid(_id, "sub");
-
-      var x0 = this.na(x) ? NaN : x.__id__ ? x[0] : x;
-      var y0 = this.na(y) ? NaN : y.__id__ ? y[0] : y;
-      return this.ts(x0 - y0, id, x.__tf__);
-    }
-  }, {
-    key: "mult",
-    value: function mult(x, y, _id) {
-      var id = this._tsid(_id, "mult");
-
-      var x0 = this.na(x) ? NaN : x.__id__ ? x[0] : x;
-      var y0 = this.na(y) ? NaN : y.__id__ ? y[0] : y;
-      return this.ts(x0 * y0, id, x.__tf__);
-    }
-  }, {
-    key: "div",
-    value: function div(x, y, _id) {
-      var id = this._tsid(_id, "div");
-
-      var x0 = this.na(x) ? NaN : x.__id__ ? x[0] : x;
-      var y0 = this.na(y) ? NaN : y.__id__ ? y[0] : y;
-      return this.ts(x0 / y0, id, x.__tf__);
-    }
-  }, {
-    key: "neg",
-    value: function neg(x, _id) {
-      var id = this._tsid(_id, "neg");
-
-      var x0 = this.na(x) ? NaN : x.__id__ ? x[0] : x;
-      return this.ts(-x0, id, x.__tf__);
-    }
-  }, {
-    key: "abs",
-    value: function abs(x) {
-      return Math.abs(x);
-    }
-  }, {
-    key: "acos",
-    value: function acos(x) {
-      return Math.acos(x);
-    } // Emits an event
-
-  }, {
-    key: "signal",
-    value: function signal(type, data) {// TODO: this
-
-      if (data === void 0) {
-        data = {};
-      }
-    } // Emits an event if cond === true
-
-  }, {
-    key: "signalif",
-    value: function signalif(cond, type, data) {
-      if (data === void 0) {
-        data = {};
-      }
-
-      if (cond) {// TODO: this
-      }
-    } // Arnaud Legoux Moving Average
-
-  }, {
-    key: "alma",
-    value: function alma(src, len, offset, sigma, _id) {
-      var id = this._tsid(_id, "alma(".concat(len, ",").concat(offset, ",").concat(sigma, ")"));
-
-      var m = Math.floor(offset * (len - 1));
-      var s = len / sigma;
-      var norm = 0;
-      var sum = 0;
-
-      for (var i = 0; i < len; i++) {
-        var w = Math.exp(-1 * Math.pow(i - m, 2) / (2 * Math.pow(s, 2)));
-        norm = norm + w;
-        sum = sum + src[len - i - 1] * w;
-      }
-
-      return this.ts(sum / norm, id, src.__tf__);
-    }
-  }, {
-    key: "asin",
-    value: function asin(x) {
-      return Math.asin(x);
-    }
-  }, {
-    key: "atan",
-    value: function atan(x) {
-      return Math.atan(x);
-    } // Average True Range
-
-  }, {
-    key: "atr",
-    value: function atr(len, _id, _tf) {
-      var tfs = _tf || '';
-
-      var id = this._tsid(_id, "atr(".concat(len, ")"));
-
-      var high = this.env.shared["high".concat(tfs)];
-      var low = this.env.shared["low".concat(tfs)];
-      var close = this.env.shared["close".concat(tfs)];
-      var tr = this.ts(0, id, _tf);
-      tr[0] = this.na(high[1]) ? high[0] - low[0] : Math.max(Math.max(high[0] - low[0], Math.abs(high[0] - close[1])), Math.abs(low[0] - close[1]));
-      return this.rma(tr, len, id);
-    }
-  }, {
-    key: "avg",
-    value: function avg() {
-      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-        args[_key] = arguments[_key];
-      }
-
-      args.pop(); // Remove _id
-
-      var sum = 0;
-
-      for (var i = 0; i < args.length; i++) {
-        sum += args[i];
-      }
-
-      return sum / args.length;
-    } // Candles since the event occured (cond === true)
-
-  }, {
-    key: "since",
-    value: function since(cond) {// TODO: this
-    } // Bollinger Bands
-
-  }, {
-    key: "bb",
-    value: function bb(src, len, mult, _id) {
-      var id = this._tsid(_id, "bb(".concat(len, ",").concat(mult, ")"));
-
-      var basis = this.sma(src, len, id);
-      var dev = this.stdev(src, len, id)[0] * mult;
-      return [basis, this.ts(basis[0] + dev, id + '1', src.__tf__), this.ts(basis[0] - dev, id + '2', src.__tf__)];
-    } // Bollinger Bands Width
-
-  }, {
-    key: "bbw",
-    value: function bbw(src, len, mult, _id) {
-      var id = this._tsid(_id, "bbw(".concat(len, ",").concat(mult, ")"));
-
-      var basis = this.sma(src, len, id)[0];
-      var dev = this.stdev(src, len, id)[0] * mult;
-      return this.ts(2 * dev / basis, id, src.__tf__);
-    }
-  }, {
-    key: "bool",
-    value: function bool(x) {
-      return !!x;
-    } // Commodity Channel Index
-
-  }, {
-    key: "cci",
-    value: function cci(src, len, _id) {
-      // TODO: Not exactly precise, but pretty damn close
-      var id = this._tsid(_id, "cci(".concat(len, ")"));
-
-      var ma = this.sma(src, len, id);
-      var dev = this.dev(src, len, id);
-      var cci = (src[0] - ma[0]) / (0.015 * dev[0]);
-      return this.ts(cci, id, src.__tf__);
-    }
-  }, {
-    key: "ceil",
-    value: function ceil(x) {
-      return Math.ceil(x);
-    } // x[0] - x[len]
-
-  }, {
-    key: "change",
-    value: function change(src, len, _id) {
-      if (len === void 0) {
-        len = 1;
-      }
-
-      var id = this._tsid(_id, "change(".concat(len, ")"));
-
-      return this.ts(src[0] - src[len], id, src.__tf__);
-    } // Chande Momentum Oscillator
-
-  }, {
-    key: "cmo",
-    value: function cmo(src, len, _id) {
-      var id = this._tsid(_id, "cmo(".concat(len, ")"));
-
-      var mom = this.change(src, 1, id);
-      var g = this.ts(mom[0] >= 0 ? mom[0] : 0.0, id + "g", src.__tf__);
-      var l = this.ts(mom[0] >= 0 ? 0.0 : -mom[0], id + "l", src.__tf__);
-      var sm1 = this.sum(g, len, id + '1')[0];
-      var sm2 = this.sum(l, len, id + '2')[0];
-      return this.ts(100 * (sm1 - sm2) / (sm1 + sm2), id, src.__tf__);
-    } // Center of Gravity
-
-  }, {
-    key: "cog",
-    value: function cog(src, len, _id) {
-      var id = this._tsid(_id, "cmo(".concat(len, ")"));
-
-      var sum = this.sum(src, len, id)[0];
-      var num = 0;
-
-      for (var i = 0; i < len; i++) {
-        num += src[i] * (i + 1);
-      }
-
-      return this.ts(-num / sum, id, src.__tf__);
-    } // Correlation
-
-  }, {
-    key: "corr",
-    value: function corr() {// TODO: this
-    }
-  }, {
-    key: "cos",
-    value: function cos(x) {
-      return Math.cos(x);
-    }
-  }, {
-    key: "cross",
-    value: function cross(src1, src2, _id) {
-      var id = this._tsid(_id, "cross");
-
-      var x = src1[0] > src2[0] !== src1[1] > src2[1];
-      return this.ts(x, id, src1.__tf__);
-    }
-  }, {
-    key: "crossover",
-    value: function crossover(src1, src2, _id) {
-      var id = this._tsid(_id, "crossover");
-
-      var x = src1[0] > src2[0] && src1[1] <= src2[1];
-      return this.ts(x, id, src1.__tf__);
-    }
-  }, {
-    key: "crossunder",
-    value: function crossunder(src1, src2, _id) {
-      var id = this._tsid(_id, "crossunder");
-
-      var x = src1[0] < src2[0] && src1[1] >= src2[1];
-      return this.ts(x, id, src1.__tf__);
-    }
-  }, {
-    key: "cum",
-    value: function cum(src, _id) {
-      var id = this._tsid(_id, "cum");
-
-      var res = this.ts(0, id, src.__tf__);
-      res[0] = this.nz(src[0]) + this.nz(res[1]);
-      return res;
-    }
-  }, {
-    key: "dayofmonth",
-    value: function dayofmonth(time) {
-      return new Date(time || script_engine.t).getUTCDate();
-    }
-  }, {
-    key: "dayofweek",
-    value: function dayofweek(time) {
-      return new Date(time || script_engine.t).getUTCDay() + 1;
-    } // Deviation from SMA
-
-  }, {
-    key: "dev",
-    value: function dev(src, len, _id) {
-      var id = this._tsid(_id, "dev(".concat(len, ")"));
-
-      var mean = this.sma(src, len, id)[0];
-      var sum = 0;
-
-      for (var i = 0; i < len; i++) {
-        sum += Math.abs(src[i] - mean);
-      }
-
-      return this.ts(sum / len, id, src.__tf__);
-    } // Directional Movement Index ADX, +DI, -DI
-
-  }, {
-    key: "dmi",
-    value: function dmi(len, smooth, _id, _tf) {
-      var id = this._tsid(_id, "dmi(".concat(len, ",").concat(smooth, ")"));
-
-      var tfs = _tf || '';
-      var high = this.env.shared["high".concat(tfs)];
-      var low = this.env.shared["low".concat(tfs)];
-      var up = this.change(high, 1, id + '1')[0];
-      var down = this.neg(this.change(low, 1, id + '2'), id)[0];
-      var plusDM = this.ts(100 * (this.na(up) ? NaN : up > down && up > 0 ? up : 0), id + '3', _tf);
-      var minusDM = this.ts(100 * (this.na(down) ? NaN : down > up && down > 0 ? down : 0), id + '4', _tf);
-      var trur = this.rma(this.tr(false, id, _tf), len, id + '5');
-      var plus = this.div(this.rma(plusDM, len, id + '6'), trur, id + '8');
-      var minus = this.div(this.rma(minusDM, len, id + '7'), trur, id + '9');
-      var sum = this.add(plus, minus, id + '10')[0];
-      var adx = this.rma(this.ts(100 * Math.abs(plus[0] - minus[0]) / (sum === 0 ? 1 : sum), id + '11', _tf), smooth, id + '12');
-      return [adx, plus, minus];
-    } // Exponential Moving Average with alpha = 2 / (y + 1)
-
-  }, {
-    key: "ema",
-    value: function ema(src, len, _id) {
-      var id = this._tsid(_id, "ema(".concat(len, ")"));
-
-      var a = 2 / (len + 1);
-      var ema = this.ts(0, id, src.__tf__);
-      ema[0] = this.na(ema[1]) ? this.sma(src, len, id)[0] : a * src[0] + (1 - a) * this.nz(ema[1]);
-      return ema;
-    }
-  }, {
-    key: "exp",
-    value: function exp(x) {
-      return Math.exp(x);
-    }
-  }, {
-    key: "falling",
-    value: function falling(src, len, _id) {
-      var id = this._tsid(_id, "falling(".concat(len, ")"));
-
-      var bot = src[0];
-
-      for (var i = 1; i < len + 1; i++) {
-        if (bot >= src[i]) {
-          return this.ts(false, id, src.__tf__);
-        }
-      }
-
-      return this.ts(true, id, src.__tf__);
-    }
-  }, {
-    key: "fixnan",
-    value: function fixnan(x) {// TODO: this
-    }
-  }, {
-    key: "floor",
-    value: function floor(x) {
-      Math.floor(x);
-    }
-  }, {
-    key: "highest",
-    value: function highest(src, len, _id) {
-      var id = this._tsid(_id, "highest(".concat(len, ")"));
-
-      var high = -Infinity;
-
-      for (var i = 0; i < len; i++) {
-        if (src[i] > high) high = src[i];
-      }
-
-      return this.ts(high, id, src.__tf__);
-    }
-  }, {
-    key: "highestbars",
-    value: function highestbars(src, len) {// TODO: this
-    } // Hull Moving Average
-
-  }, {
-    key: "hma",
-    value: function hma(src, len, _id) {
-      var id = this._tsid(_id, "hma(".concat(len, ")"));
-
-      var len2 = Math.floor(len / 2);
-      var len3 = Math.round(Math.sqrt(len));
-      var a = this.mult(this.wma(src, len2, id + '1'), 2, id);
-      var b = this.wma(src, len, id + '2');
-      var delt = this.sub(a, b, id + '3');
-      return this.wma(delt, len3, id + '4');
-    }
-  }, {
-    key: "hour",
-    value: function hour(time) {
-      return new Date(time || t).getUTCHours();
-    }
-  }, {
-    key: "iff",
-    value: function iff(cond, x, y) {
-      return cond ? x : z;
-    } // Keltner Channels
-
-  }, {
-    key: "kc",
-    value: function kc(src, len, mult, use_tr, _id, _tf) {
-      if (use_tr === void 0) {
-        use_tr = true;
-      }
-
-      var id = this._tsid(_id, "kc(".concat(len, ",").concat(mult, ",").concat(use_tr, ")"));
-
-      var tfs = _tf || '';
-      var high = this.env.shared["high".concat(tfs)];
-      var low = this.env.shared["low".concat(tfs)];
-      var basis = this.ema(src, len, id + '1');
-      var range = use_tr ? this.tr(false, id + '2', _tf) : this.ts(high[0] - low[0], id + '3', src.__tf__);
-      var ema = this.ema(range, len, id + '4');
-      return [basis, this.ts(basis[0] + ema[0] * mult, id + '5', src.__tf__), this.ts(basis[0] - ema[0] * mult, id + '6', src.__tf__)];
-    } // Keltner Channels Width
-
-  }, {
-    key: "kcw",
-    value: function kcw(src, len, mult, use_tr, _id, _tf) {
-      if (use_tr === void 0) {
-        use_tr = true;
-      }
-
-      var id = this._tsid(_id, "kcw(".concat(len, ",").concat(mult, ",").concat(use_tr, ")"));
-
-      var kc = this.kc(src, len, mult, use_tr, "kcw", _tf);
-      return this.ts((kc[1][0] - kc[2][0]) / kc[0][0], id, src.__tf__);
-    } // Linear Regression
-
-  }, {
-    key: "linreg",
-    value: function linreg(src, len, offset, _id) {
-      if (offset === void 0) {
-        offset = 0;
-      }
-
-      var id = this._tsid(_id, "linreg(".concat(len, ")"));
-
-      src.__len__ = Math.max(src.__len__ || 0, len);
-
-      var lr = regression(src, len, offset);
-
-      return this.ts(lr, id, src.__tf__);
-    }
-  }, {
-    key: "log",
-    value: function log(x) {
-      return Math.log(x);
-    }
-  }, {
-    key: "log10",
-    value: function log10(x) {
-      return Math.log10(x);
-    }
-  }, {
-    key: "lowest",
-    value: function lowest(src, len, _id) {
-      var id = this._tsid(_id, "lowest(".concat(len, ")"));
-
-      var low = Infinity;
-
-      for (var i = 0; i < len; i++) {
-        if (src[i] < low) low = src[i];
-      }
-
-      return this.ts(low, id, src.__tf__);
-    }
-  }, {
-    key: "lowestbars",
-    value: function lowestbars(src, len) {// TODO: this
-    } // Moving Average Convergence/Divergence
-
-  }, {
-    key: "macd",
-    value: function macd(src, fast, slow, sig, _id) {
-      var id = this._tsid(_id, "macd(".concat(fast).concat(slow).concat(sig, ")"));
-
-      var fast_ma = this.ema(src, fast, id + '1');
-      var slow_ma = this.ema(src, slow, id + '2');
-      var macd = this.sub(fast_ma, slow_ma, id + '3');
-      var signal = this.ema(macd, sig, id + '4');
-      var hist = this.sub(macd, signal, id + '5');
-      return [macd, signal, hist];
-    }
-  }, {
-    key: "max",
-    value: function max() {
-      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-        args[_key2] = arguments[_key2];
-      }
-
-      args.pop(); // Remove _id
-
-      return Math.max.apply(Math, args);
-    } // max_bars_back
-
-  }, {
-    key: "buffsize",
-    value: function buffsize(src, len) {// TODO: this
-    } // Money Flow Index
-
-  }, {
-    key: "mfi",
-    value: function mfi(src, len, _id) {
-      var id = this._tsid(_id, "mfi(".concat(len, ")"));
-
-      var vol = this.env.shared.vol;
-      var ch = this.change(src, 1, id + '1')[0];
-      var ts1 = this.mult(vol, ch <= 0.0 ? 0.0 : src[0], id + '2');
-      var ts2 = this.mult(vol, ch >= 0.0 ? 0.0 : src[0], id + '3');
-      var upper = this.sum(ts1, len, id + '4');
-      var lower = this.sum(ts2, len, id + '5');
-      var res = undefined;
-
-      if (!this.na(lower)) {
-        res = this.rsi(upper, lower, id + '6')[0];
-      }
-
-      return this.ts(res, id, src.__tf__);
-    }
-  }, {
-    key: "min",
-    value: function min() {
-      for (var _len3 = arguments.length, args = new Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
-        args[_key3] = arguments[_key3];
-      }
-
-      args.pop(); // Remove _id
-
-      return Math.min.apply(Math, args);
-    }
-  }, {
-    key: "minute",
-    value: function minute() {
-      return new Date(time || script_engine.t).getUTCMinutes();
-    } // Momentum
-
-  }, {
-    key: "mom",
-    value: function mom(src, len, _id) {
-      var id = this._tsid(_id, "mom(".concat(len, ")"));
-
-      return this.ts(src[0] - src[len], id, src.__tf__);
-    }
-  }, {
-    key: "month",
-    value: function month(time) {
-      return new Date(time || script_engine.t).getUTCMonth();
-    } // Display data point on the main chart
-
-  }, {
-    key: "onchart",
-    value: function onchart(x, name, sett, _id) {
-      if (sett === void 0) {
-        sett = {};
-      }
-
-      name = name || get_fn_id('Onchart', _id);
-      if (x && x.__id__) x = x[0];
-
-      if (Array.isArray(x) && x[0] && x[0].__id__) {
-        x = x.map(function (x) {
-          return x[0];
-        });
-      }
-
-      if (!this.env.onchart[name]) {
-        var type = sett.type;
-        delete sett.type;
-        sett.$synth = true;
-        sett.skipNaN = true;
-        var post = Array.isArray(x) ? 's' : '';
-        this.env.onchart[name] = Object.assign({
-          name: name,
-          type: type || 'Spline' + post,
-          data: [],
-          settings: sett
-        }, sett);
-      }
-
-      var v = Array.isArray(x) ? [script_engine.t].concat(toConsumableArray_default()(x)) : [script_engine.t, x];
-      this.env.onchart[name].data.push(v);
-    } // Create a new offchart overlay and put
-    // the point there
-
-  }, {
-    key: "offchart",
-    value: function offchart(x, name, sett, _id) {
-      if (sett === void 0) {
-        sett = {};
-      }
-
-      name = name || get_fn_id('Offchart', _id);
-      if (x && x.__id__) x = x[0];
-
-      if (Array.isArray(x) && x[0] && x[0].__id__) {
-        x = x.map(function (x) {
-          return x[0];
-        });
-      }
-
-      if (!this.env.offchart[name]) {
-        var type = sett.type;
-        delete sett.type;
-        sett.$synth = true;
-        sett.skipNaN = true;
-        var post = Array.isArray(x) ? 's' : '';
-        this.env.offchart[name] = Object.assign({
-          name: name,
-          type: type || 'Spline' + post,
-          data: [],
-          settings: sett
-        }, sett);
-      }
-
-      var v = Array.isArray(x) ? [script_engine.t].concat(toConsumableArray_default()(x)) : [script_engine.t, x];
-      this.env.offchart[name].data.push(v);
-    }
-  }, {
-    key: "offset",
-    value: function offset() {// TODO: this
-    } // percentile_linear_interpolation
-
-  }, {
-    key: "linearint",
-    value: function linearint() {// TODO: this
-    } // percentile_nearest_rank
-
-  }, {
-    key: "nearestrank",
-    value: function nearestrank() {// TODO: this
-    }
-  }, {
-    key: "percentrank",
-    value: function percentrank() {// TODO: this
-    }
-  }, {
-    key: "pivothigh",
-    value: function pivothigh(src, left, right, _id) {
-      var id = this._tsid(_id, "pivothigh(".concat(left, ",").concat(right, ")"));
-
-      var len = left + right + 1;
-      var top = src[right];
-
-      for (var i = 0; i < len; i++) {
-        if (top <= src[i] && i !== right) {
-          return this.ts(NaN, id, src.__tf__);
-        }
-      }
-
-      return this.ts(top, id, src.__tf__);
-    }
-  }, {
-    key: "pivotlow",
-    value: function pivotlow(src, left, right, _id) {
-      var id = this._tsid(_id, "pivotlow(".concat(left, ",").concat(right, ")"));
-
-      var len = left + right + 1;
-      var bot = src[right];
-
-      for (var i = 0; i < len; i++) {
-        if (bot >= src[i] && i !== right) {
-          return this.ts(NaN, id, src.__tf__);
-        }
-      }
-
-      return this.ts(bot, id, src.__tf__);
-    }
-  }, {
-    key: "pow",
-    value: function pow(x) {
-      return Math.pow(x);
-    }
-  }, {
-    key: "rising",
-    value: function rising(src, len, _id) {
-      var id = this._tsid(_id, "rising(".concat(len, ")"));
-
-      var top = src[0];
-
-      for (var i = 1; i < len + 1; i++) {
-        if (top <= src[i]) {
-          return this.ts(false, id, src.__tf__);
-        }
-      }
-
-      return this.ts(true, id, src.__tf__);
-    } // Exponentially MA with alpha = 1 / length
-    // Used in RSI
-
-  }, {
-    key: "rma",
-    value: function rma(src, len, _id) {
-      var id = this._tsid(_id, "rma(".concat(len, ")"));
-
-      var a = len;
-      var sum = this.ts(0, id, src.__tf__);
-      sum[0] = this.na(sum[1]) ? this.sma(src, len, id)[0] : (src[0] + (a - 1) * this.nz(sum[1])) / a;
-      return sum;
-    } // Rate of Change
-
-  }, {
-    key: "roc",
-    value: function roc(src, len, _id) {
-      var id = this._tsid(_id, "roc(".concat(len, ")"));
-
-      return this.ts(100 * (src[0] - src[len]) / src[len], id, src.__tf__);
-    }
-  }, {
-    key: "round",
-    value: function round(x) {
-      return Math.round(x);
-    } // Relative Strength Index
-
-  }, {
-    key: "rsi",
-    value: function rsi(x, y, _id) {
-      // Check if y is a timeseries
-      if (!this.na(y) && y.__id__) {
-        var id = this._tsid(_id, "rsi(x,y)");
-
-        var rsi = 100 - 100 / (1 + this.div(x, y, id)[0]);
-      } else {
-        var id = this._tsid(_id, "rsi(".concat(y, ")"));
-
-        var ch = this.change(x, 1, _id)[0];
-        var pc = this.ts(Math.max(ch, 0), id + '1', x.__tf__);
-        var nc = this.ts(-Math.min(ch, 0), id + '2', x.__tf__);
-        var up = this.rma(pc, y, id + '3')[0];
-        var down = this.rma(nc, y, id + '4')[0];
-        var rsi = down === 0 ? 100 : up === 0 ? 0 : 100 - 100 / (1 + up / down);
-      }
-
-      return this.ts(rsi, id + '5', x.__tf__);
-    } // Parabolic SAR
-
-  }, {
-    key: "sar",
-    value: function sar(start, inc, max, _id, _tf) {
-      // Source: Parabolic SAR by imuradyan
-      // TODO: simplify the code
-      // TODO: fix the custom TF mode
-      var id = this._tsid(_id, "sar(".concat(start, ",").concat(inc, ",").concat(max, ")"));
-
-      var tfs = _tf || '';
-      var high = this.env.shared["high".concat(tfs)];
-      var low = this.env.shared["low".concat(tfs)];
-      var close = this.env.shared["close".concat(tfs)];
-      var minTick = 0; //1e-7
-
-      var out = this.ts(undefined, id + '1', _tf);
-      var pos = this.ts(undefined, id + '2', _tf);
-      var maxMin = this.ts(undefined, id + '3', _tf);
-      var acc = this.ts(undefined, id + '4', _tf);
-      var n = _tf ? out.__len__ - 1 : script_engine.iter;
-      var prev;
-      var outSet = false;
-
-      if (n >= 1) {
-        prev = out[1];
-
-        if (n === 1) {
-          if (close[0] > close[1]) {
-            pos[0] = 1;
-            maxMin[0] = Math.max(high[0], high[1]);
-            prev = Math.min(low[0], low[1]);
-          } else {
-            pos[0] = -1;
-            maxMin[0] = Math.min(low[0], low[1]);
-            prev = Math.max(high[0], high[1]);
-          }
-
-          acc[0] = start;
-        } else {
-          pos[0] = pos[1];
-          acc[0] = acc[1];
-          maxMin[0] = maxMin[1];
-        }
-
-        if (pos[0] === 1) {
-          if (high[0] > maxMin[0]) {
-            maxMin[0] = high[0];
-            acc[0] = Math.min(acc[0] + inc, max);
-          }
-
-          if (low[0] <= prev) {
-            pos[0] = -1;
-            out[0] = maxMin[0];
-            maxMin[0] = low[0];
-            acc[0] = start;
-            outSet = true;
-          }
-        } else {
-          if (low[0] < maxMin[0]) {
-            maxMin[0] = low[0];
-            acc[0] = Math.min(acc[0] + inc, max);
-          }
-
-          if (high[0] >= prev) {
-            pos[0] = 1;
-            out[0] = maxMin[0];
-            maxMin[0] = high[0];
-            acc[0] = start;
-            outSet = true;
-          }
-        }
-
-        if (!outSet) {
-          out[0] = prev + acc[0] * (maxMin[0] - prev);
-          if (pos[0] === 1) if (out[0] >= low[0]) out[0] = low[0] - minTick;
-          if (pos[0] === -1) if (out[0] <= high[0]) out[0] = high[0] + minTick;
-        }
-      }
-
-      return out;
-    }
-  }, {
-    key: "second",
-    value: function second(time) {
-      return new Date(time || script_engine.t).getUTCSeconds();
-    }
-  }, {
-    key: "sign",
-    value: function sign(x) {
-      return Math.sign(x);
-    }
-  }, {
-    key: "sin",
-    value: function sin(x) {
-      return Math.sin(x);
-    } // Simple Moving Average
-
-  }, {
-    key: "sma",
-    value: function sma(src, len, _id) {
-      var id = this._tsid(_id, "sma(".concat(len, ")"));
-
-      var sum = 0;
-
-      for (var i = 0; i < len; i++) {
-        sum = sum + src[i];
-      }
-
-      return this.ts(sum / len, id, src.__tf__);
-    }
-  }, {
-    key: "sqrt",
-    value: function sqrt(x) {
-      return Math.sqrt(x);
-    }
-  }, {
-    key: "stdev",
-    value: function stdev(src, len, _id) {
-      var _this = this;
-
-      var sumf = function sumf(x, y) {
-        var res = x + y;
-
-        if (Math.abs(res) <= _this.STDEV_EPS) {
-          return 0;
-        } else if (Math.abs(res) > _this.STDEV_Z) {
-          return res;
-        } else {
-          return 15; // wtf?
-        }
-      };
-
-      var id = this._tsid(_id, "stdev(".concat(len, ")"));
-
-      var avg = this.sma(src, len, id);
-      var sqd = 0;
-
-      for (var i = 0; i < len; i++) {
-        var sum = sumf(src[i], -avg[0]);
-        sqd += sum * sum;
-      }
-
-      return this.ts(Math.sqrt(sqd / len), id, src.__tf__);
-    } // Stochastic
-
-  }, {
-    key: "stoch",
-    value: function stoch(src, high, low, len, _id) {
-      var id = this._tsid(_id, "sum(".concat(len, ")"));
-
-      var x = 100 * (src[0] - this.lowest(low, len)[0]);
-      var y = this.highest(high, len)[0] - this.lowest(low, len)[0];
-      return this.ts(x / y, id, src.__tf__);
-    }
-  }, {
-    key: "sum",
-    value: function sum(src, len, _id) {
-      var id = this._tsid(_id, "sum(".concat(len, ")"));
-
-      var sum = 0;
-
-      for (var i = 0; i < len; i++) {
-        sum = sum + src[i];
-      }
-
-      return this.ts(sum, id, src.__tf__);
-    } // Supertrend
-
-  }, {
-    key: "supertrend",
-    value: function supertrend(factor, atrlen, _id, _tf) {
-      var id = this._tsid(_id, "supertrend(".concat(factor, ",").concat(atrlen, ")"));
-
-      var tfs = _tf || '';
-      var high = this.env.shared["high".concat(tfs)];
-      var low = this.env.shared["low".concat(tfs)];
-      var close = this.env.shared["close".concat(tfs)];
-      var hl2 = (high[0] + low[0]) * 0.5;
-      var atr = factor * this.atr(atrlen, id + '1', _tf)[0];
-      var ls = this.ts(hl2 - atr, id + '2', _tf);
-      var ls1 = this.nz(ls[1], ls[0]);
-      ls[0] = close[1] > ls1 ? Math.max(ls[0], ls1) : ls[0];
-      var ss = this.ts(hl2 + atr, id + '3', _tf);
-      var ss1 = this.nz(ss[1], ss);
-      ss[0] = close[1] < ss1 ? Math.min(ss[0], ss1) : ss[0];
-      var dir = this.ts(1, id + '4', _tf);
-      dir[0] = this.nz(dir[1], dir[0]);
-      dir[0] = dir[0] === -1 && close[0] > ss1 ? 1 : dir[0] === 1 && close[0] < ls1 ? -1 : dir[0];
-      var plot = this.ts(dir[0] === 1 ? ls[0] : ss[0], id + '5', _tf);
-      return [plot, this.neg(dir, id + '6')];
-    } // Symmetrically Weighted Moving Average
-
-  }, {
-    key: "swma",
-    value: function swma(src, _id) {
-      var id = this._tsid(_id, "swma");
-
-      var sum = src[3] * this.SWMA[0] + src[2] * this.SWMA[1] + src[1] * this.SWMA[2] + src[0] * this.SWMA[3];
-      return this.ts(sum, id, src.__tf__);
-    }
-  }, {
-    key: "tan",
-    value: function tan(x) {
-      return Math.tan(x);
-    }
-  }, {
-    key: "time",
-    value: function time(res, sesh) {// TODO: this
-    }
-  }, {
-    key: "timestamp",
-    value: function timestamp() {// TODO: this
-    } // True Range
-
-  }, {
-    key: "tr",
-    value: function tr(fixnan, _id, _tf) {
-      if (fixnan === void 0) {
-        fixnan = false;
-      }
-
-      var id = this._tsid(_id, "tr(".concat(fixnan, ")"));
-
-      var tfs = _tf || '';
-      var high = this.env.shared["high".concat(tfs)];
-      var low = this.env.shared["low".concat(tfs)];
-      var close = this.env.shared["close".concat(tfs)];
-      var res = 0;
-
-      if (this.na(close[1]) && fixnan) {
-        res = high[0] - low[0];
-      } else {
-        res = Math.max(high[0] - low[0], Math.abs(high[0] - close[1]), Math.abs(low[0] - close[1]));
-      }
-
-      return this.ts(res, id, _tf);
-    } // True strength index
-
-  }, {
-    key: "tsi",
-    value: function tsi(src, _short, _long, _id) {
-      var id = this._tsid(_id, "tsi(".concat(_short, ",").concat(_long, ")"));
-
-      var m = this.change(src, 1, id + '0');
-      var m_abs = this.ts(Math.abs(m[0]), id + '1', src.__tf__);
-      var tsi = this.ema(this.ema(m, _long, id + '1'), _short, id + '2')[0] / this.ema(this.ema(m_abs, _long, id + '3'), _short, id + '4')[0];
-      return this.ts(tsi, id, src.__tf__);
-    }
-  }, {
-    key: "valuewhen",
-    value: function valuewhen() {// TODO: this
-    }
-  }, {
-    key: "variance",
-    value: function variance(src, len) {// TODO: this
-    }
-  }, {
-    key: "vwap",
-    value: function vwap(src) {// TODO: this
-    } // Volume Weighted Moving Average
-
-  }, {
-    key: "vwma",
-    value: function vwma(src, len, _id) {
-      var id = this._tsid(_id, "vwma(".concat(len, ")"));
-
-      var vol = this.env.shared.vol;
-      var sxv = this.ts(src[0] * vol[0], id + '1', src.__tf__);
-      var res = this.sma(sxv, len, id + '2')[0] / this.sma(vol, len, id + '3')[0];
-      return this.ts(res, id + '4', src.__tf__);
-    }
-  }, {
-    key: "weekofyear",
-    value: function weekofyear() {// TODO: this
-    }
-  }, {
-    key: "wma",
-    value: function wma(src, len, _id) {
-      var id = this._tsid(_id, "wma(".concat(len, ")"));
-
-      var norm = 0;
-      var sum = 0;
-
-      for (var i = 0; i < len; i++) {
-        var w = (len - i) * len;
-        norm += w;
-        sum += src[i] * w;
-      }
-
-      return this.ts(sum / norm, id, src.__tf__);
-    } // Williams %R
-
-  }, {
-    key: "wpr",
-    value: function wpr(len, _id, _tf) {
-      var id = this._tsid(_id, "wpr(".concat(len, ")"));
-
-      var tfs = _tf || '';
-      var high = this.env.shared["high".concat(tfs)];
-      var low = this.env.shared["low".concat(tfs)];
-      var close = this.env.shared["close".concat(tfs)];
-      var hh = this.highest(high, len, id);
-      var ll = this.lowest(low, len, id);
-      var res = (hh[0] - close[0]) / (hh[0] - ll[0]);
-      return this.ts(-res * 100, id, _tf);
-    }
-  }, {
-    key: "year",
-    value: function year(time) {
-      return new Date(time || script_engine.t).getUTCFullYear();
-    }
-  }]);
-
-  return ScriptStd;
-}();
-
-
-// CONCATENATED MODULE: ./src/helpers/script_ts.js
-// Timeseries for scripts
-function TS(id, arr, len) {
-  arr.__id__ = id;
-  arr.__len__ = len;
-  return arr;
+function script_utils_now() {
+  return new Date().getTime();
 }
-// CONCATENATED MODULE: ./src/helpers/script_env.js
+// CONCATENATED MODULE: ./src/helpers/dataset.js
 
 
 
 
-function script_env_createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = script_env_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function script_env_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return script_env_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return script_env_arrayLikeToArray(o, minLen); }
-
-function script_env_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-// Script environment. Packs everything that
-// needed for a script execution together:
-// script src, standart functions, input data,
-// other overlays & dependencies
 
 
+function dataset_createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = dataset_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
+
+function dataset_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return dataset_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return dataset_arrayLikeToArray(o, minLen); }
+
+function dataset_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+// Dataset proxy between vuejs & WebWorker
 
 
-var FDEFS1 = /(function |)([$A-Z_][0-9A-Z_$\.]*)[\s]*?\((.*\s*)\)/gmi;
-var FDEFS2 = /(function |)([\$A-Z_][\$\.0-9A-Z_]*)[\t-\r \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]*?\(([\s\S]*[\t-\r \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000\uFEFF]*)\)/gmi;
-var script_env_DEF_LIMIT = 5;
+var dataset_Dataset = /*#__PURE__*/function () {
+  function Dataset(dc, desc) {
+    classCallCheck_default()(this, Dataset);
 
-var script_env_ScriptEnv = /*#__PURE__*/function () {
-  function ScriptEnv(s, data) {
-    classCallCheck_default()(this, ScriptEnv);
+    // TODO: dataset url arrow fn tells WW
+    // to load the ds directly from web
+    this.type = desc.type;
+    this.id = desc.id;
+    this.dc = dc; // Send the data to WW
 
-    this.std = script_engine.std_inject(new script_std_ScriptStd(this));
-    this.id = s.uuid;
-    this.src = s;
-    this.output = TS('output', []);
-    this.data = [];
-    this.tss = {};
-    this.shared = data;
-    this.output.box_maker = this.make_box(s.src);
-    this.onchart = {};
-    this.offchart = {};
-  }
+    if (desc.data) {
+      this.dc.ww.just('upload-data', defineProperty_default()({}, this.id, desc)); // Remove the data from the descriptor
 
-  createClass_default()(ScriptEnv, [{
-    key: "build",
-    value: function build() {
-      this.output.box_maker(this, this.shared, script_engine);
-      delete this.output.box_maker;
+      delete desc.data;
     }
-  }, {
-    key: "init",
-    value: function init() {
-      this.output.init();
-    }
-  }, {
-    key: "step",
-    value: function step(unshift) {
-      if (unshift === void 0) {
-        unshift = true;
+
+    var proto = Object.getPrototypeOf(this);
+    Object.setPrototypeOf(desc, proto);
+    Object.defineProperty(desc, 'dc', {
+      get: function get() {
+        return dc;
+      }
+    });
+  } // Watch for the changes of descriptors
+
+
+  createClass_default()(Dataset, [{
+    key: "set",
+    // Set data (overwrite the whole dataset)
+    value: function set(data, exec) {
+      if (exec === void 0) {
+        exec = true;
       }
 
-      if (unshift) this.unshift();
-      var v = this.output.update();
-
-      if (this.skip) {
-        this.skip = false;
-        return;
-      }
-
-      this.copy(v, unshift);
-      this.limit();
-    }
-  }, {
-    key: "unshift",
-    value: function unshift() {
-      this.output.unshift(undefined); // Update all temp symbols
-
-      for (var id in this.tss) {
-        if (this.tss[id].__tf__) continue;
-        this.tss[id].unshift(undefined);
-      }
-    } // Limit env.output length
-
-  }, {
-    key: "limit",
-    value: function limit() {
-      var out = this.output;
-      out.length = out.__len__ || script_env_DEF_LIMIT;
-
-      for (var id in this.tss) {
-        var ts = this.tss[id]; //console.log(ts.__id__, ts.__len__)
-
-        ts.length = ts.__len__ || script_env_DEF_LIMIT;
-      }
-    } // Copy the recent value to the direct buff
-
-  }, {
-    key: "copy",
-    value: function copy(v, unshift) {
-      if (unshift === void 0) {
-        unshift = true;
-      }
-
-      if (v !== undefined) {
-        this.output[0] = v.__id__ ? v[0] : v;
-      }
-
-      var val = this.output[0];
-
-      if (val == null || !val.length) {
-        // Number / object
-        var point = [script_engine.t, val];
-      } else {
-        // Array
-        point = [script_engine.t].concat(toConsumableArray_default()(val));
-      }
-
-      if (unshift) {
-        this.data.push(point);
-      } else {
-        this.data[this.data.length - 1] = point;
-      }
-    } // A small sandbox for a particular script
-    // TODO: add support of 'Source' prop type (open, high, hl2 ...)
-
-  }, {
-    key: "make_box",
-    value: function make_box(src) {
-      var proto = Object.getPrototypeOf(this.std);
-      var std = "";
-
-      var _iterator = script_env_createForOfIteratorHelper(Object.getOwnPropertyNames(proto)),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var k = _step.value;
-          if (k === 'constructor') continue;
-          std += "const std_".concat(k, " = self.std.").concat(k, ".bind(self.std)\n");
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      var props = "";
-
-      for (var k in src.props) {
-        var val = JSON.stringify(src.props[k].val);
-        props += "var ".concat(k, " = ").concat(val, "\n");
-      } // TODO: add argument values to _id
-      // TODO: prefix all function by ns, e.g std_nz()
-
-
-      var tss = "";
-
-      for (var k in this.shared) {
-        if (this.shared[k].__id__) {
-          tss += "const ".concat(k, " = shared.").concat(k, "\n");
-        }
-      }
-
-      try {
-        return Function('self,shared,se', "\n                'use strict';\n\n                // Built-in functions (aliases)\n                ".concat(std, "\n\n                // Modules (API / interfaces)\n                ").concat(this.make_modules(), "\n\n                // Timeseries\n                ").concat(tss, "\n\n                // Direct data ts\n                const data = self.data\n                const ohlcv = shared.ohlcv\n\n                // Script's properties (init)\n                ").concat(props, "\n\n                this.init = () => {\n                    ").concat(src.init_src, "\n                }\n\n                this.update = (_id = 'root') => {\n                    const t = shared.t()\n                    const iter = shared.iter()\n                    ").concat(this.prep(src.upd_src), "\n                }\n\n                this.post = () => {\n                    ").concat(src.post_src, "\n                }\n            "));
-      } catch (e) {
-        return Function('self,shared', "\n                'use strict';\n                this.init = () => {}\n                this.update = () => {}\n                this.post = () => {}\n            ");
-      }
-    } // Make definitions for modules
-
-  }, {
-    key: "make_modules",
-    value: function make_modules() {
-      var s = "";
-
-      for (var id in script_engine.mods) {
-        if (!script_engine.mods[id].api) continue;
-        s += "const ".concat(id, " = se.mods['").concat(id, "'].api[self.id]");
-        s += '\n';
-      }
-
-      return s;
-    } // Preprocess the update function.
-    // Replace functions with the full arguments list +
-    // generate & add tsid
-    // TODO: implement recursive prepping (with js syntax parser)
-
-  }, {
-    key: "prep",
-    value: function prep(src) {
-      // console.log('Before -----> \n', src)
-      var h = this.src.use_for[0]; // TODO: add props here
-
-      src = '\t\t  let _pref = `${_id}<-' + h + '<-`\n' + src;
-      FDEFS2.lastIndex = 0;
-      var call_id = 0; // Function call id (to make each call unique)
-
-      do {
-        var m = FDEFS2.exec(src);
-
-        if (m) {
-          var fkeyword = m[1].trim();
-          var fname = m[2];
-          var fargs = m[3];
-
-          if (fkeyword === 'function') {// TODO: add _ids to inline functions
-          } else {
-            var off = m.index + m[0].indexOf('(');
-
-            if (this.std[fname]) {
-              src = this.postfix(src, m, ++call_id); //console.log(src)
-
-              off += 4; // 'std_'
-            } // Quick fix
-
-
-            FDEFS2.lastIndex = off;
-          }
-        }
-      } while (m); // console.log('After ----->\n', u.wrap_idxs(src))
-
-
-      return wrap_idxs(src, 'std_');
-    } // Postfix function calls with ts _ids
-
-  }, {
-    key: "postfix",
-    value: function postfix(src, m, call_id) {
-      var target = this.get_args(this.fdef(m[2])).length;
-      var m0 = this.parentheses(m[0]); // First closed pair
-
-      var args = this.get_args_2(m0);
-
-      for (var i = args.length; i < target; i++) {
-        args.push('void 0');
-      } // Add an unique time-series id
-
-
-      args.push("_pref+\"f".concat(call_id, "\""));
-      return src.replace(m0, "std_".concat(m[2], "(").concat(args.join(', '), ")"));
-    }
-  }, {
-    key: "parentheses",
-    value: function parentheses(str) {
-      var count = 0,
-          first = false;
-
-      for (var i = 0; i < str.length; i++) {
-        if (str[i] === '(') {
-          count++;
-          first = true;
-        } else if (str[i] === ')') {
-          count--;
-        }
-
-        if (first && count === 0) {
-          return str.substr(0, i + 1);
-        }
-      }
-
-      return str;
-    } // Get the function definition
-    // TODO: add support of modules
-
-  }, {
-    key: "fdef",
-    value: function fdef(fname) {
-      return this.std[fname].toString();
-    } // Get args in the function's definition
-
-  }, {
-    key: "get_args",
-    value: function get_args(src) {
-      var reg = this.regex_clone(FDEFS1);
-      reg.lastIndex = 0;
-      var m = reg.exec(src);
-      if (!m[3].trim().length) return [];
-      var arr = m[3].split(',').map(function (x) {
-        return x.trim();
-      }).filter(function (x) {
-        return x !== '_id' && x !== '_tf';
+      this.dc.ww.just('dataset-op', {
+        id: this.id,
+        type: 'set',
+        data: data,
+        exec: exec
       });
-      return arr;
-    }
+    } // Update with new data (array of data points)
+
   }, {
-    key: "get_args_2",
-    value: function get_args_2(str) {
-      var parts = [];
-      var c = 0;
-      var s = 0;
-      var q1 = false,
-          q2 = false,
-          q3 = false;
-      var part;
+    key: "update",
+    value: function update(arr) {
+      this.dc.ww.just('update-data', defineProperty_default()({}, this.id, arr));
+    } // Send WW a chunk to merge. The merge algo
+    // here is simpler than in DC. It just adds
+    // data at the beginning or/and the end of ds
 
-      for (var i = 0; i < str.length; i++) {
-        if (str[i] === '(') {
-          c++;
-          if (!part) part = [i + 1];
-        }
-
-        if (str[i] === ')') c--;
-        if (str[i] === '[') s++;
-        if (str[i] === ']') s--;
-        if (str[i] === "'") q1 = !q1;
-        if (str[i] === '"') q2 = !q2;
-        if (str[i] === '`') q3 = !q3;
-
-        if (str[i] === ',' && c === 1 && !s && !q1 && !q2 && !q3) {
-          if (part) {
-            part[1] = i;
-            parts.push(part);
-            part = [i + 1];
-          }
-        }
-
-        if (c === 0 && part) {
-          part[1] = i;
-          parts.push(part);
-          part = null;
-        }
+  }, {
+    key: "merge",
+    value: function merge(data, exec) {
+      if (exec === void 0) {
+        exec = true;
       }
 
-      return parts.map(function (x) {
-        return str.slice.apply(str, toConsumableArray_default()(x));
-      }).filter(function (x) {
-        return /[^\s]+/.exec(x);
+      this.dc.ww.just('dataset-op', {
+        id: this.id,
+        type: 'mrg',
+        data: data,
+        exec: exec
       });
-    }
+    } // Remove the ds from WW
+
   }, {
-    key: "regex_clone",
-    value: function regex_clone(rex) {
-      return new RegExp(rex.source, rex.flags);
-    }
-  }]);
-
-  return ScriptEnv;
-}();
-
-
-// CONCATENATED MODULE: ./src/helpers/symstd.js
-function symstd_createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = symstd_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function symstd_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return symstd_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return symstd_arrayLikeToArray(o, minLen); }
-
-function symstd_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-// Parse non-default symbols, e.g. close1D, hlc3
-// & inject the corresponding TSs or samplers
-
-
-
-
-
-var SYMTF = /(open|high|low|close|vol)(\d+)(\w*)/gm;
-var FNSTD = /(a?tr|kcw?|dmi|sar|supertrend|wpr)(\d+?\w*)\s*\(/gm;
-var SYMSTD = /(?:hl2|hlc3|ohlc4)/gm;
-/* harmony default export */ var symstd = ({
-  parse: function parse(s) {
-    var _this = this;
-
-    var ss = s.src;
-    var all = "".concat(ss.init_src, "\n").concat(ss.upd_src, "\n").concat(ss.post_src);
-    SYMTF.lastIndex = 0;
-    FNSTD.lastIndex = 0;
-    SYMSTD.lastIndex = 0;
-
-    do {
-      var m = SYMTF.exec(all);
-
-      if (m) {
-        if (m[0] in script_engine.tss) continue;
-        var ts = script_engine.tss[m[0]] = TS(m[0], []);
-        ts.__tf__ = tf_from_pair(m[2], m[3]);
-        ts.__fn__ = sampler(m[1]).bind(ts);
+    key: "remove",
+    value: function remove(exec) {
+      if (exec === void 0) {
+        exec = true;
       }
-    } while (m);
 
-    do {
-      var m = SYMSTD.exec(all);
-
-      if (m) {
-        if (m[0] in script_engine.tss) continue;
-        this.parse_ts_sym(m[0]);
-      }
-    } while (m);
-
-    do {
-      var m = FNSTD.exec(all);
-
-      if (m) {
-        var _ret = function () {
-          var fn = m[1] + m[2];
-          var tf = m[2];
-          if (fn in script_engine.std_plus) return "continue";
-
-          switch (m[1]) {
-            case 'tr':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (fixnan, _id) {
-                if (fixnan === void 0) {
-                  fixnan = false;
-                }
-
-                return this.tr(fixnan, _id, tf);
-              };
-
-              break;
-
-            case 'atr':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (len, _id) {
-                return this.atr(len, _id, tf);
-              };
-
-              break;
-
-            case 'kc':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (src, len, mult, use_tr, _id) {
-                if (use_tr === void 0) {
-                  use_tr = true;
-                }
-
-                return this.kc(src, len, mult, use_tr, _id, tf);
-              };
-
-              break;
-
-            case 'kcw':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (src, len, mult, use_tr, _id) {
-                if (use_tr === void 0) {
-                  use_tr = true;
-                }
-
-                return this.kcw(src, len, mult, use_tr, _id, tf);
-              };
-
-              break;
-
-            case 'dmi':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (len, smooth, _id) {
-                return this.dmi(len, smooth, _id, tf);
-              };
-
-              break;
-
-            case 'sar':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (start, inc, max, _id) {
-                return this.sar(start, inc, max, _id, tf);
-              };
-
-              break;
-
-            case 'supertrend':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (factor, atrlen, _id) {
-                return this.supertrend(factor, atrlen, _id, tf);
-              };
-
-              break;
-
-            case 'wpr':
-              _this.deps(['high', 'low', 'close'], m[2]);
-
-              script_engine.std_plus[fn] = function (len, _id) {
-                return this.wpr(len, _id, tf);
-              };
-
-              break;
-          }
-        }();
-
-        if (_ret === "continue") continue;
-      }
-    } while (m);
-  },
-  parse_ts_sym: function parse_ts_sym(sym, tf) {
-    switch (sym) {
-      // Timeseries
-      case 'hl2':
-        script_engine.tss['hl2'] = TS('hl2', []);
-
-        script_engine.tss['hl2'].__fn__ = function () {
-          return (script_engine.high[0] + script_engine.low[0]) * 0.5;
-        };
-
-        break;
-
-      case 'hlc3':
-        script_engine.tss['hlc3'] = TS('hlc3', []);
-
-        script_engine.tss['hlc3'].__fn__ = function () {
-          return (script_engine.high[0] + script_engine.low[0] + script_engine.close[0]) / 3;
-        };
-
-        break;
-
-      case 'ohlc4':
-        script_engine.tss['ohlc4'] = TS('ohlc4', []);
-
-        script_engine.tss['ohlc4'].__fn__ = function () {
-          return (script_engine.open[0] + script_engine.high[0] + script_engine.low[0] + script_engine.close[0]) * 0.25;
-        };
-
-        break;
-    }
-  },
-  deps: function deps(types, tf) {
-    var _iterator = symstd_createForOfIteratorHelper(types),
-        _step;
-
-    try {
-      for (_iterator.s(); !(_step = _iterator.n()).done;) {
-        var type = _step.value;
-        var sym = type + tf;
-        if (sym in script_engine.tss) continue;
-        var ts = script_engine.tss[sym] = TS(sym, []);
-        ts.__tf__ = tf_from_str(tf);
-        ts.__fn__ = sampler(type).bind(ts);
-      }
-    } catch (err) {
-      _iterator.e(err);
-    } finally {
-      _iterator.f();
-    }
-  }
-});
-// CONCATENATED MODULE: ./src/helpers/script_engine.js
-
-
-
-
-
-function script_engine_createForOfIteratorHelper(o, allowArrayLike) { var it; if (typeof Symbol === "undefined" || o[Symbol.iterator] == null) { if (Array.isArray(o) || (it = script_engine_unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = o[Symbol.iterator](); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it["return"] != null) it["return"](); } finally { if (didErr) throw err; } } }; }
-
-function script_engine_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return script_engine_arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return script_engine_arrayLikeToArray(o, minLen); }
-
-function script_engine_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
-
-// Script engine, Fuck yeah
-
-
-
-
-
-var script_engine_DEF_LIMIT = 5; // default buff length
-
-var WAIT_EXEC = 10; // merge script execs, ms
-
-var script_engine_ScriptEngine = /*#__PURE__*/function () {
-  function ScriptEngine() {
-    classCallCheck_default()(this, ScriptEngine);
-
-    this.map = {};
-    this.data = {};
-    this.exec_id = null;
-    this.queue = []; // Script exec queue
-
-    this.delta_queue = []; // Settings queue
-
-    this.update_queue = []; // Live update queue
-
-    this.sett = {};
-    this.state = {};
-    this.mods = {}; // Modules (extensions)
-
-    this.std_plus = {}; // Functions to inject
-  }
-
-  createClass_default()(ScriptEngine, [{
-    key: "exec_all",
-    value: function exec_all() {
-      var _this = this;
-
-      clearTimeout(this.exec_id); // Wait for the data
-
-      if (!this.data.ohlcv) return; // Execute queue after all scripts & data are loaded
-
-      this.exec_id = setTimeout( /*#__PURE__*/asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
+      this.dc.del("datasets.".concat(this.id));
+      this.dc.ww.just('dataset-op', {
+        id: this.id,
+        type: 'del',
+        exec: exec
+      });
+      delete this.dc.dss[this.id];
+    } // Fetch data from WW
+
+  }, {
+    key: "data",
+    value: function () {
+      var _data = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee() {
+        var ds;
         return regenerator_default.a.wrap(function _callee$(_context) {
           while (1) {
             switch (_context.prev = _context.next) {
               case 0:
-                if (_this.init_state(Object.keys(_this.map))) {
-                  _context.next = 2;
+                _context.next = 2;
+                return this.dc.ww.exec('get-dataset', this.id);
+
+              case 2:
+                ds = _context.sent;
+
+                if (ds) {
+                  _context.next = 5;
                   break;
                 }
 
                 return _context.abrupt("return");
 
-              case 2:
-                _this.re_init_map();
-
-                while (_this.queue.length) {
-                  _this.exec(_this.queue.shift());
-                }
-
-                if (!Object.keys(_this.map).length) {
-                  _context.next = 8;
-                  break;
-                }
-
-                _context.next = 7;
-                return _this.run();
-
-              case 7:
-                _this.drain_queues();
-
-              case 8:
-                _this.send_state();
-
-              case 9:
-              case "end":
-                return _context.stop();
-            }
-          }
-        }, _callee);
-      })), WAIT_EXEC);
-    } // Exec selected
-
-  }, {
-    key: "exec_sel",
-    value: function () {
-      var _exec_sel = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee2(delta) {
-        var _this2 = this;
-
-        var sel, id, props, k;
-        return regenerator_default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                if (this.data.ohlcv) {
-                  _context2.next = 2;
-                  break;
-                }
-
-                return _context2.abrupt("return");
-
-              case 2:
-                sel = Object.keys(delta).filter(function (x) {
-                  return x in _this2.map;
-                });
-
-                if (this.init_state(sel)) {
-                  _context2.next = 6;
-                  break;
-                }
-
-                this.delta_queue.push(delta);
-                return _context2.abrupt("return");
+              case 5:
+                return _context.abrupt("return", ds.data);
 
               case 6:
-                _context2.t0 = regenerator_default.a.keys(delta);
-
-              case 7:
-                if ((_context2.t1 = _context2.t0()).done) {
-                  _context2.next = 16;
-                  break;
-                }
-
-                id = _context2.t1.value;
-
-                if (this.map[id]) {
-                  _context2.next = 11;
-                  break;
-                }
-
-                return _context2.abrupt("continue", 7);
-
-              case 11:
-                props = this.map[id].src.props;
-
-                for (k in props) {
-                  if (k in delta[id]) {
-                    props[k].val = delta[id][k];
-                  }
-                }
-
-                this.exec(this.map[id]);
-                _context2.next = 7;
-                break;
-
-              case 16:
-                _context2.next = 18;
-                return this.run(sel);
-
-              case 18:
-                this.drain_queues();
-                this.send_state();
-
-              case 20:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2, this);
-      }));
-
-      function exec_sel(_x) {
-        return _exec_sel.apply(this, arguments);
-      }
-
-      return exec_sel;
-    }() // Exec script (create a new ScriptEnv, add to the map)
-
-  }, {
-    key: "exec",
-    value: function exec(s) {
-      var _this3 = this;
-
-      if (!s.src.conf) s.src.conf = {};
-
-      if (s.src.init) {
-        s.src.init_src = get_raw_src(s.src.init);
-      }
-
-      if (s.src.update) {
-        s.src.upd_src = get_raw_src(s.src.update);
-      }
-
-      if (s.src.post) {
-        s.src.post_src = get_raw_src(s.src.post);
-      } // Parse non-default symbols
-
-
-      symstd.parse(s);
-
-      for (var id in this.mods) {
-        if (this.mods[id].pre_env) {
-          this.mods[id].pre_env(s.uuid, s);
-        }
-      }
-
-      s.env = new script_env_ScriptEnv(s, Object.assign({
-        open: this.open,
-        high: this.high,
-        low: this.low,
-        close: this.close,
-        vol: this.vol,
-        ohlcv: this.data.ohlcv,
-        t: function t() {
-          return _this3.t;
-        },
-        iter: function iter() {
-          return _this3.iter;
-        }
-      }, this.tss));
-      this.map[s.uuid] = s;
-
-      for (var id in this.mods) {
-        if (this.mods[id].new_env) {
-          this.mods[id].new_env(s.uuid, s);
-        }
-      } // Build te box after mod's interfaces injected
-
-
-      s.env.build();
-    } // Live update
-
-  }, {
-    key: "update",
-    value: function update(candle) {
-      if (!this.data.ohlcv || !this.data.ohlcv.length) {
-        return;
-      }
-
-      if (this.running) {
-        this.update_queue.push(candle);
-        return;
-      }
-
-      var mfs1 = this.make_mods_hooks('pre_step');
-      var mfs2 = this.make_mods_hooks('post_step');
-
-      try {
-        var ohlcv = this.data.ohlcv;
-        var i = ohlcv.length - 1;
-        var last = ohlcv[i];
-        var sel = Object.keys(this.map);
-        var unshift = false;
-
-        if (candle[0] > last[0]) {
-          ohlcv.push(candle);
-          unshift = true;
-          i++;
-        } else if (candle[0] < last[0]) {
-          return;
-        } else {
-          ohlcv[i] = candle;
-        }
-
-        this.iter = i;
-        this.t = ohlcv[i][0];
-        this.step(ohlcv[i], unshift);
-
-        for (var m = 0; m < mfs1.length; m++) {
-          mfs1[m](sel); // pre_step
-        }
-
-        for (var _i = 0, _sel = sel; _i < _sel.length; _i++) {
-          var id = _sel[_i];
-          this.map[id].env.step(unshift);
-        }
-
-        for (var m = 0; m < mfs2.length; m++) {
-          mfs2[m](sel); // post_step
-        }
-
-        this.limit();
-        this.send_update();
-        this.send_state();
-      } catch (e) {
-        console.log(e);
-      }
-    }
-  }, {
-    key: "init_state",
-    value: function init_state(sel) {
-      var task = sel.join(','); // Stop previous run only if the task is the same
-
-      if (this.running) {
-        this._restart = task === this.task;
-        return false;
-      } // Inverted arrays
-
-
-      this.open = TS('open', []);
-      this.high = TS('high', []);
-      this.low = TS('low', []);
-      this.close = TS('close', []);
-      this.vol = TS('vol', []); // Shared TSs
-
-      this.tss = {};
-      this.std_plus = {}; // Engine state
-
-      this.iter = 0;
-      this.t = 0;
-      this.skip = false; // skip the step
-
-      this.running = true;
-      this.task = task;
-      return true;
-    } // Inject/override functions in the std lib object
-
-  }, {
-    key: "std_inject",
-    value: function std_inject(std) {
-      var proto = Object.getPrototypeOf(std);
-      Object.assign(proto, this.std_plus);
-      return std;
-    }
-  }, {
-    key: "send_state",
-    value: function send_state() {
-      this.send('engine-state', {
-        scripts: Object.keys(this.map).length,
-        last_perf: this.perf,
-        iter: this.iter,
-        last_t: this.t,
-        running: false
-      });
-    }
-  }, {
-    key: "send_update",
-    value: function send_update() {
-      this.send('overlay-update', this.format_update());
-    }
-  }, {
-    key: "re_init_map",
-    value: function re_init_map() {
-      for (var id in this.map) {
-        this.exec(this.map[id]);
-      }
-    }
-  }, {
-    key: "run",
-    value: function () {
-      var _run = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee3(sel) {
-        var t1, mfs1, mfs2, _iterator, _step, id, ohlcv, start, i, m, _iterator2, _step2, _iterator3, _step3;
-
-        return regenerator_default.a.wrap(function _callee3$(_context3) {
-          while (1) {
-            switch (_context3.prev = _context3.next) {
-              case 0:
-                this.send('engine-state', {
-                  running: true
-                });
-                t1 = utils.now();
-                sel = sel || Object.keys(this.map);
-                this.pre_run_mods(sel);
-                mfs1 = this.make_mods_hooks('pre_step');
-                mfs2 = this.make_mods_hooks('post_step');
-                _context3.prev = 6;
-                _iterator = script_engine_createForOfIteratorHelper(sel);
-
-                try {
-                  for (_iterator.s(); !(_step = _iterator.n()).done;) {
-                    id = _step.value;
-                    this.map[id].env.init();
-                  }
-                } catch (err) {
-                  _iterator.e(err);
-                } finally {
-                  _iterator.f();
-                }
-
-                ohlcv = this.data.ohlcv;
-                start = this.start(ohlcv);
-                i = start;
-
-              case 12:
-                if (!(i < ohlcv.length)) {
-                  _context3.next = 29;
-                  break;
-                }
-
-                if (!(i % 5000 === 0)) {
-                  _context3.next = 16;
-                  break;
-                }
-
-                _context3.next = 16;
-                return utils.pause(0);
-
-              case 16:
-                if (!this.restarted()) {
-                  _context3.next = 18;
-                  break;
-                }
-
-                return _context3.abrupt("return");
-
-              case 18:
-                this.iter = i - start;
-                this.t = ohlcv[i][0];
-                this.step(ohlcv[i]); // SLOW DOWN TEST:
-                //for (var k = 1; k < 1000000; k++) {}
-
-                for (m = 0; m < mfs1.length; m++) {
-                  mfs1[m](sel); // pre_step
-                }
-
-                _iterator2 = script_engine_createForOfIteratorHelper(sel);
-
-                try {
-                  for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
-                    id = _step2.value;
-                    this.map[id].env.step();
-                  }
-                } catch (err) {
-                  _iterator2.e(err);
-                } finally {
-                  _iterator2.f();
-                }
-
-                for (m = 0; m < mfs2.length; m++) {
-                  mfs2[m](sel); // post_step
-                }
-
-                this.limit();
-
-              case 26:
-                i++;
-                _context3.next = 12;
-                break;
-
-              case 29:
-                _iterator3 = script_engine_createForOfIteratorHelper(sel);
-
-                try {
-                  for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-                    id = _step3.value;
-                    this.map[id].env.output.post();
-                  }
-                } catch (err) {
-                  _iterator3.e(err);
-                } finally {
-                  _iterator3.f();
-                }
-
-                _context3.next = 36;
-                break;
-
-              case 33:
-                _context3.prev = 33;
-                _context3.t0 = _context3["catch"](6);
-                console.log(_context3.t0);
-
-              case 36:
-                this.post_run_mods(sel);
-                this.perf = utils.now() - t1; //console.log('Perf',  this.perf)
-
-                this.running = false;
-                this.send('overlay-data', this.format_map(sel));
-
-              case 40:
-              case "end":
-                return _context3.stop();
-            }
-          }
-        }, _callee3, this, [[6, 33]]);
-      }));
-
-      function run(_x2) {
-        return _run.apply(this, arguments);
-      }
-
-      return run;
-    }()
-  }, {
-    key: "step",
-    value: function step(data, unshift) {
-      if (unshift === void 0) {
-        unshift = true;
-      }
-
-      if (unshift) {
-        this.open.unshift(data[1]);
-        this.high.unshift(data[2]);
-        this.low.unshift(data[3]);
-        this.close.unshift(data[4]);
-        this.vol.unshift(data[5]);
-
-        for (var id in this.tss) {
-          if (this.tss[id].__tf__) this.tss[id].__fn__();else this.tss[id].unshift(this.tss[id].__fn__());
-        }
-      } else {
-        this.open[0] = data[1];
-        this.high[0] = data[2];
-        this.low[0] = data[3];
-        this.close[0] = data[4];
-        this.vol[0] = data[5];
-
-        for (var id in this.tss) {
-          this.tss[id] = this.tss[id].__fn__();
-        }
-      }
-    }
-  }, {
-    key: "limit",
-    value: function limit() {
-      this.open.length = this.open.__len__ || script_engine_DEF_LIMIT;
-      this.high.length = this.high.__len__ || script_engine_DEF_LIMIT;
-      this.low.length = this.low.__len__ || script_engine_DEF_LIMIT;
-      this.close.length = this.close.__len__ || script_engine_DEF_LIMIT;
-      this.vol.length = this.vol.__len__ || script_engine_DEF_LIMIT;
-    }
-  }, {
-    key: "start",
-    value: function start(ohlcv) {
-      var depth = this.sett.script_depth;
-      return depth ? Math.max(ohlcv.length - depth, 0) : 0;
-    }
-  }, {
-    key: "drain_queues",
-    value: function drain_queues() {
-      // Check if there are any new scripts (recieved during
-      // the current run)
-      if (this.queue.length) {
-        this.exec_all();
-      } // Check if there are any new settings deltas (...)
-      else if (this.delta_queue.length) {
-          this.exec_sel(this.delta_queue.pop());
-          this.delta_queue = [];
-        } else {
-          while (this.update_queue.length) {
-            var c = this.update_queue.shift();
-            this.update(c);
-          }
-        }
-    }
-  }, {
-    key: "format_map",
-    value: function format_map(sel) {
-      sel = sel || Object.keys(this.map);
-      var res = [];
-
-      var _iterator4 = script_engine_createForOfIteratorHelper(sel),
-          _step4;
-
-      try {
-        for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
-          var id = _step4.value;
-          var x = this.map[id];
-          res.push({
-            id: id,
-            data: x.env.data,
-            new_ovs: {
-              onchart: x.env.onchart,
-              offchart: x.env.offchart
-            }
-          });
-        }
-      } catch (err) {
-        _iterator4.e(err);
-      } finally {
-        _iterator4.f();
-      }
-
-      return res;
-    }
-  }, {
-    key: "format_update",
-    value: function format_update() {
-      var res = [];
-
-      for (var id in this.map) {
-        var x = this.map[id];
-        res.push({
-          id: id,
-          data: x.env.data[x.env.data.length - 1]
-        });
-      }
-
-      return res;
-    }
-  }, {
-    key: "restarted",
-    value: function restarted() {
-      if (this._restart) {
-        this._restart = false;
-        this.running = false;
-        this.perf = 0; //console.log('Restarted')
-
-        return true;
-      }
-
-      return false;
-    }
-  }, {
-    key: "remove_scripts",
-    value: function remove_scripts(ids) {
-      var _iterator5 = script_engine_createForOfIteratorHelper(ids),
-          _step5;
-
-      try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var id = _step5.value;
-          delete this.map[id];
-        }
-      } catch (err) {
-        _iterator5.e(err);
-      } finally {
-        _iterator5.f();
-      }
-
-      this.send_state();
-    }
-  }, {
-    key: "pre_run_mods",
-    value: function pre_run_mods(sel) {
-      for (var id in this.mods) {
-        if (this.mods[id].pre_run) {
-          this.mods[id].pre_run(sel);
-        }
-      }
-    }
-  }, {
-    key: "post_run_mods",
-    value: function post_run_mods(sel) {
-      for (var id in this.mods) {
-        if (this.mods[id].post_run) {
-          this.mods[id].post_run(sel);
-        }
-      }
-    }
-  }, {
-    key: "make_mods_hooks",
-    value: function make_mods_hooks(name) {
-      var arr = [];
-
-      for (var id in this.mods) {
-        if (this.mods[id][name]) {
-          arr.push(this.mods[id][name].bind(this.mods[id]));
-        }
-      }
-
-      return arr;
-    }
-  }]);
-
-  return ScriptEngine;
-}();
-
-/* harmony default export */ var script_engine = (new script_engine_ScriptEngine());
-// CONCATENATED MODULE: ./src/helpers/script_ww.js
-
-
-// Web-worker
-
-
-
-var data_requested = false; // DC => WW
-
-self.onmessage = /*#__PURE__*/function () {
-  var _ref = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(e) {
-    var lib;
-    return regenerator_default.a.wrap(function _callee$(_context) {
-      while (1) {
-        switch (_context.prev = _context.next) {
-          case 0:
-            _context.t0 = e.data.type;
-            _context.next = _context.t0 === 'update-dc-settings' ? 3 : _context.t0 === 'exec-script' ? 5 : _context.t0 === 'exec-all-scripts' ? 9 : _context.t0 === 'upload-data' ? 12 : _context.t0 === 'upload-module' ? 20 : _context.t0 === 'module-event' ? 23 : _context.t0 === 'update-data' ? 24 : _context.t0 === 'update-ov-settings' ? 26 : _context.t0 === 'remove-scripts' ? 28 : 30;
-            break;
-
-          case 3:
-            script_engine.sett = e.data.data;
-            return _context.abrupt("break", 30);
-
-          case 5:
-            if (!script_engine.data.ohlcv && !data_requested) {
-              data_requested = true;
-              self.postMessage({
-                type: 'request-data'
-              });
-            }
-
-            script_engine.queue.push(e.data.data);
-            script_engine.exec_all();
-            return _context.abrupt("break", 30);
-
-          case 9:
-            if (!script_engine.data.ohlcv && !data_requested) {
-              data_requested = true;
-              self.postMessage({
-                type: 'request-data'
-              });
-            }
-
-            script_engine.exec_all();
-            return _context.abrupt("break", 30);
-
-          case 12:
-            if (!e.data.data.ohlcv) {
-              _context.next = 19;
-              break;
-            }
-
-            self.postMessage({
-              type: 'data-uploaded'
-            });
-            _context.next = 16;
-            return utils.pause(1);
-
-          case 16:
-            script_engine.data.ohlcv = e.data.data.ohlcv;
-            data_requested = false;
-            script_engine.exec_all();
-
-          case 19:
-            return _context.abrupt("break", 30);
-
-          case 20:
-            lib = make_module_lib(e.data.data);
-            script_engine.mods[e.data.data.id] = new new Function('mod', 'se', 'lib', f_body(e.data.data.main))(e.data.data.id, script_engine, lib);
-            return _context.abrupt("break", 30);
-
-          case 23:
-            return _context.abrupt("break", 30);
-
-          case 24:
-            if (e.data.data.ohlcv) {
-              script_engine.update(e.data.data.ohlcv);
-            }
-
-            return _context.abrupt("break", 30);
-
-          case 26:
-            script_engine.exec_sel(e.data.data);
-            return _context.abrupt("break", 30);
-
-          case 28:
-            script_engine.remove_scripts(e.data.data);
-            return _context.abrupt("break", 30);
-
-          case 30:
-          case "end":
-            return _context.stop();
-        }
-      }
-    }, _callee);
-  }));
-
-  return function (_x) {
-    return _ref.apply(this, arguments);
-  };
-}(); // WW => DC
-
-
-script_engine.send = function (type, data) {
-  switch (type) {
-    case 'overlay-data':
-    case 'overlay-update':
-    case 'engine-state':
-    case 'change-overlay':
-    case 'module-data':
-      self.postMessage({
-        type: type,
-        data: data
-      });
-      break;
-  }
-};
-// CONCATENATED MODULE: ./src/helpers/script_ww_api.js
-
-
-
-
-// Webworker interface
-// Compiled webworker (see webpack/ww_plugin.js)
-
-
-
- // For webworker-loader to find the ww
-
-var script_ww_api_WebWork = /*#__PURE__*/function () {
-  function WebWork() {
-    classCallCheck_default()(this, WebWork);
-
-    this.tasks = {};
-
-    this.onevent = function () {};
-
-    this.start();
-  }
-
-  createClass_default()(WebWork, [{
-    key: "start",
-    value: function start() {
-      var _this = this;
-
-      if (this.worker) this.worker.terminate(); // URL.createObjectURL
-
-      window.URL = window.URL || window.webkitURL;
-      var data = lz_string_default.a.decompressFromBase64(ww$$$[0]);
-      var blob;
-
-      try {
-        blob = new Blob([data], {
-          type: 'application/javascript'
-        });
-      } catch (e) {
-        // Backwards-compatibility
-        window.BlobBuilder = window.BlobBuilder || window.WebKitBlobBuilder || window.MozBlobBuilder;
-        blob = new BlobBuilder();
-        blob.append(data);
-        blob = blob.getBlob();
-      }
-
-      this.worker = new Worker(URL.createObjectURL(blob));
-
-      this.worker.onmessage = function (e) {
-        return _this.onmessage(e);
-      };
-    }
-  }, {
-    key: "send",
-    value: function send(msg, tx_keys) {
-      if (tx_keys) {
-        var tx_objs = tx_keys.map(function (k) {
-          return msg.data[k];
-        });
-        this.worker.postMessage(msg, tx_objs);
-      } else {
-        this.worker.postMessage(msg);
-      }
-    }
-  }, {
-    key: "onmessage",
-    value: function onmessage(e) {
-      if (e.data.id in this.tasks) {
-        this.tasks[e.data.id](e.data.data);
-        delete this.tasks[e.data.id];
-      } else {
-        this.onevent(e);
-      }
-    } // Execute a task
-
-  }, {
-    key: "exec",
-    value: function () {
-      var _exec = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee(type, data, tx_keys) {
-        var _this2 = this;
-
-        return regenerator_default.a.wrap(function _callee$(_context) {
-          while (1) {
-            switch (_context.prev = _context.next) {
-              case 0:
-                return _context.abrupt("return", new Promise(function (rs, rj) {
-                  var id = utils.uuid();
-
-                  _this2.send({
-                    type: type,
-                    id: id,
-                    data: data
-                  }, tx_keys);
-
-                  _this2.tasks[id] = function (res) {
-                    rs(res);
-                  };
-                }));
-
-              case 1:
               case "end":
                 return _context.stop();
             }
           }
-        }, _callee);
+        }, _callee, this);
       }));
 
-      function exec(_x, _x2, _x3) {
-        return _exec.apply(this, arguments);
+      function data() {
+        return _data.apply(this, arguments);
       }
 
-      return exec;
-    }() // Execute a task, but just fucking do it,
-    // do not wait for the result
-
-  }, {
-    key: "just",
-    value: function just(type, data, tx_keys) {
-      var id = utils.uuid();
-      this.send({
-        type: type,
-        id: id,
-        data: data
-      }, tx_keys);
-    } // Relay an event from iframe postMessage
-    // (for the future)
-
-  }, {
-    key: "relay",
-    value: function () {
-      var _relay = asyncToGenerator_default()( /*#__PURE__*/regenerator_default.a.mark(function _callee2(event, just) {
-        var _this3 = this;
-
-        return regenerator_default.a.wrap(function _callee2$(_context2) {
-          while (1) {
-            switch (_context2.prev = _context2.next) {
-              case 0:
-                if (just === void 0) {
-                  just = false;
-                }
-
-                return _context2.abrupt("return", new Promise(function (rs, rj) {
-                  _this3.send(event, event.tx_keys);
-
-                  if (!just) {
-                    _this3.tasks[event.id] = function (res) {
-                      rs(res);
-                    };
-                  }
-                }));
-
-              case 2:
-              case "end":
-                return _context2.stop();
-            }
-          }
-        }, _callee2);
-      }));
-
-      function relay(_x4, _x5) {
-        return _relay.apply(this, arguments);
-      }
-
-      return relay;
+      return data;
     }()
+  }], [{
+    key: "watcher",
+    value: function watcher(n, p) {
+      var nids = n.map(function (x) {
+        return x.id;
+      });
+      var pids = p.map(function (x) {
+        return x.id;
+      });
+
+      var _iterator = dataset_createForOfIteratorHelper(nids),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var id = _step.value;
+
+          if (!pids.includes(id)) {
+            var ds = n.filter(function (x) {
+              return x.id === id;
+            })[0];
+            this.dss[id] = new Dataset(this, ds);
+          }
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
+
+      var _iterator2 = dataset_createForOfIteratorHelper(pids),
+          _step2;
+
+      try {
+        for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+          var id = _step2.value;
+
+          if (!nids.includes(id) && this.dss[id]) {
+            this.dss[id].remove();
+          }
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+    } // Make an object for data transfer
+
   }, {
-    key: "destroy",
-    value: function destroy() {
-      if (this.worker) this.worker.terminate();
+    key: "make_tx",
+    value: function make_tx(dc, types) {
+      var main = dc.data.chart.data;
+      var base = {};
+
+      if (types.find(function (x) {
+        return x.type === 'OHLCV';
+      })) {
+        base = {
+          ohlcv: main
+        };
+      } // TODO: add more sophisticated search
+      // (using 'script.datasets' paramerter)
+
+      /*for (var req of types) {
+          let ds = Object.values(dc.dss || {})
+              .find(x => x.type === req.type)
+          if (ds && ds.data) {
+              base[ds.id] = {
+                  id: ds.id,
+                  type: ds.type,
+                  data: ds.data
+              }
+          }
+      }*/
+      // TODO: Data request callback ?
+
+
+      return base;
     }
   }]);
 
-  return WebWork;
-}();
+  return Dataset;
+}(); // Dataset reciever (created on WW)
 
-/* harmony default export */ var script_ww_api = (script_ww_api_WebWork);
+
+
+var dataset_DatasetWW = /*#__PURE__*/function () {
+  function DatasetWW(id, data) {
+    classCallCheck_default()(this, DatasetWW);
+
+    this.last_upd = script_utils_now();
+    this.id = id;
+
+    if (Array.isArray(data)) {
+      // Regular array
+      this.data = data;
+      if (id === 'ohlcv') this.type = 'OHLCV';
+    } else {
+      // Dataset descriptor
+      this.data = data.data;
+      this.type = data.type;
+    }
+  } // Update from 'update-data' event
+  // TODO: ds size limit (in MB / data points)
+
+
+  createClass_default()(DatasetWW, [{
+    key: "merge",
+    value: function merge(data) {
+      var len = this.data.length;
+
+      if (!len) {
+        this.data = data;
+        return;
+      }
+
+      var t0 = this.data[0][0];
+      var tN = this.data[len - 1][0];
+      var l = data.filter(function (x) {
+        return x[0] < t0;
+      });
+      var r = data.filter(function (x) {
+        return x[0] > tN;
+      });
+      this.data = l.concat(this.data, r);
+    } // On dataset operation
+
+  }, {
+    key: "op",
+    value: function op(se, _op) {
+      this.last_upd = script_utils_now();
+
+      switch (_op.type) {
+        case 'set':
+          this.data = _op.data;
+          se.recalc_size();
+          break;
+
+        case 'del':
+          delete se.data[this.id];
+          se.recalc_size();
+          break;
+
+        case 'mrg':
+          this.merge(_op.data);
+          se.recalc_size();
+          break;
+      }
+    }
+  }], [{
+    key: "update_all",
+    value: function update_all(se, data) {
+      for (var k in data) {
+        if (k === 'ohlcv') continue;
+        var id = k.split('.')[1] || k;
+        if (!se.data[id]) continue;
+        var arr = se.data[id].data;
+        var iN = arr.length - 1;
+        var last = arr[iN];
+
+        var _iterator3 = dataset_createForOfIteratorHelper(data[k]),
+            _step3;
+
+        try {
+          for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+            var dp = _step3.value;
+
+            if (!last || dp[0] > last[0]) {
+              arr.push(dp);
+            }
+          }
+        } catch (err) {
+          _iterator3.e(err);
+        } finally {
+          _iterator3.f();
+        }
+
+        se.data[id].last_upd = script_utils_now();
+      }
+    }
+  }]);
+
+  return DatasetWW;
+}();
 // CONCATENATED MODULE: ./src/helpers/dc_events.js
+
+
 
 
 
@@ -17838,13 +16728,14 @@ function dc_events_arrayLikeToArray(arr, len) { if (len == null || len > arr.len
 
 
 
+
 var dc_events_DCEvents = /*#__PURE__*/function () {
   function DCEvents() {
     var _this = this;
 
     classCallCheck_default()(this, DCEvents);
 
-    this.ww = new script_ww_api(); // Listen to the web-worker events
+    this.ww = new script_ww_api(this); // Listen to the web-worker events
 
     this.ww.onevent = function (e) {
       var _iterator = dc_events_createForOfIteratorHelper(_this.tv.controllers),
@@ -17863,13 +16754,13 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
 
       switch (e.data.type) {
         case 'request-data':
-          var main = _this.data.chart.data; // TODO: DataTunnel class for smarter data transfer
-
+          // TODO: DataTunnel class for smarter data transfer
           if (_this.ww._data_uploading) break;
+          var data = dataset_Dataset.make_tx(_this, e.data.data);
 
-          _this.ww.just('upload-data', {
-            ohlcv: main
-          });
+          _this.send_meta_2_ww();
+
+          _this.ww.just('upload-data', data);
 
           _this.ww._data_uploading = true;
           break;
@@ -17892,8 +16783,8 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
           _this.se_state = Object.assign(_this.se_state || {}, e.data.data);
           break;
 
-        case 'change-overlay':
-          _this.change_overlay(e.data.data);
+        case 'modify-overlay':
+          _this.modify_overlay(e.data.data);
 
           break;
       }
@@ -17927,6 +16818,10 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
           this.exec_script(args);
           break;
 
+        case 'exec-all-scripts':
+          this.exec_all_scripts();
+          break;
+
         case 'data-len-changed':
           this.data_changed(args);
           break;
@@ -17948,14 +16843,7 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
           break;
 
         case 'grid-mousedown':
-          // TODO: tool state finished?
-          this.object_selected([]);
-
-          if (this.data.tool && this.data.tool !== 'Cursor' && !this.data.drawingMode) {
-            this.tv.$set(this.data, 'drawingMode', true);
-            this.build_tool(args[0]);
-          }
-
+          this.grid_mousedown(args);
           break;
 
         case 'drawing-mode-off':
@@ -17964,6 +16852,10 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
 
         case 'change-settings':
           this.change_settings(args);
+          break;
+
+        case 'range-changed':
+          this.scripts_onrange.apply(this, toConsumableArray_default()(args));
           break;
 
         case 'scroll-lock':
@@ -18003,20 +16895,28 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
 
         if (!arr.length && n.p.settings.$props) {
           var id = n.p.settings.$uuid;
-          delta[id] = n.v;
-          changed = true;
 
-          _this2.tv.$set(n.p, 'loading', true);
+          if (utils.is_scr_props_upd(n, prev) && utils.delayed_exec(n.p)) {
+            delta[id] = n.v;
+            changed = true;
+
+            _this2.tv.$set(n.p, 'loading', true);
+          }
         }
       };
 
       for (var i = 0; i < values.length; i++) {
         _loop();
-      } // TODO: send settings only if a script prop is changed
+      }
 
-
-      if (changed) {
-        this.ww.just('update-ov-settings', delta);
+      if (changed && Object.keys(delta).length) {
+        var tf = this.tv.$refs.chart.interval_ms || this.data.chart.tf;
+        var range = this.tv.getRange();
+        this.ww.just('update-ov-settings', {
+          delta: delta,
+          tf: tf,
+          range: range
+        });
       }
     } // When the set of $uuids is changed
 
@@ -18099,9 +16999,10 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
         // TODO: remove unnecessary script initializations
 
         var s = obj.settings;
-        var props = args[0].src.props;
+        var props = args[0].src.props || {};
         if (!s.$uuid) s.$uuid = "".concat(obj.type, "-").concat(utils.uuid2());
         args[0].uuid = s.$uuid;
+        args[0].sett = s;
 
         for (var k in props || {}) {
           var proto = props[k];
@@ -18130,28 +17031,71 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
           }
         }
 
-        s.$props = Object.keys(args[0].src.props);
+        s.$props = Object.keys(args[0].src.props || {});
         this.tv.$set(obj, 'loading', true);
-        this.ww.just('exec-script', args[0]);
+        var tf = this.tv.$refs.chart.interval_ms || this.data.chart.tf;
+        var range = this.tv.getRange();
+
+        if (obj.script && obj.script.output != null) {
+          args[0].output = obj.script.output;
+        }
+
+        this.ww.just('exec-script', {
+          s: args[0],
+          tf: tf,
+          range: range
+        });
       }
     }
   }, {
     key: "exec_all_scripts",
     value: function exec_all_scripts() {
       if (!this.sett.scripts) return;
-      this.merge('.', {
-        loading: true
+      this.set_loading(true);
+      var tf = this.tv.$refs.chart.interval_ms || this.data.chart.tf;
+      var range = this.tv.getRange();
+      this.ww.just('exec-all-scripts', {
+        tf: tf,
+        range: range
       });
-      this.ww.just('exec-all-scripts');
     }
   }, {
-    key: "change_overlay",
-    value: function change_overlay(upd) {
+    key: "scripts_onrange",
+    value: function scripts_onrange(r) {
+      if (!this.sett.scripts) return;
+      var delta = {};
+      this.get('.').forEach(function (v) {
+        if (v.script && v.script.execOnRange && v.settings.$uuid) {
+          // TODO: execInterrupt flag?
+          if (utils.delayed_exec(v)) {
+            delta[v.settings.$uuid] = v.settings;
+          }
+        }
+      });
+
+      if (Object.keys(delta).length) {
+        var tf = this.tv.$refs.chart.interval_ms || this.data.chart.tf;
+        var range = this.tv.getRange();
+        this.ww.just('update-ov-settings', {
+          delta: delta,
+          tf: tf,
+          range: range
+        });
+      }
+    } // Overlay modification from WW
+
+  }, {
+    key: "modify_overlay",
+    value: function modify_overlay(upd) {
       var obj = this.get_overlay(upd);
 
       if (obj) {
-        for (var k in upd.fileds || {}) {
-          this.tv.$set(obj, k, upd.fileds[k]);
+        for (var k in upd.fields || {}) {
+          if (typeof_default()(obj[k]) === 'object') {
+            this.merge("".concat(upd.uuid, ".").concat(k), upd.fields[k]);
+          } else {
+            this.tv.$set(obj, k, upd.fields[k]);
+          }
         }
       }
     }
@@ -18159,15 +17103,48 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
     key: "data_changed",
     value: function data_changed(args) {
       if (!this.sett.scripts) return;
+      if (this.sett.data_change_exec === false) return;
       var main = this.data.chart.data;
       if (this.ww._data_uploading) return;
       if (!this.se_state.scripts) return;
+      this.send_meta_2_ww();
       this.ww.just('upload-data', {
         ohlcv: main
       });
       this.ww._data_uploading = true;
-      this.merge('.', {
-        loading: true
+      this.set_loading(true);
+    }
+  }, {
+    key: "set_loading",
+    value: function set_loading(flag) {
+      var skrr = dc.get('.').filter(function (x) {
+        return x.settings.$props;
+      });
+
+      var _iterator5 = dc_events_createForOfIteratorHelper(skrr),
+          _step5;
+
+      try {
+        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
+          var s = _step5.value;
+          this.merge("".concat(s.id), {
+            loading: flag
+          });
+        }
+      } catch (err) {
+        _iterator5.e(err);
+      } finally {
+        _iterator5.f();
+      }
+    }
+  }, {
+    key: "send_meta_2_ww",
+    value: function send_meta_2_ww() {
+      var tf = this.tv.$refs.chart.interval_ms || this.data.chart.tf;
+      var range = this.tv.getRange();
+      this.ww.just('send-meta-info', {
+        tf: tf,
+        range: range
       });
     }
   }, {
@@ -18184,6 +17161,34 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
       }
     }
   }, {
+    key: "grid_mousedown",
+    value: function grid_mousedown(args) {
+      var _this3 = this;
+
+      // TODO: tool state finished?
+      this.object_selected([]); // Remove the previous RangeTool
+
+      var rem = function rem() {
+        return _this3.get('RangeTool').filter(function (x) {
+          return x.settings.shiftMode;
+        }).forEach(function (x) {
+          return _this3.del(x.id);
+        });
+      };
+
+      if (this.data.tool && this.data.tool !== 'Cursor' && !this.data.drawingMode) {
+        this.tv.$set(this.data, 'drawingMode', true);
+        this.build_tool(args[0]);
+      } else if (this.sett.shift_measure && args[1].shiftKey) {
+        rem();
+        this.tv.$nextTick(function () {
+          return _this3.build_tool(args[0], 'RangeTool:ShiftMode');
+        });
+      } else {
+        rem();
+      }
+    }
+  }, {
     key: "drawing_mode_off",
     value: function drawing_mode_off() {
       this.tv.$set(this.data, 'drawingMode', false);
@@ -18192,9 +17197,9 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
 
   }, {
     key: "build_tool",
-    value: function build_tool(grid_id) {
+    value: function build_tool(grid_id, type) {
       var list = this.data.tools;
-      var type = this.data.tool;
+      type = type || this.data.tool;
       var proto = list.find(function (x) {
         return x.type === type;
       });
@@ -18303,24 +17308,27 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
   }, {
     key: "on_overlay_data",
     value: function on_overlay_data(data) {
-      var _this3 = this;
+      var _this4 = this;
 
-      var _iterator5 = dc_events_createForOfIteratorHelper(data),
-          _step5;
+      this.get('.').forEach(function (x) {
+        if (x.settings.$synth) _this4.del("".concat(x.id));
+      });
+
+      var _iterator6 = dc_events_createForOfIteratorHelper(data),
+          _step6;
 
       try {
-        for (_iterator5.s(); !(_step5 = _iterator5.n()).done;) {
-          var ov = _step5.value;
+        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
+          var ov = _step6.value;
           var obj = this.get_one("".concat(ov.id));
 
           if (obj) {
-            obj.data = ov.data;
             this.tv.$set(obj, 'loading', false);
+            if (!ov.data) continue;
+            obj.data = ov.data;
           }
 
-          this.get('.').forEach(function (x) {
-            if (x.settings.$synth) _this3.del("".concat(x.id));
-          });
+          if (!ov.new_ovs) continue;
 
           for (var id in ov.new_ovs.onchart) {
             if (!this.get_one("onchart.".concat(id))) {
@@ -18335,50 +17343,32 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
           }
         }
       } catch (err) {
-        _iterator5.e(err);
+        _iterator6.e(err);
       } finally {
-        _iterator5.f();
+        _iterator6.f();
       }
     } // Push overlay updates from the web-worker
 
   }, {
     key: "on_overlay_update",
     value: function on_overlay_update(data) {
-      var _iterator6 = dc_events_createForOfIteratorHelper(data),
-          _step6;
+      var _iterator7 = dc_events_createForOfIteratorHelper(data),
+          _step7;
 
       try {
-        for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
-          var ov = _step6.value;
+        for (_iterator7.s(); !(_step7 = _iterator7.n()).done;) {
+          var ov = _step7.value;
+          if (!ov.data) continue;
           var obj = this.get_one("".concat(ov.id));
 
           if (obj) {
-            this.fast_merge(obj.data, ov.data);
+            this.fast_merge(obj.data, ov.data, false);
           }
         }
       } catch (err) {
-        _iterator6.e(err);
+        _iterator7.e(err);
       } finally {
-        _iterator6.f();
-      }
-    } // Aggregation handler
-
-  }, {
-    key: "agg_update",
-    value: function agg_update(sym, upd) {
-      switch (sym) {
-        case 'ohlcv':
-          var data = this.data.chart.data;
-          this.fast_merge(data, upd);
-          this.ww.just('update-data', {
-            ohlcv: upd
-          });
-          break;
-
-        default:
-          var data = this.get("".concat(sym));
-          this.fast_merge(data[0], upd, false);
-          break;
+        _iterator7.f();
       }
     } // Clean-up unfinished business (tools)
 
@@ -18401,7 +17391,7 @@ var dc_events_DCEvents = /*#__PURE__*/function () {
     key: "get_overlay",
     value: function get_overlay(obj) {
       var id = obj.id || "g".concat(obj.grid_id, "_").concat(obj.layer_id);
-      var dcid = this.gldc[id];
+      var dcid = obj.uuid || this.gldc[id];
       return this.get_one("".concat(dcid));
     }
   }]);
@@ -18426,18 +17416,19 @@ function dc_core_unsupportedIterableToArray(o, minLen) { if (!o) return; if (typ
 
 function dc_core_arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
-function _createSuper(Derived) { var hasNativeReflectConstruct = _isNativeReflectConstruct(); return function _createSuperInternal() { var Super = getPrototypeOf_default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
+function dc_core_createSuper(Derived) { var hasNativeReflectConstruct = dc_core_isNativeReflectConstruct(); return function _createSuperInternal() { var Super = getPrototypeOf_default()(Derived), result; if (hasNativeReflectConstruct) { var NewTarget = getPrototypeOf_default()(this).constructor; result = Reflect.construct(Super, arguments, NewTarget); } else { result = Super.apply(this, arguments); } return possibleConstructorReturn_default()(this, result); }; }
 
-function _isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
+function dc_core_isNativeReflectConstruct() { if (typeof Reflect === "undefined" || !Reflect.construct) return false; if (Reflect.construct.sham) return false; if (typeof Proxy === "function") return true; try { Date.prototype.toString.call(Reflect.construct(Date, [], function () {})); return true; } catch (e) { return false; } }
 
-// DataCube private methods
+// DataCube "private" methods
+
 
 
 
 var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
   inherits_default()(DCCore, _DCEvents);
 
-  var _super = _createSuper(DCCore);
+  var _super = dc_core_createSuper(DCCore);
 
   function DCCore() {
     classCallCheck_default()(this, DCCore);
@@ -18469,7 +17460,11 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
           });
         }, function (n, p) {
           return _this.on_ids_changed(n, p);
-        });
+        }); // Watch for all 'datasets' changes
+
+        this.tv.$watch(function () {
+          return _this.get('datasets');
+        }, dataset_Dataset.watcher.bind(this));
       }
     } // Init Data Structure v1.1
 
@@ -18497,6 +17492,26 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
 
 
       delete this.data.ohlcv;
+
+      if (!('datasets' in this.data)) {
+        this.tv.$set(this.data, 'datasets', []);
+      } // Init dataset proxies
+
+
+      var _iterator = dc_core_createForOfIteratorHelper(this.data.datasets),
+          _step;
+
+      try {
+        for (_iterator.s(); !(_step = _iterator.n()).done;) {
+          var ds = _step.value;
+          if (!this.dss) this.dss = {};
+          this.dss[ds.id] = new dataset_Dataset(this, ds);
+        }
+      } catch (err) {
+        _iterator.e(err);
+      } finally {
+        _iterator.f();
+      }
     } // Range change callback (called by TradingVue)
     // TODO: improve (reliablity + chunk with limited size)
 
@@ -18612,36 +17627,7 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
 
       this.gldc = {}, this.dcgl = {};
 
-      var _iterator = dc_core_createForOfIteratorHelper(this.data.onchart),
-          _step;
-
-      try {
-        for (_iterator.s(); !(_step = _iterator.n()).done;) {
-          var ov = _step.value;
-
-          if (count[ov.type] === undefined) {
-            count[ov.type] = 0;
-          }
-
-          var i = count[ov.type]++;
-          ov.id = "onchart.".concat(ov.type).concat(i);
-          if (!ov.name) ov.name = ov.type + " ".concat(i);
-          if (!ov.settings) ov.settings = {}; // grid_id,layer_id => DC id mapping
-
-          this.gldc["g0_".concat(ov.type, "_").concat(i)] = ov.id;
-          this.dcgl[ov.id] = "g0_".concat(ov.type, "_").concat(i);
-        }
-      } catch (err) {
-        _iterator.e(err);
-      } finally {
-        _iterator.f();
-      }
-
-      count = {};
-      var grids = [{}];
-      var gid = 0;
-
-      var _iterator2 = dc_core_createForOfIteratorHelper(this.data.offchart),
+      var _iterator2 = dc_core_createForOfIteratorHelper(this.data.onchart),
           _step2;
 
       try {
@@ -18652,11 +17638,40 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
             count[ov.type] = 0;
           }
 
+          var i = count[ov.type]++;
+          ov.id = "onchart.".concat(ov.type).concat(i);
+          if (!ov.name) ov.name = ov.type + " ".concat(i);
+          if (!ov.settings) this.tv.$set(ov, 'settings', {}); // grid_id,layer_id => DC id mapping
+
+          this.gldc["g0_".concat(ov.type, "_").concat(i)] = ov.id;
+          this.dcgl[ov.id] = "g0_".concat(ov.type, "_").concat(i);
+        }
+      } catch (err) {
+        _iterator2.e(err);
+      } finally {
+        _iterator2.f();
+      }
+
+      count = {};
+      var grids = [{}];
+      var gid = 0;
+
+      var _iterator3 = dc_core_createForOfIteratorHelper(this.data.offchart),
+          _step3;
+
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var ov = _step3.value;
+
+          if (count[ov.type] === undefined) {
+            count[ov.type] = 0;
+          }
+
           var _i = count[ov.type]++;
 
           ov.id = "offchart.".concat(ov.type).concat(_i);
           if (!ov.name) ov.name = ov.type + " ".concat(_i);
-          if (!ov.settings) ov.settings = {}; // grid_id,layer_id => DC id mapping
+          if (!ov.settings) this.tv.$set(ov, 'settings', {}); // grid_id,layer_id => DC id mapping
 
           gid++;
           var rgid = (ov.grid || {}).id || gid; // real grid_id
@@ -18674,9 +17689,9 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
           this.dcgl[ov.id] = "g".concat(rgid, "_").concat(ov.type, "_").concat(ri);
         }
       } catch (err) {
-        _iterator2.e(err);
+        _iterator3.e(err);
       } finally {
-        _iterator2.f();
+        _iterator3.f();
       }
     } // TODO: chart refine (from the exchange chart)
 
@@ -18688,7 +17703,7 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
       var candle = data['candle'];
       var tf = this.tv.$refs.chart.interval_ms;
       var t_next = last[0] + tf;
-      var now = utils.now();
+      var now = data.t || utils.now();
       var t = now >= t_next ? now - now % tf : last[0]; // Update the entire candle
 
       if (candle.length >= 6) {
@@ -18710,12 +17725,15 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
       var volume = data['volume'] || 0;
       var tf = this.tv.$refs.chart.interval_ms;
       var t_next = last[0] + tf;
-      var now = utils.now();
+      var now = data.t || utils.now();
       var t = now >= t_next ? now - now % tf : last[0];
 
       if (t >= t_next && tick !== undefined) {
         // And new zero-height candle
-        this.agg.push('ohlcv', [t, tick, tick, tick, tick, volume], tf);
+        var nc = [t, tick, tick, tick, tick, volume];
+        this.agg.push('ohlcv', nc, tf);
+        ohlcv.push(nc);
+        this.scroll_to(t);
       } else if (tick !== undefined) {
         // Update an existing one
         // TODO: make a separate class Sampler
@@ -18734,7 +17752,12 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
     key: "update_overlays",
     value: function update_overlays(data, t, tf) {
       for (var k in data) {
-        if (k === 'price' || k === 'volume' || k === 'candle') {
+        if (k === 'price' || k === 'volume' || k === 'candle' || k === 't') {
+          continue;
+        }
+
+        if (k.includes('datasets.')) {
+          this.agg.push(k, data[k], tf);
           continue;
         }
 
@@ -18766,6 +17789,28 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
           result = this.query_search(query, tuple);
           break;
 
+        case 'datasets':
+          result = this.query_search(query, tuple);
+
+          var _iterator4 = dc_core_createForOfIteratorHelper(result),
+              _step4;
+
+          try {
+            for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+              var r = _step4.value;
+
+              if (r.i === 'data') {
+                r.v = this.dss[r.p.id].data();
+              }
+            }
+          } catch (err) {
+            _iterator4.e(err);
+          } finally {
+            _iterator4.f();
+          }
+
+          break;
+
         default:
           /* Should get('.') return also the chart? */
 
@@ -18780,7 +17825,7 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
       }
 
       return result.filter(function (x) {
-        return !x.v.locked || chuck;
+        return !(x.v || {}).locked || chuck;
       });
     }
   }, {
@@ -18806,7 +17851,7 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
       var path = tuple[1] || '';
       var field = tuple[2];
       var arr = this.data[side].filter(function (x) {
-        return x.id && x.name && x.settings && (x.id === query || x.id.includes(path) || x.name === query || x.name.includes(path) || query.includes(x.settings.$uuid));
+        return x.id === query || x.id && x.id.includes(path) || x.name === query || x.name && x.name.includes(path) || query.includes((x.settings || {}).$uuid);
       });
 
       if (field) {
@@ -19001,7 +18046,11 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
     }
   }, {
     key: "scroll_to",
-    value: function scroll_to(t) {// TODO: implement
+    value: function scroll_to(t) {
+      if (this.tv.$refs.chart.cursor.locked) return;
+      var tl = this.tv.$refs.chart.last_candle[0];
+      var d = this.tv.getRange()[1] - tl;
+      if (d > 0) this.tv["goto"](t + d);
     }
   }]);
 
@@ -19032,7 +18081,7 @@ var dc_core_DCCore = /*#__PURE__*/function (_DCEvents) {
 
 
 var agg_tool_AggTool = /*#__PURE__*/function () {
-  function AggTool(_int) {
+  function AggTool(dc, _int) {
     if (_int === void 0) {
       _int = 100;
     }
@@ -19042,41 +18091,113 @@ var agg_tool_AggTool = /*#__PURE__*/function () {
     this.symbols = {};
     this["int"] = _int; // Itarval in ms
 
-    this.update = function () {};
+    this.dc = dc;
+    this.st_id = null;
+    this.data_changed = false;
   }
 
   createClass_default()(AggTool, [{
     key: "push",
     value: function push(sym, upd, tf) {
+      var _this = this;
+
+      // Start auto updates
+      if (!this.st_id) {
+        this.st_id = setTimeout(function () {
+          return _this.update();
+        });
+      }
+
       tf = parseInt(tf);
       var old = this.symbols[sym];
       var t = utils.now();
+      var isds = sym.includes('datasets.');
+      this.data_changed = true;
 
       if (!old) {
         this.symbols[sym] = {
           upd: upd,
-          t: t
+          t: t,
+          data: []
         };
-        this.update(sym, upd);
-      } else if (upd[0] >= old.upd[0] + tf) {
-        // Refine the previous
-        var refine = old.upd.slice();
-        refine[0] = old.upd[0];
-        this.update(sym, refine);
+      } else if (upd[0] >= old.upd[0] + tf && !isds) {
+        // Refine the previous data point
+        this.refine(sym, old.upd.slice());
         this.symbols[sym] = {
           upd: upd,
-          t: t
-        }; // Update with the new
-
-        this.update(sym, upd); // Tick updates the current
+          t: t,
+          data: []
+        };
       } else {
+        // Tick updates the current
         this.symbols[sym].upd = upd;
-        var _t = this.symbols[sym].t;
+        this.symbols[sym].t = t;
+      }
 
-        if (t - _t > this["int"]) {
-          this.update(sym, upd);
-          this.symbols[sym].t = t;
+      if (isds) {
+        this.symbols[sym].data.push(upd);
+      }
+    }
+  }, {
+    key: "update",
+    value: function update() {
+      var _this2 = this;
+
+      var out = {};
+
+      for (var sym in this.symbols) {
+        var upd = this.symbols[sym].upd;
+
+        switch (sym) {
+          case 'ohlcv':
+            var data = this.dc.data.chart.data;
+            this.dc.fast_merge(data, upd);
+            out.ohlcv = data.slice(-2);
+            break;
+
+          default:
+            if (sym.includes('datasets.')) {
+              this.update_ds(sym, out);
+              continue;
+            }
+
+            var data = this.dc.get_one("".concat(sym));
+            if (!data) continue;
+            this.dc.fast_merge(data, upd, false);
+            break;
         }
+      } // TODO: fill gaps
+
+
+      if (this.data_changed) {
+        this.dc.ww.just('update-data', out);
+        this.data_changed = false;
+      }
+
+      setTimeout(function () {
+        return _this2.update();
+      }, this["int"]);
+    }
+  }, {
+    key: "refine",
+    value: function refine(sym, upd) {
+      if (sym === 'ohlcv') {
+        var data = this.dc.data.chart.data;
+        this.dc.fast_merge(data, upd);
+      } else {
+        var data = this.dc.get_one("".concat(sym));
+        if (!data) return;
+        this.dc.fast_merge(data, upd, false);
+      }
+    }
+  }, {
+    key: "update_ds",
+    value: function update_ds(sym, out) {
+      var data = this.symbols[sym].data;
+
+      if (data.length) {
+        out[sym] = data;
+        this.symbols[sym].data = [];
       }
     }
   }, {
@@ -19141,16 +18262,23 @@ var datacube_DataCube = /*#__PURE__*/function (_DCCore) {
       // 0 === Exec on all data
       auto_scroll: true,
       // Auto scroll to a new candle
-      scripts: true // Enable overlays scripts
+      scripts: true,
+      // Enable overlays scripts,
+      ww_ram_limit: 0,
+      // WebWorker RAM limit (MB)
+      node_url: null,
+      // Use node.js instead of WW
+      shift_measure: true // Draw measurment shift+click
 
     };
     sett = Object.assign(def_sett, sett);
     _this = _super.call(this);
+    _this.sett = sett;
     _this.data = data;
     _this.sett = sett_proxy(sett, _this.ww);
-    _this.agg = new agg_tool_AggTool(sett.aggregation);
-    _this.se_state = {};
-    _this.agg.update = _this.agg_update.bind(assertThisInitialized_default()(_this));
+    _this.agg = new agg_tool_AggTool(assertThisInitialized_default()(_this), sett.aggregation);
+    _this.se_state = {}; //this.agg.update = this.agg_update.bind(this)
+
     return _this;
   } // Add new overlay
 
@@ -19158,7 +18286,7 @@ var datacube_DataCube = /*#__PURE__*/function (_DCCore) {
   createClass_default()(DataCube, [{
     key: "add",
     value: function add(side, overlay) {
-      if (side !== 'onchart' && side !== 'offchart') {
+      if (side !== 'onchart' && side !== 'offchart' && side !== 'datasets') {
         return;
       }
 
@@ -19255,7 +18383,7 @@ var datacube_DataCube = /*#__PURE__*/function (_DCCore) {
         for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
           var obj = _step3.value;
           // Find current index of the field (if not defined)
-          var i = obj.i !== undefined ? obj.i : obj.p.indexOf(obj.v);
+          var i = typeof obj.i !== 'number' ? obj.i : obj.p.indexOf(obj.v);
 
           if (i !== -1) {
             this.tv.$delete(obj.p, i);
@@ -19269,8 +18397,6 @@ var datacube_DataCube = /*#__PURE__*/function (_DCCore) {
 
       this.update_ids();
     } // Update/append data point, depending on timestamp
-    // v2.0 TODO: to web worker
-    //
 
   }, {
     key: "update",
@@ -19404,10 +18530,6 @@ var datacube_DataCube = /*#__PURE__*/function (_DCCore) {
     return {};
   }
 });
-// EXTERNAL MODULE: ./src/components/primitives/ray.js
-var ray = __webpack_require__(34);
-var ray_default = /*#__PURE__*/__webpack_require__.n(ray);
-
 // CONCATENATED MODULE: ./src/index.js
 
 
@@ -19430,7 +18552,7 @@ var primitives = {
   Line: line_Line,
   Pin: pin_Pin,
   Price: price_Price,
-  Ray: ray_default.a,
+  Ray: ray_Ray,
   Seg: seg_Seg
 };
 

@@ -112,3 +112,92 @@ export function tf_from_str(str) {
 export function get_fn_id(pre, id) {
     return pre + '-' + id.split('<-').pop()
 }
+
+// Apply filter for all new overlays
+export function ovf(obj, f) {
+    var nw = {}
+    for (var id in obj) {
+        nw[id] = {}
+        for (var k in obj[id]) {
+            if (k === 'data') continue
+            nw[id][k] = obj[id][k]
+        }
+        nw[id].data = f(obj[id].data)
+    }
+    return nw
+}
+
+// Return index of the next element in
+// dataset (since t). Impl: simple binary search
+// TODO: optimize (remember the penultimate
+// iteration and start from there)
+export function nextt(data, t, ti = 0) {
+
+    let i0 = 0
+    let iN = data.length - 1
+
+    while (i0 <= iN) {
+        var mid = Math.floor((i0 + iN) / 2)
+        if (data[mid][ti] === t) {
+            return mid
+        } else if (data[mid][ti] < t) {
+            i0 = mid + 1
+        } else {
+            iN = mid - 1
+        }
+    }
+
+    return t < data[mid][ti] ? mid : mid + 1
+
+}
+
+// Estimated size of datasets
+export function size_of_dss(data) {
+    let bytes = 0
+    for (var id in data) {
+        if (data[id].data && data[id].data[0]) {
+            let s0 = size_of(data[id].data[0])
+            bytes += s0 * data[id].data.length
+        }
+    }
+    return bytes
+}
+
+
+// Used to measure the size of dataset
+export function size_of(object) {
+    var list = [], stack = [object], bytes = 0
+    while (stack.length) {
+        var value = stack.pop()
+        var type = typeof value
+        if (type === 'boolean') {
+            bytes += 4
+        } else if (type === 'string') {
+            bytes += value.length * 2
+        } else if (type === 'number') {
+            bytes += 8
+        } else if (type === 'object' &&
+            list.indexOf(value) === -1) {
+            list.push(value)
+            for(var i in value) {
+                stack.push(value[i])
+            }
+        }
+    }
+    return bytes
+}
+
+// Update onchart/offchart
+export function update(data, val) {
+    const i = data.length - 1
+    const last = data[i]
+    if (!last || val[0] > last[0]) {
+        data.push(val)
+    } else {
+        data[i] = val
+    }
+}
+
+export function now() {
+    return (new Date()).getTime()
+}

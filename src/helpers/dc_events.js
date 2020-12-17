@@ -4,12 +4,14 @@
 import Utils from '../stuff/utils.js'
 import Icons from '../stuff/icons.json'
 import WebWork from './script_ww_api.js'
+import Dataset from './dataset.js'
+
 
 export default class DCEvents {
 
     constructor() {
 
-        this.ww = new WebWork()
+        this.ww = new WebWork(this)
 
         // Listen to the web-worker events
         this.ww.onevent = e => {
@@ -18,10 +20,11 @@ export default class DCEvents {
             }
             switch(e.data.type) {
                 case 'request-data':
-                    let main = this.data.chart.data
                     // TODO: DataTunnel class for smarter data transfer
                     if (this.ww._data_uploading) break
-                    this.ww.just('upload-data', { ohlcv: main })
+                    let data = Dataset.make_tx(this, e.data.data)
+                    this.send_meta_2_ww()
+                    this.ww.just('upload-data', data)
                     this.ww._data_uploading = true
                     break
                 case 'overlay-data':
@@ -37,8 +40,8 @@ export default class DCEvents {
                     this.se_state = Object.assign(
                         this.se_state || {}, e.data.data)
                     break
-                case 'change-overlay':
-                    this.change_overlay(e.data.data)
+                case 'modify-overlay':
+                    this.modify_overlay(e.data.data)
                     break
             }
             for (var ctrl of this.tv.controllers) {
@@ -54,6 +57,8 @@ export default class DCEvents {
                 break
             case 'exec-script': this.exec_script(args)
                 break
+            case 'exec-all-scripts': this.exec_all_scripts()
+                break
             case 'data-len-changed': this.data_changed(args)
                 break
             case 'tool-selected':
@@ -62,23 +67,18 @@ export default class DCEvents {
                     this.system_tool(args[0].split(':')[1])
                     break
                 }
-                this.tv.$set(this.data, 'tool', args[0])
+                this.data.tool = args[0]
                 if (args[0] === 'Cursor') {
                     this.drawing_mode_off()
                 }
                 break
-            case 'grid-mousedown':
-                // TODO: tool state finished?
-                this.object_selected([])
-                if (this.data.tool && this.data.tool !== 'Cursor' &&
-                   !this.data.drawingMode) {
-                    this.tv.$set(this.data, 'drawingMode', true)
-                    this.build_tool(args[0])
-                }
+            case 'grid-mousedown': this.grid_mousedown(args)
                 break
             case 'drawing-mode-off': this.drawing_mode_off()
                 break
             case 'change-settings': this.change_settings(args)
+                break
+            case 'range-changed': this.scripts_onrange(...args)
                 break
             case 'scroll-lock': this.on_scroll_lock(args[0])
                 break
@@ -108,15 +108,22 @@ export default class DCEvents {
             let arr = prev.filter(x => x.v === n.v)
             if (!arr.length && n.p.settings.$props) {
                 let id = n.p.settings.$uuid
-                delta[id] = n.v
-                changed = true
-                this.tv.$set(n.p, 'loading', true)
+                if (Utils.is_scr_props_upd(n, prev) &&
+                    Utils.delayed_exec(n.p)) {
+                    delta[id] = n.v
+                    changed = true
+                    n.p.loading = true
+                }
             }
         }
 
-        // TODO: send settings only if a script prop is changed
-        if (changed) {
-            this.ww.just('update-ov-settings', delta)
+        if (changed && Object.keys(delta).length) {
+            let tf = this.tv.$refs.chart.interval_ms ||
+                     this.data.chart.tf
+            let range = this.tv.getRange()
+            this.ww.just('update-ov-settings', {
+                delta, tf, range
+            })
         }
 
     }
@@ -139,7 +146,7 @@ export default class DCEvents {
              preset[tool.type] = tool
              delete tool.type
         }
-        this.tv.$set(this.data, 'tools', [])
+        this.data.tools = []
         let list = [{
             type: 'Cursor', icon: Icons['cursor.png']
         }]
@@ -160,8 +167,8 @@ export default class DCEvents {
                 list.push(mp)
             }
         }
-        this.tv.$set(this.data, 'tools', list)
-        this.tv.$set(this.data, 'tool', 'Cursor')
+        this.data.tools = list
+        this.data.tool = 'Cursor'
     }
 
     exec_script(args) {
@@ -171,9 +178,10 @@ export default class DCEvents {
             // Parse script props & get the values from the ov
             // TODO: remove unnecessary script initializations
             let s = obj.settings
-            let props = args[0].src.props
+            let props = args[0].src.props || {}
             if (!s.$uuid) s.$uuid = `${obj.type}-${Utils.uuid2()}`
             args[0].uuid = s.$uuid
+            args[0].sett = s
             for (var k in props || {}) {
                 let proto = props[k]
                 if (s[k] !== undefined) {
@@ -197,35 +205,91 @@ export default class DCEvents {
                     }
                 }
             }
-            s.$props = Object.keys(args[0].src.props)
-            this.tv.$set(obj, 'loading', true)
-            this.ww.just('exec-script', args[0])
+            s.$props = Object.keys(args[0].src.props || {})
+            obj.loading = true
+            let tf = this.tv.$refs.chart.interval_ms ||
+                     this.data.chart.tf
+            let range = this.tv.getRange()
+            if (obj.script && obj.script.output != null) {
+                args[0].output = obj.script.output
+            }
+            this.ww.just('exec-script', {
+                s: args[0], tf, range
+            })
         }
     }
 
     exec_all_scripts() {
         if (!this.sett.scripts) return
-        this.merge('.', { loading: true })
-        this.ww.just('exec-all-scripts')
+        this.set_loading(true)
+        let tf = this.tv.$refs.chart.interval_ms ||
+                 this.data.chart.tf
+        let range = this.tv.getRange()
+        this.ww.just('exec-all-scripts', { tf, range })
     }
 
-    change_overlay(upd) {
+    scripts_onrange(r) {
+        if (!this.sett.scripts) return
+        let delta = {}
+
+        this.get('.').forEach(v => {
+            if (v.script && v.script.execOnRange &&
+                v.settings.$uuid) {
+                // TODO: execInterrupt flag?
+                if (Utils.delayed_exec(v)) {
+                    delta[v.settings.$uuid] = v.settings
+                }
+            }
+        })
+
+        if (Object.keys(delta).length) {
+            let tf = this.tv.$refs.chart.interval_ms ||
+                     this.data.chart.tf
+            let range = this.tv.getRange()
+            this.ww.just('update-ov-settings', {
+                delta, tf, range
+            })
+        }
+    }
+
+    // Overlay modification from WW
+    modify_overlay(upd) {
         let obj = this.get_overlay(upd)
         if (obj) {
-            for (var k in upd.fileds || {}) {
-                this.tv.$set(obj, k, upd.fileds[k])
+            for (var k in upd.fields || {}) {
+                if (typeof obj[k] === 'object') {
+                    this.merge(`${upd.uuid}.${k}`, upd.fields[k])
+                } else {
+                    obj[k] = upd.fields[k]
+                }
             }
         }
     }
 
     data_changed(args) {
         if (!this.sett.scripts) return
+        if (this.sett.data_change_exec === false) return
         let main = this.data.chart.data
         if (this.ww._data_uploading) return
         if (!this.se_state.scripts) return
+        this.send_meta_2_ww()
         this.ww.just('upload-data', { ohlcv: main })
         this.ww._data_uploading = true
-        this.merge('.', { loading: true })
+        this.set_loading(true)
+    }
+
+    set_loading(flag) {
+        let skrr = dc.get('.').filter(x => x.settings.$props)
+        for (var s of skrr) {
+            this.merge(`${s.id}`, { loading: flag })
+        }
+    }
+
+    send_meta_2_ww() {
+        let tf = this.tv.$refs.chart.interval_ms ||
+                 this.data.chart.tf
+        let range = this.tv.getRange()
+        this.ww.just('send-meta-info', { tf, range })
     }
 
     merge_presets(proto, preset) {
@@ -239,19 +303,38 @@ export default class DCEvents {
         }
     }
 
+    grid_mousedown(args) {
+        // TODO: tool state finished?
+        this.object_selected([])
+        // Remove the previous RangeTool
+        let rem = () => this.get('RangeTool')
+            .filter(x => x.settings.shiftMode)
+            .forEach(x => this.del(x.id))
+        if (this.data.tool && this.data.tool !== 'Cursor' &&
+           !this.data.drawingMode) {
+            this.data.drawingMode = true
+            this.build_tool(args[0])
+        } else if (this.sett.shift_measure && args[1].shiftKey) {
+            rem()
+            this.tv.$nextTick(() =>
+                this.build_tool(args[0], 'RangeTool:ShiftMode'))
+        } else {
+            rem()
+        }
+    }
+
     drawing_mode_off() {
-        this.tv.$set(this.data, 'drawingMode', false)
-        this.tv.$set(this.data, 'tool', 'Cursor')
+        this.data.drawingMode = false
+        this.data.tool = 'Cursor'
     }
 
     // Place a new tool
-    build_tool(grid_id) {
+    build_tool(grid_id, type) {
 
         let list = this.data.tools
-        let type = this.data.tool
+        type = type || this.data.tool
         let proto = list.find(x => x.type === type)
         if (!proto) return
-
         let sett = Object.assign({}, proto.settings || {})
         let data = (proto.data || []).slice()
 
@@ -271,7 +354,7 @@ export default class DCEvents {
 
         sett.$uuid = `${id}-${Utils.now()}`
 
-        this.tv.$set(this.data, 'selected', sett.$uuid)
+        this.data.selected = sett.$uuid
         this.add_trash_icon()
     }
 
@@ -299,7 +382,7 @@ export default class DCEvents {
 
     // Lock the scrolling mechanism
     on_scroll_lock(flag) {
-        this.tv.$set(this.data, 'scrollLock', flag)
+        this.data.scrollLock = flag
     }
 
     // When new object is selected / unselected
@@ -314,11 +397,11 @@ export default class DCEvents {
             })
             this.remove_trash_icon()
         }
-        this.tv.$set(this.data, 'selected', null)
+        this.data.selected = null
 
         if (!args.length) return
 
-        this.tv.$set(this.data, 'selected', args[2])
+        this.data.selected = args[2]
         this.merge(`${args[2]}.settings`, {
             $selected: true
         })
@@ -346,15 +429,17 @@ export default class DCEvents {
 
     // Set overlay data from the web-worker
     on_overlay_data(data) {
+        this.get('.').forEach(x => {
+            if (x.settings.$synth) this.del(`${x.id}`)
+        })
         for (var ov of data) {
             let obj = this.get_one(`${ov.id}`)
             if (obj) {
+                obj.loading = false
+                if (!ov.data) continue
                 obj.data = ov.data
-                this.tv.$set(obj, 'loading', false)
             }
-            this.get('.').forEach(x => {
-                if (x.settings.$synth) this.del(`${x.id}`)
-            })
+            if (!ov.new_ovs) continue
             for (var id in ov.new_ovs.onchart) {
                 if (!this.get_one(`onchart.${id}`)) {
                     this.add('onchart', ov.new_ovs.onchart[id])
@@ -371,25 +456,11 @@ export default class DCEvents {
     // Push overlay updates from the web-worker
     on_overlay_update(data) {
         for (var ov of data) {
+            if (!ov.data) continue
             let obj = this.get_one(`${ov.id}`)
             if (obj) {
-                this.fast_merge(obj.data, ov.data)
+                this.fast_merge(obj.data, ov.data, false)
             }
-        }
-    }
-
-    // Aggregation handler
-    agg_update(sym, upd) {
-        switch (sym) {
-            case 'ohlcv':
-                var data = this.data.chart.data
-                this.fast_merge(data, upd)
-                this.ww.just('update-data', { ohlcv: upd })
-                break
-            default:
-                var data = this.get(`${sym}`)
-                this.fast_merge(data[0], upd, false)
-                break
         }
     }
 
@@ -410,7 +481,7 @@ export default class DCEvents {
     // Get overlay by grid-layer id
     get_overlay(obj) {
         let id = obj.id || `g${obj.grid_id}_${obj.layer_id}`
-        let dcid = this.gldc[id]
+        let dcid = obj.uuid || this.gldc[id]
         return this.get_one(`${dcid}`)
     }
 
